@@ -11,5 +11,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //I am LZX
+        //I am LV
     }
 }
