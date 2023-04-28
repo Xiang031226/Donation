@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         //LZX
         //LVsdfasdfasfasdfsadfsdfsdfsdfd
+        //last testing, please work
 
     }
 }
