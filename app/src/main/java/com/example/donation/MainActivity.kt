@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         //LZX
         //LV
-        //lv2
+        //v2
     }
 }
