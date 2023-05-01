@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="login_title_style">
+        <item name="android:textSize">30sp</item>
+        <item name="android:paddingTop">120dp</item>
+        <item name="android:paddingBottom">50dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="login_icon_style">
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+    </style>
+
+    <style name="login_input_style">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+    <style name="login_button_style">
+        <item name="android:paddingStart">80dp</item>
+        <item name="android:paddingEnd">80dp</item>
+    </style>
+
+    <style name="register_now_style">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <style name="register_title_style">
+        <item name="android:textSize">30sp</item>
+        <item name="android:paddingTop">50dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="register_password_format">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>
