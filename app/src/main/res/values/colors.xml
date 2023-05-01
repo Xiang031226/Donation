@@ -7,5 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+<<<<<<< HEAD
     <color name="transparent">#00F44336</color>
+=======
+
+    <color name="green">#F3F4F4</color>
+    <color name="nav_bottom_icon_active">#4198F6</color>
+    <color name="nav_bottom_icon_inactive">#858585</color>
+>>>>>>> c000072fd42d2b17197be9345ee3b8f8cbc89462
 </resources>

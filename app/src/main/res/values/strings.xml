@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Donation</string>
+<<<<<<< HEAD
     <string name="sign_in">Sign In</string>
     <string name="username_email">Username/Email Address</string>
     <string name="password">Password</string>
@@ -9,4 +10,13 @@
     <string name="password_format">Your password must be at least 8 characters with alphanumeric and special characters (!@%/)</string>
     <string name="retype_password">Retype password</string>
     <string name="username">Username</string>
+=======
+    <string name="hello_world">Hello World</string>
+    <string name="home">Home</string>
+    <string name="campaign">Campaign</string>
+    <string name="profile">Profile</string>
+    <string name="wildcare">Wildcare</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> c000072fd42d2b17197be9345ee3b8f8cbc89462
 </resources>
