@@ -38,7 +38,9 @@
                 android:icon="@drawable/ic_logout"
                 />
         </menu>
-
     </item>
+
+    <item android:id="@+id/switch_toggle_item"
+        android:title=""/>
 
 </menu>
