@@ -61,7 +61,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private fun startRegisterFragment() {
         val registerFragment = RegisterFragment()
-        requireActivity().supportFragmentManager.beginTransaction()?.apply {
+        requireActivity().supportFragmentManager.beginTransaction().apply {
             replace(R.id.fcv_login, registerFragment)
             addToBackStack(null)
             commit()

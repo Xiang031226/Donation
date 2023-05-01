@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Donation</string>
-<<<<<<< HEAD
+    <!-- VS -->
+    <string name="app_name">Wildcare</string>
     <string name="sign_in">Sign In</string>
     <string name="username_email">Username/Email Address</string>
     <string name="password">Password</string>
@@ -10,13 +10,32 @@
     <string name="password_format">Your password must be at least 8 characters with alphanumeric and special characters (!@%/)</string>
     <string name="retype_password">Retype password</string>
     <string name="username">Username</string>
-=======
-    <string name="hello_world">Hello World</string>
     <string name="home">Home</string>
     <string name="campaign">Campaign</string>
     <string name="profile">Profile</string>
     <string name="wildcare">Wildcare</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> c000072fd42d2b17197be9345ee3b8f8cbc89462
+
+    <!-- ZX -->
+    <string name="user_profile">User Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="about_us">About Us</string>
+    <string name="setting">Setting</string>
+    <string name="logout">Logout</string>
+    <string name="open">opened</string>
+    <string name="close">closed</string>
+    <string name="day_mode">Day</string>
+    <string name="night_mode">Night</string>
+    <string name="tab_layout_description">Tab layout for navigation</string>
+    <string name="title_activity_login2">LoginActivity2</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- ZX -->
 </resources>

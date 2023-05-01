@@ -34,7 +34,7 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
         Toast.makeText(activity, "You are registered. Login again", Toast.LENGTH_SHORT).show()
 
         // This method closes the current fragment and goes back to the previous fragment
-        val fragmentManager = requireActivity().getSupportFragmentManager();
+        val fragmentManager = requireActivity().supportFragmentManager;
         fragmentManager.popBackStack();
     }
 }

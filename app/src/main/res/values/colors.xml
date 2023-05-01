@@ -7,12 +7,25 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
     <color name="transparent">#00F44336</color>
-=======
 
     <color name="green">#F3F4F4</color>
     <color name="nav_bottom_icon_active">#4198F6</color>
     <color name="nav_bottom_icon_inactive">#858585</color>
->>>>>>> c000072fd42d2b17197be9345ee3b8f8cbc89462
+
+    //day mode
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorPrimaryDark">#fff</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorText">#1A1A1A</color>
+
+    //night mode
+    <color name="colorPrimaryNight">#000</color>
+    <color name="colorPrimaryDarkNight">#000</color>
+    <color name="colorTextNight">#DCDCDC</color>
+
+    <color name="colorBackgroundDay">#FFFFFF</color>
+    <color name="colorBackgroundNight">#000000</color>
+    <color name="inactive_tab_state">#737373</color>
+    <color name="active_tab_state">#FF8A80</color>
 </resources>
