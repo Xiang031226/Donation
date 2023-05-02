@@ -2,6 +2,7 @@ package com.example.donation
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
 import android.text.TextUtils.replace
@@ -23,6 +24,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         loginFragmentBinding = LoginFragmentBinding.inflate(inflater, container, false)
         return loginFragmentBinding.root
     }
@@ -54,8 +56,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             Toast.makeText(activity, "Please enter your password", Toast.LENGTH_SHORT)
                 .show()
         } else {
-            Toast.makeText(activity, "Enter your login details", Toast.LENGTH_SHORT).show()
-            activity?.finish()
+            startActivity(Intent(activity, UserMainActivity::class.java))
         }
     }
 
