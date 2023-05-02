@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        val loginIntent = Intent(this, LoginActivity::class.java)
+        val loginIntent = Intent(this, AdminActivity::class.java) //testingg
         loginIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(loginIntent)
     }

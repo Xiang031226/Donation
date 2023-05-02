@@ -37,5 +37,14 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <!--today-->
+    <string name="dashboard">Dashboard</string>
+    <string name="todays_donation">Today\'s Donation</string>
+    <string name="donation_amount">RM1000.00</string>
+    <string name="active_campaign">Active Campaign</string>
+    <string name="active_campaign_number">4</string>
+    <string name="volunteer_application">Volunteer Application</string>
+    <string name="volunteer_application_number">20</string>
     <!-- ZX -->
 </resources>
