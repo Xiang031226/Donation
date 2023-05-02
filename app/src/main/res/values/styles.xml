@@ -57,7 +57,20 @@
     <style name="register_password_format">
         <item name="android:paddingStart">10dp</item>
         <item name="android:paddingEnd">8dp</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
+    </style>
+
+    <style name="dashboard_container">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/container_border</item>
+    </style>
+
+    <style name="dashboard_container_text">
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
     </style>
 
 </resources>
