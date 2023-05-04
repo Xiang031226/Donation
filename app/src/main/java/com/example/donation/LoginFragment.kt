@@ -31,6 +31,8 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(MainActivity.userType == "admin")
+            loginFragmentBinding.registerNowButton.visibility = View.GONE
 
         loginFragmentBinding.apply {
             registerNowButton.setOnClickListener {
@@ -56,7 +58,21 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             Toast.makeText(activity, "Please enter your password", Toast.LENGTH_SHORT)
                 .show()
         } else {
-            startActivity(Intent(activity, UserMainActivity::class.java))
+            loadMainActivity()
+        }
+    }
+
+    private fun loadMainActivity(){
+        if(MainActivity.userType == "user") {
+            val userBundle = Bundle()
+            val userIntent = Intent(activity, UserMainActivity()::class.java)
+            userIntent.putExtras(userBundle)
+            startActivity(userIntent)
+        }else {
+            val adminBundle = Bundle()
+            val adminIntent = Intent(activity, AdminActivity()::class.java)
+            adminIntent.putExtras(adminBundle)
+            startActivity(adminIntent)
         }
     }
 

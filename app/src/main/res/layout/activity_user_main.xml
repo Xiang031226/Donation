@@ -52,7 +52,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar"
-            app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+            <View android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@drawable/app_bar_drop_shadow"/>
+
+        </FrameLayout>
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

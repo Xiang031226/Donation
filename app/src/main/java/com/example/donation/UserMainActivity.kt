@@ -2,11 +2,15 @@ package com.example.donation
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.NotificationCompat.getExtras
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.donation.UserMainActivity.Companion.KEY_THEME_MODE
@@ -32,6 +36,11 @@ class UserMainActivity : AppCompatActivity() {
 
         AppCompatDelegate.setDefaultNightMode(savedThemeMode)
         setContentView(binding.root)
+
+        val navHeader = binding.navView.getHeaderView(0)
+        val username = navHeader.findViewById<TextView>(R.id.username)
+        username.text = intent.getStringExtra("username")
+
         currentFragment = Home()
         replaceFragment(currentFragment)
 
@@ -89,12 +98,11 @@ class UserMainActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun updateThemeTextView(isDarkModeOn: Boolean) {
         if (isDarkModeOn) {
-            binding.currentTheme.text = "Night"
-        } else {
             binding.currentTheme.text = "Day"
+        } else {
+            binding.currentTheme.text = "Night"
         }
     }
 
@@ -106,16 +114,15 @@ class UserMainActivity : AppCompatActivity() {
             prefs.edit().putInt(KEY_THEME_MODE, AppCompatDelegate.MODE_NIGHT_NO).apply()
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-        recreate()
     }
 
     private fun replaceFragment(fragment: Fragment) {
         currentFragment = fragment
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.frame_layout, fragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -130,7 +137,5 @@ class UserMainActivity : AppCompatActivity() {
         currentFragment =
             supportFragmentManager.getFragment(savedInstanceState, "currentFragment") ?: Home()
         supportFragmentManager.beginTransaction()
-            .replace(R.id.frame_layout, currentFragment)
-            .commit()
     }
 }

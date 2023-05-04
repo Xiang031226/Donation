@@ -25,8 +25,8 @@
     <string name="logout">Logout</string>
     <string name="open">opened</string>
     <string name="close">closed</string>
-    <string name="day_mode">Day</string>
-    <string name="night_mode">Night</string>
+    <string name="day_mode">%s</string>
+    <string name="night_mode">%s</string>
     <string name="tab_layout_description">Tab layout for navigation</string>
     <string name="title_activity_login2">LoginActivity2</string>
     <string name="prompt_email">Email</string>
@@ -46,5 +46,8 @@
     <string name="active_campaign_number">4</string>
     <string name="volunteer_application">Volunteer Application</string>
     <string name="volunteer_application_number">20</string>
+
+
+    <string name="currency">MYR</string>
     <!-- ZX -->
 </resources>

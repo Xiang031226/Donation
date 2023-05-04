@@ -1,21 +1,13 @@
 package com.example.donation
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.findFragment
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.example.donation.databinding.FragmentCampaignBinding
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 class Campaign : Fragment(R.layout.fragment_campaign) {
 
@@ -29,6 +21,7 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        replaceFragment(DonationListItem(), "Donation")
 
         val binding = FragmentCampaignBinding.bind(view)
 
@@ -39,10 +32,10 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
                 // handle tab selection event
                 when (tab.position) {
                     0 -> {
-                        replaceFragment(Donation())
+                        replaceFragment(DonationListItem(), "Donation")
                     }
                     1 -> {
-                        replaceFragment(Volunteer())
+                        replaceFragment(Volunteer(), "Volunteer")
                     }
                 }
             }
@@ -55,10 +48,10 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
         })
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val childFragmentManager = childFragmentManager
-        childFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_container, fragment)
+    private fun replaceFragment(fragment: Fragment, tag:String) {
+
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_container, fragment, tag)
             addToBackStack(null)
             commit()
         }
