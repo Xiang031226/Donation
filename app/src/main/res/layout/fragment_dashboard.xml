@@ -15,34 +15,34 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/donationIcon"
-            android:layout_marginStart="20dp"
+            android:id="@+id/donation_icon"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginStart="20dp"
             android:src="@drawable/outline_volunteer_activism_24" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/donationIcon"
+            android:layout_toRightOf="@id/donation_icon"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/today_donation"
                 style="@style/dashboard_container_text"
-                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/todays_donation" />
+                android:text="@string/todays_donation"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/donation_amount"
                 style="@style/dashboard_container_text"
-                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/donation_amount" />
+                android:text="@string/donation_amount"
+                android:textSize="20sp" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -66,10 +66,10 @@
             <TextView
                 android:id="@+id/active_campaign"
                 style="@style/dashboard_container_text"
-                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/active_campaign" />
+                android:text="@string/active_campaign"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/active_campaign_number"
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/active_campaign_number"
-                android:textSize="30sp"/>
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -92,10 +92,10 @@
             <TextView
                 android:id="@+id/volunteer_application"
                 style="@style/dashboard_container_text"
-                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/volunteer_application" />
+                android:text="@string/volunteer_application"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/volunteer_application_number"
@@ -103,10 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/volunteer_application_number"
-                android:textSize="30sp"/>
+                android:textSize="30sp" />
         </LinearLayout>
-
     </RelativeLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
+import android.text.Editable
 import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,7 +25,6 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         loginFragmentBinding = LoginFragmentBinding.inflate(inflater, container, false)
         return loginFragmentBinding.root
     }
@@ -38,27 +38,42 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             }
 
             loginButton.setOnClickListener {
-                loginValidation()
+//                loginValidation(MainActivity.userType)
             }
         }
     }
 
-    private fun loginValidation() {
-        val emailInput = loginFragmentBinding.loginEmailInputText.text.toString()
-        val passwordInput = loginFragmentBinding.loginPasswordInputText.text.toString()
+//    private fun loadMainActivity() {
+//        val loginBundle = Bundle()
+//        loginBundle.putString("username_email", loginFragmentBinding.loginEmailInputText.text.toString())
+//
+//        if(MainActivity.userType == "admin"){
+//            val adminIntent = Intent(activity, AdminActivity::class.java)
+//            adminIntent.putExtras(loginBundle)
+//            startActivity(adminIntent)
+//        }else {
+//            val userIntent = Intent(activity, UserMainActivity::class.java)
+//            userIntent.putExtras(loginBundle)
+//            startActivity(userIntent)
+//        }
+//    }
 
-        if (emailInput == "") {
-            Toast.makeText(activity, "Please enter your username or email", Toast.LENGTH_SHORT)
-                .show()
-            return
-        }
-        if (passwordInput == "") {
-            Toast.makeText(activity, "Please enter your password", Toast.LENGTH_SHORT)
-                .show()
-        } else {
-            startActivity(Intent(activity, UserMainActivity::class.java))
-        }
-    }
+//    private fun loginValidation(userType: String) {
+//        val emailInput = loginFragmentBinding.loginEmailInputText.text.toString()
+//        val passwordInput = loginFragmentBinding.loginPasswordInputText.text.toString()
+//
+//        if (emailInput == "") {
+//            Toast.makeText(activity, "Please enter your username or email", Toast.LENGTH_SHORT)
+//                .show()
+//            return
+//        }
+//        if (passwordInput == "") {
+//            Toast.makeText(activity, "Please enter your password", Toast.LENGTH_SHORT)
+//                .show()
+//        } else {
+//            loadMainActivity()
+//        }
+//    }
 
     private fun startRegisterFragment() {
         val registerFragment = RegisterFragment()
