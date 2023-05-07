@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/donation_nav_graph"
+    app:startDestination="@id/donationListItem">
+    <fragment
+        android:id="@+id/donationDescriptionFragment"
+        android:name="com.example.donation.DonationDescriptionFragment"
+        android:label="DescriptionFragment">
+        <action
+            android:id="@+id/action_descriptionFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationListItem"
+        android:name="com.example.donation.DonationListItem"
+        android:label="DonationListItem"
+        tools:layout="@layout/donation_list_item"
+        >
+        <action
+            android:id="@+id/action_donationListItem_to_descriptionFragment"
+            app:destination="@id/donationDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.donation.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.example.donation.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" >
+        <action
+            android:id="@+id/action_checkoutFragment_to_thankYouFragment"
+            app:destination="@id/thankYouFragment"
+            app:popUpTo="@id/donationListItem"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/thankYouFragment"
+        android:name="com.example.donation.ThankYouFragment"
+        android:label="fragment_thank_you"
+        tools:layout="@layout/fragment_thank_you" >
+        <action
+            android:id="@+id/action_thankYouFragment_to_donationListItem2"
+            app:destination="@id/donationListItem"
+            app:popUpTo="@id/donationListItem"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_thankYouFragment_to_volunteerListItem"
+            app:destination="@id/volunteerListItem"
+            app:popUpTo="@id/volunteerListItem"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/volunteerListItem"
+        android:name="com.example.donation.VolunteerListItem"
+        android:label="Volunteer"
+        tools:layout="@layout/volunteer_list_item"
+        >
+        <action
+            android:id="@+id/action_volunteerListItem_to_volunteerDescription"
+            app:destination="@id/volunteerDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/volunteerDescription"
+        android:name="com.example.donation.VolunteerDescription"
+        android:label="fragment_volunteer_description"
+        tools:layout="@layout/fragment_volunteer_description" >
+        <action
+            android:id="@+id/action_volunteerDescription_to_thankYouFragment"
+            app:destination="@id/thankYouFragment" />
+    </fragment>
+</navigation>

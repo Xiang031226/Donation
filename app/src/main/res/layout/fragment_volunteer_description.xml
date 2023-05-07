@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".VolunteerDescription">
+
+    <ImageView
+        android:id="@+id/event_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+        />
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="16dp"
+        android:paddingStart="16dp"
+        />
+
+    <TextView
+        android:id="@+id/event_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/event_image"
+        android:text="Join us on the incoming earth event"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:textAlignment="center"
+        />
+
+    <ImageView
+        android:id="@+id/time_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/event_title"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_clock"
+        android:layout_marginStart="30dp"
+        />
+
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/time_icon"
+        app:layout_constraintTop_toTopOf="@id/time_icon"
+        app:layout_constraintBottom_toBottomOf="@id/time_icon"
+        android:text="60 hours"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:paddingStart="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/date_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/time_text"
+        app:layout_constraintTop_toTopOf="@id/time_text"
+        app:layout_constraintBottom_toBottomOf="@id/time_text"
+        android:src="@drawable/ic_date"
+        android:layout_marginStart="90dp"
+        />
+
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/date_icon"
+        app:layout_constraintTop_toTopOf="@id/date_icon"
+        app:layout_constraintBottom_toBottomOf="@id/date_icon"
+        android:text="31 March 2023"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:paddingStart="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/location_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="@id/time_icon"
+        app:layout_constraintTop_toBottomOf="@id/time_icon"
+        android:layout_marginTop="12dp"
+        />
+
+    <TextClock
+        android:id="@+id/location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puchong"
+        app:layout_constraintStart_toStartOf="@id/time_text"
+        app:layout_constraintTop_toTopOf="@id/location_icon"
+        app:layout_constraintBottom_toBottomOf="@id/location_icon"
+        android:paddingStart="20dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/available_volunteer_role_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/location_icon"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:text="Available volunteering roles :"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/available_volunteer_role_title"
+        app:layout_constraintTop_toBottomOf="@id/available_volunteer_role_title"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            >
+
+            <RadioButton
+                android:id="@+id/role1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Advocacy Volunteers"
+                android:textSize="16sp"
+                android:paddingStart="30dp"
+                />
+
+            <TextView
+                android:id="@+id/number_of_position_role1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/2"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:paddingStart="30dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            >
+
+            <RadioButton
+                android:id="@+id/role2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Advocacy Volunteers"
+                android:textSize="16sp"
+                android:paddingStart="30dp"
+                />
+
+            <TextView
+                android:id="@+id/number_of_position_role2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/2"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:paddingStart="30dp"
+                />
+
+        </LinearLayout>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/job_scopes_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Scopes"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/available_volunteer_role_title"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"
+        android:paddingBottom="8dp"
+        />
+
+    <TextView
+        android:id="@+id/job_scopes_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/job_scopes_text"
+        app:layout_constraintTop_toBottomOf="@id/job_scopes_text"
+        android:text="1. asdfsdfsdfsadfasdfasfasf"
+        android:paddingTop="8dp"
+        android:paddingStart="40dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/job_scopes_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. asdfsdfsdfsadfasdfasfasf"
+        app:layout_constraintStart_toStartOf="@id/job_scopes_1"
+        app:layout_constraintTop_toBottomOf="@id/job_scopes_1"
+        android:paddingTop="16dp"
+        android:paddingStart="40dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/skill_will_learn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="Skill you will learn :"
+        app:layout_constraintStart_toStartOf="@id/job_scopes_text"
+        app:layout_constraintTop_toBottomOf="@id/job_scopes_2"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="20dp"
+        />
+
+    <TextView
+        android:id="@+id/skill_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/job_scopes_1"
+        app:layout_constraintTop_toBottomOf="@id/skill_will_learn_text"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:text="- asdfasdfasdfasf"
+        android:paddingStart="40dp"
+        />
+
+    <TextView
+        android:id="@+id/skill_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/job_scopes_1"
+        app:layout_constraintTop_toBottomOf="@id/skill_1"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:text="- asdfasdfasdfasf"
+        android:paddingStart="40dp"
+        android:paddingTop="16dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#B6B5B5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/volunteer_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Volunteer"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:padding="15dp"
+            app:cornerRadius="20dp"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

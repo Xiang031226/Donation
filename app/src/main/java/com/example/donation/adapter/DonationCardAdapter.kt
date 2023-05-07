@@ -6,14 +6,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.donation.DescriptionFragment
+import com.example.donation.AnimalViewModel
 import com.example.donation.R
 import com.example.donation.data.DonationSource
+import com.example.donation.model.Description
 
 class DonationCardAdapter(
-    private val listener: RecyclerViewItemClickListener
+    private val viewModel: AnimalViewModel,                  //viewModel, to update the destination fragment, kinda
+    private val animalList: List<Description>,               //my animal description lists
+    private val listener: DonationItemClickListener      //passing listener
 ): RecyclerView.Adapter<DonationCardAdapter.DonationCardViewHolder>() {
 
     private val donationList = DonationSource.donation
@@ -36,8 +38,11 @@ class DonationCardAdapter(
         holder.donationTitle?.text = donationData.title
         holder.imageView?.setImageResource(donationData.imageResourceId)
         holder.donationCategory?.text = donationData.category
+
+        val currentAnimal = animalList[position]
         holder.donateButton?.setOnClickListener{
-            listener.onItemClick(DescriptionFragment())
+            viewModel.selectedAnimal.value = currentAnimal  //assign the animal which the user has clicked to my viewModel mutable live data
+            listener.onItemClick()                          //and then navigate to the description fragment
         }
     }
 
@@ -47,6 +52,7 @@ class DonationCardAdapter(
 
 }
 
-interface RecyclerViewItemClickListener {
-    fun onItemClick(fragment: Fragment)
+//creating interface, so my button of recycler view can be clicked:)
+interface DonationItemClickListener {
+    fun onItemClick()
 }

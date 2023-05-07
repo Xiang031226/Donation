@@ -6,25 +6,21 @@ import com.example.donation.model.Donation
 object DonationSource {
     val donation: List<Donation> = listOf(
         Donation(
-            1,
             R.drawable.image1,
-            "Save Our Tiger",
-            "Wildlife"
+            "Save Our Tigers",
+            "Wild Life"
         ),Donation(
-            2,
-            R.drawable.image1,
-            "Enhance anti-poaching and trafficking",
+            R.drawable.image2,
+            "Save Our Elephants",
+            "Wild Life"
+        ),Donation(
+            R.drawable.image3,
+            "Save Our Sea Turtles",
             "Marine"
         ),Donation(
-            3,
-            R.drawable.image1,
-            "Save Our Tiger",
-            "Wildlife"
-        ),Donation(
-            4,
-            R.drawable.image1,
-            "Save Our Tiger",
-            "Wildlife"
+            R.drawable.image4,
+            "Save Our Orang Utans",
+            "Wild Life"
         )
     )
 }

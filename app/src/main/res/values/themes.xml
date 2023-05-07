@@ -16,5 +16,17 @@
         </item>
     </style>
 
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@animator/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@animator/slide_out_bottom</item>
+    </style>
+    
+    <style name="roundedImageCorner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
 
 </resources>

@@ -49,5 +49,116 @@
 
 
     <string name="currency">MYR</string>
+    <string name="donation_tab_text">Donation</string>
+    <string name="volunteer_tab_text">Volunteer</string>
+    <string name="dialog_title">Haha</string>
+
+    <!--    animal donation texts -->
+    <string name="tiger_extinctionTitle">Less than 150 left</string>
+    <string name="tiger_awareness">
+        There are now less than 150 Malayan tigers left in Malaysia compared
+        to the 3,000 tigers that once roamed our forests in the 1950s.
+    </string>
+    <string name="tiger_threatTitle">Threats</string>
+    <string name="tiger_threatMsg">
+        The future of our Malayan tigers is at stake as their existence is severely
+        threatened by poaching and the illegal wildlife trade, habitat loss due
+        to deforestation and fragmentation,
+        as well as overhunting of the tigers.
+    </string>
+    <string name="tiger_MustDoTitle">We must act now</string>
+    <string name="tiger_MustDoMsg">
+        The future of our Malayan tigers is at stake as their existence is severely threatened
+        by poaching and the illegal wildlife trade, habitat loss due to deforestation and fragmentation,
+        as well as overhunting of the tigers.
+    </string>
+    <string name="tiger_supportMsg">
+        \nWe urgently need your support to help our frontliners in the field.
+        WWF-Malaysia conducts intensive patrolling in Belum-Temengor and monitors poaching hotspots,
+        whilst channeling relevant information to enforcement agencies. This has enabled:
+        \n\n&#8226; More ground to be patrolled.
+        \n\n&#8226; More threats to be uncovered.
+        \n\n&#8226; More snares to be removed.
+        \n\n&#8226; More arrests of poachers.
+    </string>
+
+    <string name="elephant_extinctionTitle">ONLY 1,500 LEFT</string>
+    <string name="elephant_awareness">
+        These endemic Bornean elephants are losing their homes and families.
+        With only about 1,500 of them left in the wild in Sabah, urgent and continuous actions
+        need to be taken in order to conserve these gentle giants.
+    </string>
+    <string name="elephant_threatTitle">Threats</string>
+    <string name="elephant_threatMsg">
+        Sadly, Bornean elephants are:
+        \n\n&#8226; Losing their habitat due to displacement by large-scale agriculture,
+                    plantations and the construction of road infrastructures
+                    that do not incorporate elephant requirements.
+        \n\n&#8226; Coming into more contact with people thus increasing human elephant
+                    conflict due to loss and fragmentation of forests.
+    </string>
+    <string name="elephant_MustDoTitle">Urgent Conservation Efforts</string>
+    <string name="elephant_MustDoMsg">Donate today and help WWF-Malaysia to:</string>
+    <string name="elephant_supportMsg">
+        \n\n&#8226; Conduct elephant satellite collaring to identify their key space
+                    requirements and to reduce future conflict.
+        \n\n&#8226; Establish wildlife corridors to connect fragmented habitats
+        \n\n&#8226; Promote coexistence between humans and wildlife.
+        \n\n&#8226; Collaborate with government and non-government agencies on wildlife surveys, research and
+                    capacity building for protected area management. Support sustainable products such as
+                    RSPO certified Palm oil products and FSC certified paper products.
+    </string>
+
+    <string name="sea_turtle_extinctionTitle">DECLINING POPULATION</string>
+    <string name="sea_turtle_awareness">Marine turtle numbers continue to plummet in most parts of the world.</string>
+    <string name="sea_turtle_threatTitle">Threats</string>
+    <string name="sea_turtle_threatMsg">
+        \n\n&#8226;Loss of nesting and feeding habitats.
+        \n\n&#8226; Egg-collection for consumption and trade.
+        \n\n&#8226; Fishery-related mortality and pollution.
+        \n\nHawksbill turtles are critically endangered. Green and olive ridley turtles are endangered.
+    </string>
+    <string name="sea_turtle_MustDoTitle">URGENT CONSERVATION EFFORTS</string>
+    <string name="sea_turtle_MustDoMsg">You have the power to save their lives; make a donation today and help WWF-Malaysia to:</string>
+    <string name="sea_turtle_supportMsg">
+        \n\n&#8226; Monitor and patrol nesting beaches to minimise the poaching of turtle eggs.
+        \n\n&#8226; Patrol turtle foraging grounds to prevent poaching.
+        \n\n&#8226; Conduct research to understand marine turtle habitats and biology, as well as the effects
+                    of climate change, to enhance conservation efforts.
+        \n\n&#8226; Continue our efforts in calling for stronger and more holistic laws as well as
+                    strengthening ground and transboundary enforcement to protect turtles.
+    </string>
+    <string name="orang_utan_extinctionTitle">AMAZING WILDLIFE MOTHERS</string>
+    <string name="orang_utan_awareness">
+        The bond between an orangutan mother and her young is one of the strongest in nature.
+        During the first two years of life,
+        the young rely entirely on their mothers for both food and transportation.
+        The moms stay with their young for six to seven years, teaching them where to find food,
+        what and how to eat and the
+        technique for building a sleeping nest. Female orangutans are known to “visit”
+        their mothers until they reach the age of 15 or 16.
+    </string>
+    <string name="orang_utan_threatTitle">IMPORTANCE AND THREATS</string>
+    <string name="orang_utan_threatMsg">
+        Sadly, orangutan numbers are declining due to:
+        \n\n&#8226; Habitat degradation caused by unsustainable logging practices,
+                    unsustainable land-use planning as well as forest
+                    conversion for agriculture and infrastructure development.
+        \n\n&#8226; Fragmented habitats resulting in isolated orangutan populations.
+    </string>
+    <string name="orang_utan_MustDoTitle">Urgent conservation efforts.</string>
+    <string name="orang_utan_MustDoMsg">Donate today and help WWF-Malaysia to:</string>
+    <string name="orang_utan_supportMsg">
+        \n\n&#8226; Carry out restoration of logged-over and fire-impacted forest areas by replanting a
+                    mixture of native tree species.
+        \n\n&#8226; Promote protection of crucial habitats.
+        \n\n&#8226; Increase awareness of orangutan conservation.
+        \n\n&#8226; Establish wildlife corridors to maintain wildlife connectivity.
+        \n\n&#8226; Allow orangutans to disperse freely around non-forested areas to support gene flow.
+                    Support sustainable products such as RSPO certified Palm oil products
+                    and FSC certified paper products.
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- ZX -->
 </resources>

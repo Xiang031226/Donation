@@ -1,6 +1,7 @@
 package com.example.donation
 
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,6 +28,7 @@ abstract class HideBarOrTab: Fragment() {
     }
 
     protected fun hideAppBar() {
+        Toast.makeText(activity, "Damn", Toast.LENGTH_SHORT).show()
         appBarLayoutView  = activity?.findViewById(R.id.appBarLayout)
         appBarLayoutView?.visibility = View.GONE
     }

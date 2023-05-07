@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 //        startActivity(intent)
 
         val tabLayout = binding.tabLayout
+        LoginFragment()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {

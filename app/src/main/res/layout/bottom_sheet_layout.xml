@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_bg"
+    >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose payment method"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:layout_marginStart="20dp"
+        />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_below="@id/title"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/card_payment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@id/separator"
+        >
+
+        <ImageView
+            android:id="@+id/credit_card_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape_bg"
+            android:importantForAccessibility="no"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:src="@drawable/ic_credit_card" />
+
+        <LinearLayout
+            android:id="@+id/payment_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="28dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Card"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Use Credit/Debit Card or others" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/google_pay_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/card_payment_layout"
+        android:layout_margin="20dp"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:id="@+id/google_pay_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape_bg"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="G"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:src="@drawable/ic_credit_card"
+            android:layout_below="@id/separator"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="28dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Google Pay"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enjoy surfing, easy and secure way to pay" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -4,40 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".PaymentFragment">
 
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        android:src="@drawable/ic_back_arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose your donation type"
-        android:textColor="@color/black"
-        android:textSize="21dp"
-        app:layout_constraintBottom_toBottomOf="@id/back_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/title"
-        app:layout_constraintTop_toTopOf="@id/back_button" />
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/custom_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        >
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/one_time"
@@ -58,39 +43,43 @@
     </RadioGroup>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/amount_input_layout"
+        android:layout_width="370dp"
         android:layout_height="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_group"
         android:layout_marginTop="20dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="18dp"
         android:background="@drawable/custom_container"
-        >
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/amount_textview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="Amount : "
                 android:gravity="start"
+                android:text="Amount : "
                 android:textAppearance="?attr/textAppearanceBody1" />
 
             <EditText
+                android:id="@+id/amount_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:paddingStart="30dp"
-                android:text="0.00"
-                android:textSize="23dp"
+                android:hint="0.00"
+                android:textSize="23sp"
+                android:inputType="numberDecimal"
+                android:autofillHints=""
+                tools:ignore="RtlSymmetry"
                 />
 
             <TextView
@@ -98,8 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/currency"
                 android:textColor="@color/black"
-                android:textSize="23dp"
-                />
+                android:textSize="23dp" />
         </LinearLayout>
 
         <TextView
@@ -109,5 +97,166 @@
             android:text="* Minimum donation amount is RM 5.00 per month" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/amount_selection1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/amount_input_layout">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/RM_10"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="RM 10"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="20dp"
+            app:rippleColor="#33aaaa"
+            app:strokeWidth="1dp"
+            app:strokeColor="#9C9B9B"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/RM_20"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="RM 20"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="20dp"
+            app:rippleColor="#33aaaa"
+            app:strokeWidth="1dp"
+            app:strokeColor="#9C9B9B"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/RM_100"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="RM 100"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="20dp"
+            app:rippleColor="#33aaaa"
+            app:strokeWidth="1dp"
+            app:strokeColor="#9C9B9B"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/amount_selection2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/amount_selection1">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/RM_200"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="RM 200"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="20dp"
+            app:rippleColor="#33aaaa"
+            app:strokeWidth="1dp"
+            app:strokeColor="#9C9B9B"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/RM_300"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="RM 300"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="20dp"
+            app:rippleColor="#33aaaa"
+            app:strokeWidth="1dp"
+            app:strokeColor="#9C9B9B"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/RM_500"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="RM 500"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="20dp"
+            app:rippleColor="#33aaaa"
+            app:strokeWidth="1dp"
+            android:textSize="18sp"
+            app:strokeColor="#9C9B9B"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="Please note that monthly donation will not ask for OTP verification but there will be a reminder to you when the payment is made"
+            android:textAlignment="center" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider" />
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="Next  >"
+            android:textAllCaps="false"
+            android:textColor="#008979"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="16dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

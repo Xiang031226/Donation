@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.donation.Home"
+        android:label="Home" />
+    <fragment
+        android:id="@+id/campaign"
+        android:name="com.example.donation.Campaign"
+        android:label="@string/campaign"
+        tools:layout="@layout/fragment_campaign">
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.donation.Profile"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/userMainActivity"
+        android:name="com.example.donation.UserMainActivity"
+        android:label="UserMainActivity" />
+
+    <include app:graph="@navigation/campaign_nav_graph"/>
+
+
+</navigation>

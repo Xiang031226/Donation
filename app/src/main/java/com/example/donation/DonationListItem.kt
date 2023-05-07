@@ -1,29 +1,42 @@
 package com.example.donation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.adapter.DonationCardAdapter
-import com.example.donation.adapter.RecyclerViewItemClickListener
+import com.example.donation.adapter.DonationItemClickListener
+import com.example.donation.data.DescriptionSource
 import com.example.donation.databinding.DonationActivityListBinding
 
-class DonationListItem() : Fragment(), RecyclerViewItemClickListener {
+
+class DonationListItem() : Fragment(), DonationItemClickListener {
+
+    private lateinit var binding: DonationActivityListBinding
+    private lateinit var viewModel: AnimalViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        //inflate the view first, like make a copy of code I guess
         val view = inflater.inflate(R.layout.donation_activity_list, container, false)
 
-        // Inflate the layout for this fragment
+        //get the instance of my class that have data, so here wont be bunch of code lol
+        val animalDescriptionList = DescriptionSource().animalDescriptionList(requireContext())
+
+        viewModel = ViewModelProvider(requireActivity())[AnimalViewModel::class.java]
+
+        //initialize my adapter
+        val adapter = DonationCardAdapter(viewModel, animalDescriptionList, this)
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.donation_recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = DonationCardAdapter(this)
+        recyclerView.adapter = adapter
+        recyclerView.setHasFixedSize(true)
 
         return view
     }
@@ -31,21 +44,13 @@ class DonationListItem() : Fragment(), RecyclerViewItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = DonationActivityListBinding.bind(view)
+        binding = DonationActivityListBinding.bind(view)
 
-        binding.donationRecyclerView.setHasFixedSize(true)
     }
 
-    override fun onItemClick(fragment: Fragment) {
-        // Switch to the desired fragment
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
+    //overriding the fun from my adapter that listen to my click, the interface there
+    override fun onItemClick() {
+        findNavController().navigate(R.id.action_donationListItem_to_descriptionFragment)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d("Msg", "Hello")
-    }
 }

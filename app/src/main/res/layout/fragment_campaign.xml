@@ -6,37 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".Campaign">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/donation_fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/campaign_nav_graph"
+        />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabIndicatorHeight="3dp"
         tools:ignore="SpeakableTextPresentCheck">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Donation" />
+            android:text="@string/donation_tab_text" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volunteer" />
+            android:text="@string/volunteer_tab_text" />
 
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
