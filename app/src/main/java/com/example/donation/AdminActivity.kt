@@ -33,8 +33,8 @@ class AdminActivity : AppCompatActivity() {
         activityAdminBinding.apply {
             adminBottomNavBar.setOnItemSelectedListener {
                 when (it.itemId) {
-                    R.id.dashboardFragment -> navController.navigate(R.id.dashboard_fragment)
-                    R.id.campaignFragment -> navController.navigate(R.id.application_fragment)
+                    R.id.dashboard_tab -> navController.navigate(R.id.dashboard_fragment)
+                    R.id.campaign_tab -> navController.navigate(R.id.application_fragment)
 //                    R.id.profileFragment ->
                 }
                 true
@@ -47,8 +47,8 @@ class AdminActivity : AppCompatActivity() {
         navController.navigateUp()
         var bottomNavBar = activityAdminBinding.adminBottomNavBar
         when (navController.currentDestination?.id) {
-            R.id.dashboard_fragment -> bottomNavBar.selectedItemId = R.id.dashboardFragment
-            R.id.application_fragment -> bottomNavBar.selectedItemId = R.id.campaignFragment
+            R.id.dashboard_fragment -> bottomNavBar.selectedItemId = R.id.dashboard_tab
+            R.id.application_fragment -> bottomNavBar.selectedItemId = R.id.campaign_tab
             //profile fragment
         }
     }
