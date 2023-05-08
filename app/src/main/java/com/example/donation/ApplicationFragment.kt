@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import com.example.donation.R.layout.fragment_application
 import com.example.donation.adapter.ApplicationItemAdapter
 import com.example.donation.databinding.FragmentApplicationBinding
+import com.example.donation.model.Application
 
 class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSelectedListener {
     private lateinit var applicationBinding: FragmentApplicationBinding
@@ -33,12 +34,35 @@ class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSe
         campaignList.add("Enhance anti-poaching and trafficking")
         campaignList.add("Save Our Elephant")
 
+        var applicationList = arrayListOf(
+            Application(
+                R.drawable.image1,
+                "Lim Zhen Xiang",
+                "Tiger Caretaker"
+            ),
+            Application(
+                R.drawable.image1,
+                "Lee Vese",
+                "Elephant Caretaker"
+            ),
+            Application(
+                R.drawable.image1,
+                "Lim Zhen Xiang",
+                "Tiger Caretaker"
+            ),
+            Application(
+                R.drawable.image1,
+                "Lee Vese",
+                "Elephant Caretaker"
+            )
+        )
+
         val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_item, campaignList)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         applicationBinding.campaignSpinner.adapter = spinnerAdapter
 
         applicationBinding.applicationRecyclerView.apply {
-            adapter = ApplicationItemAdapter(context)
+            adapter = ApplicationItemAdapter(context, applicationList)
             setHasFixedSize(true)
         }
     }

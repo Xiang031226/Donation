@@ -30,20 +30,29 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //initialize parent (AdminActivity) navController
+        val navHost = requireActivity().supportFragmentManager.findFragmentById(R.id.fcv_admin)
+        val navController = navHost?.findNavController()
+
         //initialize graphNavController
         val graphNavHost = childFragmentManager.findFragmentById(R.id.fcv_graph) as NavHostFragment
         val graphNavController = graphNavHost.navController
 
         //daily graph is shown by default
-        graphNavController.navigate(R.id.dailyGraph)
+        graphNavController.navigate(R.id.daily_graph)
 
         dashboardBinding.apply {
+
+            volunteerApplicationContainer.setOnClickListener {
+                navController?.navigate(R.id.application_fragment)
+            }
+
             daily.setOnClickListener {
-                graphNavController.navigate(R.id.dailyGraph)
+                graphNavController.navigate(R.id.daily_graph)
                 changeTab()
             }
             monthly.setOnClickListener {
-                graphNavController.navigate(R.id.monthlyGraph)
+                graphNavController.navigate(R.id.monthly_graph)
                 changeTab()
             }
         }
@@ -56,7 +65,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         lateinit var nonSelected: TextView
 
         val currentFragment = graphNavController.currentDestination?.id
-        if (currentFragment == R.id.dailyGraph) {
+        if (currentFragment == R.id.daily_graph) {
             selected = dashboardBinding.daily
             nonSelected = dashboardBinding.monthly
         } else {

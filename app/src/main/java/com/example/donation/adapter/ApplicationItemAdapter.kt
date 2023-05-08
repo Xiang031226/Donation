@@ -11,22 +11,23 @@ import android.widget.Toast
 import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.R
-import com.example.donation.data.ApplicationSource
 import com.example.donation.model.Application
 import com.google.android.material.snackbar.Snackbar
 import de.hdodenhof.circleimageview.CircleImageView
 
-class ApplicationItemAdapter(private val context: Context?) :
+class ApplicationItemAdapter(
+    private val context: Context?,
+    private val applicationList: ArrayList<Application>
+) :
     RecyclerView.Adapter<ApplicationItemAdapter.ApplicationItemViewHolder>() {
 
-    private val applicationList = ApplicationSource.application
-
     class ApplicationItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+
         val profilePic: CircleImageView = view.findViewById(R.id.item_profile_pic)
         val username: TextView = view.findViewById(R.id.item_username)
         val jobRole: TextView = view.findViewById(R.id.item_job_role)
-        val sendEmail : Button = view.findViewById(R.id.send_email_button)
-        val approve : ImageButton = view.findViewById(R.id.approve_button)
+        private val sendEmail: Button = view.findViewById(R.id.send_email_button)
+        private val approve: ImageButton = view.findViewById(R.id.approve_button)
 
         init {
             sendEmail.setOnClickListener {
@@ -35,7 +36,7 @@ class ApplicationItemAdapter(private val context: Context?) :
             approve.setOnClickListener {
                 approve.setImageResource(R.drawable.filled_check)
                 Snackbar.make(view, "Application Approved", Snackbar.LENGTH_SHORT).apply {
-                    setAction("UNDO"){
+                    setAction("UNDO") {
                         approve.setImageResource(R.drawable.outline_check)
                     }
                     show()
