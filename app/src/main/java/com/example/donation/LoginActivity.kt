@@ -3,6 +3,9 @@ package com.example.donation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils.replace
+import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.donation.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -12,19 +15,5 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         loginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(loginBinding.root)
-
-        if (supportActionBar != null) {
-            supportActionBar?.hide();
-        }
-
-        login()
-    }
-
-    private fun login() {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fcv_login, LoginFragment())
-            addToBackStack(null)
-            commit()
-        }
     }
 }

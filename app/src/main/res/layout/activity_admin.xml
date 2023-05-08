@@ -33,36 +33,38 @@
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="@color/white"
                     android:textSize="21dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/settings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="20dp"
                     android:layout_alignParentRight="true"
                     android:background="@null"
+                    android:paddingEnd="20dp"
                     android:src="@drawable/ic_settings"
-                    app:tint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:tint="@color/white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/frame_layout"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcv_admin"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/match_constraint"
-            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar"
-            app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
-
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@id/admin_bottom_nav_bar"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:navGraph="@navigation/admin_nav" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation_bar"
+            android:id="@+id/admin_bottom_nav_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -77,7 +79,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/admin_nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

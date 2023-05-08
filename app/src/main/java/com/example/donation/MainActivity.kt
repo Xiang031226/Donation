@@ -16,12 +16,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var isLogin = false
-        binding.apply{
-            userLoginButton.setOnClickListener{
-                val loginIntent = Intent(this@MainActivity, LoginActivity::class.java)
-                startActivity(loginIntent)
-            }
-        }
+        val loginIntent = Intent(this@MainActivity, LoginActivity::class.java)
+        startActivity(loginIntent)
+
+//        var isLogin = false
+//        binding.apply{
+//            userLoginButton.setOnClickListener{
+//                val loginIntent = Intent(this@MainActivity, LoginActivity::class.java)
+//                startActivity(loginIntent)
+//            }
+//        }
     }
 }
