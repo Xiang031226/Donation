@@ -4,10 +4,11 @@ import androidx.annotation.DrawableRes
 
 
 class Volunteer(
-    @DrawableRes val titleImage : Int,
-    val title : String,
-    val date : String,
-    val time : String,
-    val location : String
+    @DrawableRes val eventImage: Int,
+    val eventTitle: String,
+    val eventDate: String,
+    val eventTime: String,
+    val eventLocation: String,
+    val availableVolunteerRole: List<VolunteerRole>,
 ) {
 }

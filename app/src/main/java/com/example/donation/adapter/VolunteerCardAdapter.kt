@@ -6,16 +6,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.R
+import com.example.donation.VolunteerViewModel
 import com.example.donation.data.VolunteerSource
+import com.example.donation.model.Volunteer
 
 
 class VolunteerCardAdapter(
-    private val listener: VolunteerItemClickListener,      //passing listener
+    private val viewModel : VolunteerViewModel,
+    private val eventList : List<Volunteer>,
+    private val listener : VolunteerItemClickListener,      //passing listener
 ) : RecyclerView.Adapter<VolunteerCardAdapter.VolunteerCardViewHolder>() {
-
-    private val volunteerList = VolunteerSource.volunteer
 
     class VolunteerCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
         val imageView: ImageView? = view!!.findViewById(R.id.item_image)
@@ -33,20 +36,22 @@ class VolunteerCardAdapter(
     }
 
     override fun onBindViewHolder(holder: VolunteerCardViewHolder, position: Int) {
-        val volunteerData = volunteerList[position]
-        holder.eventTitle?.text = volunteerData.title
-        holder.imageView?.setImageResource(volunteerData.titleImage)
-        holder.date?.text = volunteerData.date
-        holder.time?.text = volunteerData.time
-        holder.location?.text = volunteerData.location
+        val volunteerData = eventList[position]
+        holder.eventTitle?.text = volunteerData.eventTitle
+        holder.imageView?.setImageResource(volunteerData.eventImage)
+        holder.date?.text = volunteerData.eventDate
+        holder.time?.text = volunteerData.eventTime
+        holder.location?.text = volunteerData.eventLocation
 
+        val currentEvent = eventList[position]
         holder.volunteerButton?.setOnClickListener {
+            viewModel.selectedEvent.value = currentEvent
             listener.onItemClick()
         }
     }
 
     override fun getItemCount(): Int {
-        return volunteerList.size
+        return eventList.size
     }
 
 }

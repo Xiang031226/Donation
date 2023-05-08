@@ -33,6 +33,7 @@
            />
 
        <TextView
+           android:id="@+id/username"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="Xiang1226"
@@ -41,6 +42,7 @@
            />
 
        <TextView
+           android:id="@+id/thankyouMsg"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Thank you for making a difference!"

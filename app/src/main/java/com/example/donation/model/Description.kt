@@ -17,3 +17,14 @@ data class Description(
     val supportMsg: String,
 ) {
 }
+
+//my volunteer role description, each event have more than one role
+//each role have more than one job scope
+//each job scope have more than one skill can be acquired
+data class VolunteerRole(
+    val role: String,
+    val jobScopes: List<String>,
+    val skills: List<String>,
+) {
+
+}

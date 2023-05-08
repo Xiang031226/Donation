@@ -38,26 +38,13 @@
         tools:layout="@layout/fragment_checkout" >
         <action
             android:id="@+id/action_checkoutFragment_to_thankYouFragment"
-            app:destination="@id/thankYouFragment"
-            app:popUpTo="@id/donationListItem"
-            app:popUpToInclusive="false" />
+            app:destination="@id/thankYouFragment" />
     </fragment>
     <fragment
         android:id="@+id/thankYouFragment"
         android:name="com.example.donation.ThankYouFragment"
         android:label="fragment_thank_you"
-        tools:layout="@layout/fragment_thank_you" >
-        <action
-            android:id="@+id/action_thankYouFragment_to_donationListItem2"
-            app:destination="@id/donationListItem"
-            app:popUpTo="@id/donationListItem"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_thankYouFragment_to_volunteerListItem"
-            app:destination="@id/volunteerListItem"
-            app:popUpTo="@id/volunteerListItem"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_thank_you" />
     <fragment
         android:id="@+id/volunteerListItem"
         android:name="com.example.donation.VolunteerListItem"

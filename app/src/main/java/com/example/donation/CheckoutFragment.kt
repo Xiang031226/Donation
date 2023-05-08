@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.example.donation.databinding.FragmentCheckoutBinding
@@ -46,7 +47,7 @@ class CheckoutFragment : Fragment() {
         }
 
         binding.confirmButton.setOnClickListener {
-            findNavController().navigate(R.id.action_checkoutFragment_to_thankYouFragment)
+            findNavController().navigate(R.id.action_checkoutFragment_to_thankYouFragment, bundleOf("fromScreen" to "donation"))
         }
 
     }
