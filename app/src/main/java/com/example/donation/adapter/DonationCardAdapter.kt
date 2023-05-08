@@ -21,15 +21,17 @@ class DonationCardAdapter(
     private val donationList = DonationSource.donation
 
     class DonationCardViewHolder(view: View?): RecyclerView.ViewHolder(view!!) {
-        val imageView : ImageView? = view!!.findViewById(R.id.item_image)
-        val donationTitle : TextView? = view!!.findViewById(R.id.donation_title)
-        val donationCategory : TextView? = view!!.findViewById(R.id.donation_category)
-        val donateButton : Button? = view!!.findViewById(R.id.donate_button)
+        val imageView: ImageView? = view!!.findViewById(R.id.item_image)
+        val donationTitle: TextView? = view!!.findViewById(R.id.donation_title)
+        val donationCategory: TextView? = view!!.findViewById(R.id.donation_category)
+        val donateButton: Button? = view!!.findViewById(R.id.donate_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DonationCardViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.donation_list_item,
-            parent, false)
+        val adapterLayout = LayoutInflater.from(parent.context).inflate(
+            R.layout.donation_list_item,
+            parent, false
+        )
         return DonationCardViewHolder(adapterLayout)
     }
 
@@ -49,7 +51,6 @@ class DonationCardAdapter(
     override fun getItemCount(): Int {
         return donationList.size
     }
-
 }
 
 //creating interface, so my button of recycler view can be clicked:)

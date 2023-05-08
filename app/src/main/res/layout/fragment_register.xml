@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginFragment">
 
+    <!--register title-->
     <TextView
         android:id="@+id/register_title"
         style="@style/register_title_style"
@@ -16,85 +17,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/register_email_icon"
-        style="@style/login_icon_style"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/outline_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_title" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_email_input"
-        style="@style/login_input_style"
+        android:layout_margin="20dp"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:hint="@string/email"
-        app:layout_constraintBottom_toBottomOf="@id/register_email_icon"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/register_email_icon"
-        app:layout_constraintTop_toTopOf="@id/register_email_icon">
+        app:layout_constraintTop_toBottomOf="@id/register_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_email_input_text"
             android:inputType="textEmailAddress"
+            android:drawableLeft="@drawable/outline_email"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/register_username_icon"
-        style="@style/login_icon_style"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/outline_person"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_email_icon" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_username_input"
-        style="@style/login_input_style"
+        android:layout_margin="20dp"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:hint="@string/username"
-        app:layout_constraintBottom_toBottomOf="@id/register_username_icon"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/register_username_icon"
-        app:layout_constraintTop_toTopOf="@id/register_username_icon">
+        app:layout_constraintTop_toBottomOf="@id/register_email_input">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_username_input_text"
             android:inputType="text"
+            android:drawableLeft="@drawable/outline_person"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/register_password_icon"
-        style="@style/login_icon_style"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/outline_lock"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_username_icon" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_password_input"
-        style="@style/login_input_style"
+        android:layout_margin="20dp"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:hint="@string/password"
-        app:layout_constraintBottom_toBottomOf="@id/register_password_icon"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/register_password_icon"
-        app:layout_constraintTop_toTopOf="@id/register_password_icon">
+        app:layout_constraintTop_toBottomOf="@id/register_username_input">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_password_input_text"
             android:inputType="textPassword"
+            android:drawableLeft="@drawable/outline_lock"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -106,25 +83,27 @@
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:text="@string/password_format"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/register_password_input"
         app:layout_constraintStart_toStartOf="@id/register_password_input"
         app:layout_constraintTop_toBottomOf="@id/register_password_input" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_retype_password_input"
-        style="@style/login_input_style"
+        android:layout_margin="20dp"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="@string/retype_password"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/register_password_icon"
         app:layout_constraintTop_toBottomOf="@id/password_format">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_retype_password_input_text"
             android:inputType="textPassword"
+            android:drawableLeft="@drawable/outline_lock"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

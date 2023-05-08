@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val intent = Intent(this, UserMainActivity::class.java)
-//        startActivity(intent)
 
         val tabLayout = binding.tabLayout
         LoginFragment()
@@ -56,5 +54,7 @@ class MainActivity : AppCompatActivity() {
             addToBackStack(null)
             commit()
         }
+        val loginIntent = Intent(this@MainActivity, LoginActivity::class.java)
+        startActivity(loginIntent)
     }
 }
