@@ -21,6 +21,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         // Inflate the layout for this fragment
         dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false)
@@ -34,12 +35,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         val navHost = requireActivity().supportFragmentManager.findFragmentById(R.id.fcv_admin)
         val navController = navHost?.findNavController()
 
-        //initialize graphNavController
-        val graphNavHost = childFragmentManager.findFragmentById(R.id.fcv_graph) as NavHostFragment
-        val graphNavController = graphNavHost.navController
-
         //daily graph is shown by default
-        graphNavController.navigate(R.id.daily_graph)
+        changeGraph(DailyGraph())
 
         dashboardBinding.apply {
 
@@ -48,24 +45,28 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             }
 
             daily.setOnClickListener {
-                graphNavController.navigate(R.id.daily_graph)
-                changeTab()
+                changeGraph(DailyGraph())
             }
+
             monthly.setOnClickListener {
-                graphNavController.navigate(R.id.monthly_graph)
-                changeTab()
+                changeGraph(MonthlyGraph())
             }
         }
     }
 
-    private fun changeTab() {
-        val graphNavHost = childFragmentManager.findFragmentById(R.id.fcv_graph) as NavHostFragment
-        val graphNavController = graphNavHost.navController
+    private fun changeGraph(graph : Fragment) {
+        childFragmentManager.beginTransaction().apply {
+            replace(R.id.fcv_graph, graph)
+            commit()
+        }
+        changeTab(graph)
+    }
+
+    private fun changeTab(graph : Fragment) {
         lateinit var selected: TextView
         lateinit var nonSelected: TextView
 
-        val currentFragment = graphNavController.currentDestination?.id
-        if (currentFragment == R.id.daily_graph) {
+        if (graph is DailyGraph) {
             selected = dashboardBinding.daily
             nonSelected = dashboardBinding.monthly
         } else {
@@ -81,5 +82,4 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         nonSelected.setBackgroundResource(R.color.transparent)
         nonSelected.setTextColor(Color.parseColor("#4D000000"))
     }
-
 }

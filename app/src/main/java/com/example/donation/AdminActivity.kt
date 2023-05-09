@@ -27,29 +27,7 @@ class AdminActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_admin) as NavHost
         navController = navHostFragment.navController
 
-        val bottomNavView = activityAdminBinding.adminNavView
+        val bottomNavView = activityAdminBinding.adminBottomNavBar
         setupWithNavController(bottomNavView, navController)
-
-        activityAdminBinding.apply {
-            adminBottomNavBar.setOnItemSelectedListener {
-                when (it.itemId) {
-                    R.id.dashboardFragment -> navController.navigate(R.id.dashboard_fragment)
-                    R.id.campaignFragment -> navController.navigate(R.id.application_fragment)
-//                    R.id.profileFragment ->
-                }
-                true
-            }
-        }
-    }
-
-    override fun onBackPressed() {
-        val navController = findNavController(R.id.fcv_admin)
-        navController.navigateUp()
-        var bottomNavBar = activityAdminBinding.adminBottomNavBar
-        when (navController.currentDestination?.id) {
-            R.id.dashboard_fragment -> bottomNavBar.selectedItemId = R.id.dashboardFragment
-            R.id.application_fragment -> bottomNavBar.selectedItemId = R.id.campaignFragment
-            //profile fragment
-        }
     }
 }

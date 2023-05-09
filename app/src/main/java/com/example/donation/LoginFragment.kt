@@ -4,12 +4,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import com.example.donation.databinding.FragmentLoginBinding
 
@@ -49,28 +50,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
 
             loginButton.setOnClickListener {
-                loadMainActivity()
+                loadMainActivity() //temporary
 //                loginValidation()
             }
 
             registerNowButton.setOnClickListener {
                 startRegisterFragment(it)
             }
-        }
-    }
-
-    private fun loadMainActivity() {
-//        val loginBundle = Bundle()
-//        loginBundle.putString("username_email", loginFragmentBinding.loginEmailInputText.text.toString())
-
-        if(userType == "admin"){
-            val adminIntent = Intent(activity, AdminActivity::class.java)
-//            adminIntent.putExtras(loginBundle)
-            startActivity(adminIntent)
-        }else {
-            val userIntent = Intent(activity, UserMainActivity::class.java)
-//            userIntent.putExtras(loginBundle)
-            startActivity(userIntent)
         }
     }
 
@@ -88,6 +74,21 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 .show()
         } else {
             loadMainActivity()
+        }
+    }
+
+    private fun loadMainActivity() {
+//        val loginBundle = Bundle()
+//        loginBundle.putString("username_email", loginFragmentBinding.loginEmailInputText.text.toString())
+
+        if(userType == "admin"){
+            val adminIntent = Intent(activity, AdminActivity::class.java)
+//            adminIntent.putExtras(loginBundle)
+            startActivity(adminIntent)
+        }else {
+            val userIntent = Intent(activity, UserMainActivity::class.java)
+//            userIntent.putExtras(loginBundle)
+            startActivity(userIntent)
         }
     }
 
@@ -113,7 +114,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun startRegisterFragment(it: View) {
-        Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registerFragment)
+        Navigation.findNavController(it).navigate(R.id.action_login_fragment_to_register_fragment)
     }
 }
 

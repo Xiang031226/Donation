@@ -95,6 +95,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private fun backToLoginFragment(it: View) {
         Toast.makeText(activity, "You are registered. Login again", Toast.LENGTH_SHORT).show()
-        Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
+        Navigation.findNavController(it).navigate(R.id.action_register_fragment_to_login_fragment)
     }
 }
