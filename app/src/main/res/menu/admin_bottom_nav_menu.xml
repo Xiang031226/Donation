@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/dashboard_tab"
+        android:id="@+id/dashboard_fragment"
         android:enabled="true"
         android:icon="@drawable/home_icon"
         android:title="@string/dashboard" />
     <item
-        android:id="@+id/campaign_tab"
+        android:id="@+id/campaign_fragment"
         android:enabled="true"
         android:icon="@drawable/campaign_icon"
         android:title="@string/campaign" />
     <item
-        android:id="@+id/profile_tab"
+        android:id="@+id/profile_fragment"
         android:enabled="true"
         android:icon="@drawable/account_icon"
         android:title="@string/profile" />
