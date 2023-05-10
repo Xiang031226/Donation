@@ -10,14 +10,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.adapter.DonationCardAdapter
 import com.example.donation.adapter.DonationItemClickListener
-import com.example.donation.data.DescriptionSource
+import com.example.donation.data.DonationSource
 import com.example.donation.databinding.DonationActivityListBinding
 
 
 class DonationListItem() : Fragment(), DonationItemClickListener {
 
     private lateinit var binding: DonationActivityListBinding
-    private lateinit var viewModel: AnimalViewModel
+    private lateinit var viewModel: DonationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,9 +27,9 @@ class DonationListItem() : Fragment(), DonationItemClickListener {
         val view = inflater.inflate(R.layout.donation_activity_list, container, false)
 
         //get the instance of my class that have data, so here wont be bunch of code lol
-        val animalDescriptionList = DescriptionSource().animalDescriptionList(requireContext())
+        val animalDescriptionList = DonationSource(requireContext()).loadAnimalDescriptionData()
 
-        viewModel = ViewModelProvider(requireActivity())[AnimalViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[DonationViewModel::class.java]
 
         //initialize my adapter
         val adapter = DonationCardAdapter(viewModel, animalDescriptionList, this)

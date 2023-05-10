@@ -54,7 +54,7 @@
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph">
+            app:navGraph="@navigation/user_nav_graph">
         </fragment>
 
 

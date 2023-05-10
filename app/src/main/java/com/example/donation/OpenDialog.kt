@@ -34,9 +34,6 @@ class OpenDialog : DialogFragment() {
             WindowManager.LayoutParams.WRAP_CONTENT
         )
 
-        // Set other dialog properties as needed
-        dialog.setTitle(R.string.dialog_title)
-
         return dialog
     }
 

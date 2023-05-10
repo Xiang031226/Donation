@@ -17,6 +17,7 @@ import com.example.donation.databinding.FragmentThankYouBinding
 class ThankYouFragment : HideBarOrTab() {
 
     private lateinit var binding: FragmentThankYouBinding
+    private lateinit var fromScreen : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,32 +34,27 @@ class ThankYouFragment : HideBarOrTab() {
         hideAppBar()
         hideBottomBar()
 
-        val fromScreen = arguments?.getString("fromScreen")
+        fromScreen = arguments?.getString("fromScreen").toString()
         when (fromScreen) {
             "donation" -> binding.thankyouMsg.text = "Thank you for making a difference!"
             "volunteer" -> binding.thankyouMsg.text = "Thank you, we will reach out to you soon!"
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-            if (fromScreen == "donation") {
-                findNavController().popBackStack(R.id.donationListItem, false)
-                Log.d("Msg : ", "hmm")
-            } else {
-                findNavController()
-                    .popBackStack(R.id.volunteerListItem, false)
-                Log.d("Msg : ", "hmm2")
-            }
+            navigateToCorrectScreen()
         }
 
         binding.backButton.setOnClickListener {
-            if (fromScreen == "donation") {
-                findNavController().popBackStack(R.id.donationListItem, false)
-                Log.d("Msg : ", "hmm")
-            } else {
-                findNavController()
-                    .popBackStack(R.id.volunteerListItem, false)
-                Log.d("Msg : ", "hmm2")
-            }
+            navigateToCorrectScreen()
+        }
+    }
+
+    private fun navigateToCorrectScreen() {
+        if (fromScreen == "donation") {
+            findNavController().popBackStack(R.id.donationListItem, false)
+        } else {
+            findNavController()
+                .popBackStack(R.id.volunteerListItem, false)
         }
     }
 
@@ -68,7 +64,5 @@ class ThankYouFragment : HideBarOrTab() {
         showBottomBar()
         showAppBar()
     }
-
-
 
 }

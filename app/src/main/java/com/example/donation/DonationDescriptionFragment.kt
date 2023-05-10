@@ -17,7 +17,7 @@ import com.example.donation.databinding.FragmentDonationDescriptionBinding
 class DonationDescriptionFragment : HideBarOrTab() {
 
     private lateinit var binding: FragmentDonationDescriptionBinding
-    private lateinit var viewModel: AnimalViewModel
+    private lateinit var viewModel: DonationViewModel
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreateView(
@@ -39,19 +39,22 @@ class DonationDescriptionFragment : HideBarOrTab() {
         val supportMsg = view.findViewById<TextView>(R.id.support_msg)
         val toolbar = view.findViewById<Toolbar>(R.id.custom_toolbar)
 
-        viewModel = ViewModelProvider(requireActivity())[AnimalViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[DonationViewModel::class.java]
         viewModel.selectedAnimal.observe(viewLifecycleOwner) { selectedAnimal ->
-            titleImage.setImageResource(selectedAnimal.titleImage)
-            image2.setImageResource(selectedAnimal.image2)
-            image3.setImageResource(selectedAnimal.image3)
-            extTitle.text = selectedAnimal.extinctionTitle
-            threatTitle.text = selectedAnimal.threatTitle
-            mustDoTitle.text = selectedAnimal.mustDoTitle
-            awareness.text = selectedAnimal.awareness
-            threatMsg.text = selectedAnimal.threatMsg
-            mustDoMsg.text = selectedAnimal.mustDoMsg
-            supportMsg.text = selectedAnimal.supportMsg
             toolbar.title = selectedAnimal.title
+
+            val animalDescription = selectedAnimal.animalDescription
+
+            titleImage.setImageResource(animalDescription.titleImage)
+            image2.setImageResource(animalDescription.image2)
+            image3.setImageResource(animalDescription.image3)
+            extTitle.text = animalDescription.extinctionTitle
+            threatTitle.text = animalDescription.threatTitle
+            mustDoTitle.text = animalDescription.mustDoTitle
+            awareness.text = animalDescription.awareness
+            threatMsg.text = animalDescription.threatMsg
+            mustDoMsg.text = animalDescription.mustDoMsg
+            supportMsg.text = animalDescription.supportMsg
         }
 
         return view

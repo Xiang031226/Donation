@@ -1,10 +1,13 @@
 package com.example.donation
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils.replace
 import android.widget.MediaController
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.Navigation
@@ -15,41 +18,27 @@ import com.example.donation.databinding.ActivityAdminBinding
 class AdminActivity : AppCompatActivity() {
     private lateinit var activityAdminBinding: ActivityAdminBinding
     private lateinit var navController: NavController
+    private lateinit var viewModel: LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityAdminBinding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(activityAdminBinding.root)
 
-        //get login data from Login fragment
-//        val adminBundle = intent.extras
-//        activityAdminBinding.testview.text = adminBundle?.getString("username_email")
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_admin) as NavHost
         navController = navHostFragment.navController
 
-        val bottomNavView = activityAdminBinding.adminNavView
+        val bottomNavView = activityAdminBinding.adminBottomNavBar
         setupWithNavController(bottomNavView, navController)
 
-        activityAdminBinding.apply {
-            adminBottomNavBar.setOnItemSelectedListener {
-                when (it.itemId) {
-                    R.id.dashboard_tab -> navController.navigate(R.id.dashboard_fragment)
-                    R.id.campaign_tab -> navController.navigate(R.id.application_fragment)
-//                    R.id.profileFragment ->
-                }
-                true
-            }
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        activityAdminBinding.settings.setOnClickListener{
+            viewModel.logout()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() //finish the current activity, which is adminActivity
         }
-    }
 
-    override fun onBackPressed() {
-        val navController = findNavController(R.id.fcv_admin)
-        navController.navigateUp()
-        var bottomNavBar = activityAdminBinding.adminBottomNavBar
-        when (navController.currentDestination?.id) {
-            R.id.dashboard_fragment -> bottomNavBar.selectedItemId = R.id.dashboard_tab
-            R.id.application_fragment -> bottomNavBar.selectedItemId = R.id.campaign_tab
-            //profile fragment
-        }
+
+
     }
 }

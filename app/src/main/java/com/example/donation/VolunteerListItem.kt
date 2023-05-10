@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.adapter.VolunteerCardAdapter
 import com.example.donation.adapter.VolunteerItemClickListener
-import com.example.donation.data.DescriptionSource
 import com.example.donation.data.VolunteerSource
 
 class VolunteerListItem : Fragment(R.layout.volunteer_activity_list), VolunteerItemClickListener {

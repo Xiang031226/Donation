@@ -4,38 +4,60 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.donation.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
+    private lateinit var viewModel: LoginViewModel
+
     companion object {
-        //TEST
         private var userType = "user"
     }
     private lateinit var loginFragmentBinding: FragmentLoginBinding
+
+    private fun navigateToCorrectScreen() {
+        val userType = viewModel.userType.value
+        val intent = if(userType == "admin") {
+            Intent(requireContext(), AdminActivity::class.java)
+        } else {
+            Intent(requireContext(), UserActivity::class.java)
+        }
+        startActivity(intent)
+        requireActivity().finish()      //end the mainActivity, so user pressed back button can directly exit the apps
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
+
+        viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
+        viewModel.isLoggedIn.observe(viewLifecycleOwner) { isLoggedIn ->
+            if (isLoggedIn) {
+               navigateToCorrectScreen()
+//                viewModel.logout()
+            }
+        }
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(MainActivity.userType == "admin")
-            loginFragmentBinding.registerNowButton.visibility = View.GONE
+
 
         loginFragmentBinding = FragmentLoginBinding.bind(view)
         loginFragmentBinding.apply {
+
             userTab.setOnClickListener {
                 registerNowButton.isClickable = true
                 registerNowButton.setTextColor(Color.parseColor("#000000"))
@@ -51,7 +73,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
 
             loginButton.setOnClickListener {
-                loadMainActivity()
+                loadMainActivity() //temporary
 //                loginValidation()
             }
 
@@ -74,22 +96,28 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             Toast.makeText(activity, "Please enter your password", Toast.LENGTH_SHORT)
                 .show()
         } else {
-            loadMainActivity()
+//            loadMainActivity()
         }
     }
 
-    private fun loadMainActivity(){
-        if(MainActivity.userType == "user") {
-            val userBundle = Bundle()
-            val userIntent = Intent(activity, UserMainActivity()::class.java)
-            userIntent.putExtras(userBundle)
-            startActivity(userIntent)
-        }else {
-            val adminBundle = Bundle()
-            val adminIntent = Intent(activity, AdminActivity()::class.java)
-            adminIntent.putExtras(adminBundle)
-            startActivity(adminIntent)
+    private fun loadMainActivity() {
+        viewModel.setUserType(userType)
+        viewModel.apply {
+            setLoggedIn(true)
+            saveLoginState()
         }
+//        val loginBundle = Bundle()
+//        loginBundle.putString("username_email", loginFragmentBinding.loginEmailInputText.text.toString())
+
+//        if(userType == "admin"){
+//            val adminIntent = Intent(activity, AdminActivity::class.java)
+//            adminIntent.putExtras(loginBundle)
+//            startActivity(adminIntent)
+//        }else {
+//            val userIntent = Intent(activity, UserMainActivity::class.java)
+//            userIntent.putExtras(loginBundle)
+//            startActivity(userIntent)
+//        }
     }
 
     private fun changeTab(userType : String) {
@@ -114,7 +142,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun startRegisterFragment(it: View) {
-        Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registerFragment)
+        Navigation.findNavController(it).navigate(R.id.register_fragment)
     }
 }
 

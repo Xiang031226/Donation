@@ -5,7 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/home">
 
-
     <fragment
         android:id="@+id/home"
         android:name="com.example.donation.Home"
@@ -23,7 +22,7 @@
         tools:layout="@layout/fragment_profile" />
     <activity
         android:id="@+id/userMainActivity"
-        android:name="com.example.donation.UserMainActivity"
+        android:name="com.example.donation.UserActivity"
         android:label="UserMainActivity" />
 
     <include app:graph="@navigation/campaign_nav_graph"/>

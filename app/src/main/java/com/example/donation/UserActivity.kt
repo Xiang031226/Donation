@@ -1,30 +1,23 @@
 package com.example.donation
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.donation.UserMainActivity.Companion.KEY_THEME_MODE
-import com.example.donation.databinding.ActivityMainBinding
-import com.example.donation.databinding.ActivityUserMainBinding
+import com.example.donation.databinding.ActivityUserBinding
 
-class UserMainActivity : AppCompatActivity() {
+class UserActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityUserMainBinding
+    private lateinit var binding: ActivityUserBinding
     private lateinit var navController: NavController
 
     companion object {
@@ -33,7 +26,7 @@ class UserMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUserMainBinding.inflate(layoutInflater)
+        binding = ActivityUserBinding.inflate(layoutInflater)
 
         val prefs = getPreferences(Context.MODE_PRIVATE)
         val savedThemeMode =
@@ -52,33 +45,30 @@ class UserMainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
-//        currentFragment = Home()
-//        replaceFragment(currentFragment)
-
         binding.apply {
             topBarMenu.setOnClickListener { drawerLayout.openDrawer(GravityCompat.START) }
 
             navView.setNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.notification -> {
-                        Toast.makeText(this@UserMainActivity, "first item selected", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@UserActivity, "first item selected", Toast.LENGTH_SHORT)
                             .show()
                     }
                     R.id.contact_us -> {
                         Toast.makeText(
-                            this@UserMainActivity,
+                            this@UserActivity,
                             "second item selected",
                             Toast.LENGTH_SHORT
                         )
                             .show()
                     }
                     R.id.about_us -> {
-                        Toast.makeText(this@UserMainActivity, "third item selected", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@UserActivity, "third item selected", Toast.LENGTH_SHORT)
                             .show()
                     }
                     R.id.setting -> {
                         Toast.makeText(
-                            this@UserMainActivity,
+                            this@UserActivity,
                             "fourth item selected",
                             Toast.LENGTH_SHORT
                         )
@@ -98,7 +88,7 @@ class UserMainActivity : AppCompatActivity() {
                     drawerLayout.closeDrawer(GravityCompat.START)
                     updateTheme(isChecked, prefs)
                 } catch (e:Exception) {
-                    Toast.makeText(this@UserMainActivity, "$e", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@UserActivity, "$e", Toast.LENGTH_SHORT).show()
                     Log.e("Msg: ", "$e")
                 }
             }
@@ -122,31 +112,4 @@ class UserMainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
-
-//    private fun replaceFragment(fragment: Fragment) {
-//        try {
-//            currentFragment = fragment
-//            supportFragmentManager.beginTransaction().apply {
-//                replace(R.id.frame_layout, fragment)
-//                addToBackStack(null)
-//                commit()
-//            }
-//        } catch (e:Exception) {
-//            Log.d("Error Msg: ", "$e")
-//        }
-//    }
-
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        // Save the current fragment when the activity is paused or stopped
-//        supportFragmentManager.putFragment(outState, "currentFragment", currentFragment)
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        // Restore the current fragment when the activity is recreated
-//        currentFragment =
-//            supportFragmentManager.getFragment(savedInstanceState, "currentFragment") ?: Home()
-//        replaceFragment(currentFragment)
-//    }
 }
