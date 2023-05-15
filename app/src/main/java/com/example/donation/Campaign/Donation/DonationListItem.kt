@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.Campaign.Donation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.donation.R
 import com.example.donation.adapter.DonationCardAdapter
 import com.example.donation.adapter.DonationItemClickListener
 import com.example.donation.data.DonationSource

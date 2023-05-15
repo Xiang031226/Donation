@@ -54,8 +54,9 @@
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/user_nav_graph">
-        </fragment>
+            app:navGraph="@navigation/user_nav_graph"
+            tools:layout="@layout/fragment_home"
+            />
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

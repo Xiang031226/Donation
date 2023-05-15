@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.Campaign.Donation
 
 import android.os.Build
 import android.os.Bundle
@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.donation.ReusableResource.HideBarOrTab
+import com.example.donation.R
 import com.example.donation.databinding.FragmentDonationDescriptionBinding
 
 class DonationDescriptionFragment : HideBarOrTab() {
@@ -72,6 +75,10 @@ class DonationDescriptionFragment : HideBarOrTab() {
         val backButton = view.findViewById<ImageButton>(R.id.back_button)
         backButton.setOnClickListener{
             callBack()
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().popBackStack()
         }
 
         binding.donateButton.setOnClickListener{

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Setting.SettingFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/setting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title="Setting"
+        app:titleTextColor="@color/white"
+        android:layout_alignParentTop="true"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/setting_toolbar"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:id="@+id/account_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Button
+            android:id="@+id/change_password_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/account_textview"
+            android:drawableLeft="@drawable/ic_lock"
+            android:text="Change Password"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:padding="16dp"
+            />
+
+        <Button
+            android:id="@+id/card_payment_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/change_password_button"
+            android:drawableLeft="@drawable/ic_card_pos"
+            android:text="Add New Card"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:padding="16dp"
+            />
+
+        <ImageView
+            android:id="@+id/notification_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_payment_button"
+            android:src="@drawable/ic_notifications"
+            android:textColor="@color/black"
+            android:padding="16dp"
+            android:contentDescription="@string/notifications"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/notification_icon"
+            app:layout_constraintEnd_toStartOf="@id/notification_toggler"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="@id/notification_icon"
+            app:layout_constraintBottom_toBottomOf="@id/notification_icon"
+            android:text="Notification"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            />
+
+        <Switch
+            android:id="@+id/notification_toggler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/notification_icon"
+            app:layout_constraintBottom_toBottomOf="@id/notification_icon"
+            />
+
+        <TextView
+            android:id="@+id/feedback_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedback"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notification_icon"
+            android:layout_marginTop="16dp"
+            />
+
+        <TextView
+            android:id="@+id/rate_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate us"
+            app:layout_constraintTop_toBottomOf="@id/feedback_textview"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/contact_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact us"
+            app:layout_constraintTop_toBottomOf="@id/rate_us"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/about_app_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About app"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contact_us"
+            android:layout_marginTop="32dp"
+            />
+
+        <TextView
+            android:id="@+id/faq_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_app_textview"
+            android:text="FAQs"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/faq_textview"
+            android:text="About us"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/privacy_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_us"
+            android:text="Privacy Policy"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.Campaign
 
 import android.os.Bundle
 import android.util.Log
@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.donation.R
 import com.example.donation.databinding.FragmentCampaignBinding
 import com.google.android.material.tabs.TabLayout
 
@@ -29,6 +31,9 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24)
 
         val binding = FragmentCampaignBinding.bind(view)
         tabLayout = binding.tabLayout
@@ -69,7 +74,7 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
             }
 
             override fun onTabReselected(tab: TabLayout.Tab) {
-                var recyclerView : RecyclerView? = null
+                var recyclerView: RecyclerView? = null
                 when (tab.position) {
                     0 -> {
                         recyclerView = view.findViewById(R.id.donation_recycler_view)
@@ -82,5 +87,9 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
             }
         })
 
+
+        requireActivity().onBackPressedDispatcher.addCallback(this@Campaign) {
+            findNavController().popBackStack(R.id.home, false)
+        }
     }
 }

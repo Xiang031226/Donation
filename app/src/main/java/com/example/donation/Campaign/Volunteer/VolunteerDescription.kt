@@ -1,23 +1,19 @@
-package com.example.donation
+package com.example.donation.Campaign.Volunteer
 
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.core.view.iterator
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.donation.databinding.FragmentDonationDescriptionBinding
+import com.example.donation.ReusableResource.HideBarOrTab
+import com.example.donation.R
 import com.example.donation.databinding.FragmentVolunteerDescriptionBinding
-import org.w3c.dom.Text
 
 class VolunteerDescription : HideBarOrTab() {
 

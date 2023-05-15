@@ -1,17 +1,14 @@
-package com.example.donation
+package com.example.donation.Payment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.donation.ReusableResource.HideBarOrTab
+import com.example.donation.R
 import com.example.donation.databinding.FragmentThankYouBinding
 
 class ThankYouFragment : HideBarOrTab() {

@@ -11,21 +11,53 @@
         android:label="Home" />
     <fragment
         android:id="@+id/campaign"
-        android:name="com.example.donation.Campaign"
+        android:name="com.example.donation.Campaign.Campaign"
         android:label="@string/campaign"
         tools:layout="@layout/fragment_campaign">
     </fragment>
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.donation.Profile"
+        android:name="com.example.donation.Profile.Profile"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
-    <activity
-        android:id="@+id/userMainActivity"
-        android:name="com.example.donation.UserActivity"
-        android:label="UserMainActivity" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_historyFragment"
+            app:enterAnim="@animator/slide_in_bottom"
+            app:exitAnim="@animator/slide_out_bottom"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_profile_to_campaign"
+            app:destination="@id/campaign"
+            app:popUpTo="@id/profile"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profile_to_digitalCertificateFragment"
+            app:destination="@id/digitalCertificateFragment" />
+        <action
+            android:id="@+id/action_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
 
     <include app:graph="@navigation/campaign_nav_graph"/>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.donation.Profile.History.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/digitalCertificateFragment"
+        android:name="com.example.donation.Profile.MonthlyDonation.DigitalCertificateFragment"
+        android:label="fragment_digital_certificate"
+        tools:layout="@layout/fragment_digital_certificate" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.donation.Setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.donation.Profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
 
 
 </navigation>

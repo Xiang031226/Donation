@@ -4,11 +4,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -21,6 +23,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     companion object {
         private var userType = "user"
     }
+
     private lateinit var loginFragmentBinding: FragmentLoginBinding
 
     private fun navigateToCorrectScreen() {
@@ -56,12 +59,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
 
         loginFragmentBinding = FragmentLoginBinding.bind(view)
+        loginFragmentBinding.userTab.performClick()
         loginFragmentBinding.apply {
 
             userTab.setOnClickListener {
                 registerNowButton.isClickable = true
                 registerNowButton.setTextColor(Color.parseColor("#000000"))
                 userType = "user"
+                Toast.makeText(activity, "haiya", Toast.LENGTH_SHORT).show()
                 changeTab(userType)
             }
 
@@ -102,22 +107,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun loadMainActivity() {
         viewModel.setUserType(userType)
+        Log.e("??: ", userType)
         viewModel.apply {
             setLoggedIn(true)
             saveLoginState()
         }
-//        val loginBundle = Bundle()
-//        loginBundle.putString("username_email", loginFragmentBinding.loginEmailInputText.text.toString())
-
-//        if(userType == "admin"){
-//            val adminIntent = Intent(activity, AdminActivity::class.java)
-//            adminIntent.putExtras(loginBundle)
-//            startActivity(adminIntent)
-//        }else {
-//            val userIntent = Intent(activity, UserMainActivity::class.java)
-//            userIntent.putExtras(loginBundle)
-//            startActivity(userIntent)
-//        }
     }
 
     private fun changeTab(userType : String) {

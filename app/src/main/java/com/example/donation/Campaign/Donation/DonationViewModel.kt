@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.Campaign.Donation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

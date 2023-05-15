@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.Payment
 
 import android.app.Dialog
 import android.graphics.Color
@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
-import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
+import com.example.donation.ReusableResource.OpenDialog
+import com.example.donation.R
 import com.example.donation.databinding.FragmentCheckoutBinding
 
 
@@ -48,6 +50,10 @@ class CheckoutFragment : Fragment() {
 
         binding.confirmButton.setOnClickListener {
             findNavController().navigate(R.id.action_checkoutFragment_to_thankYouFragment, bundleOf("fromScreen" to "donation"))
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().popBackStack()
         }
 
     }

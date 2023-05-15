@@ -1,20 +1,18 @@
-package com.example.donation
+package com.example.donation.Payment
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
+import com.example.donation.ReusableResource.HideBarOrTab
+import com.example.donation.R
 import com.example.donation.databinding.FragmentPaymentBinding
 import java.text.NumberFormat
-import java.util.Currency
-import java.util.Formatter
 
 class PaymentFragment : HideBarOrTab() {
 
@@ -32,6 +30,10 @@ class PaymentFragment : HideBarOrTab() {
         val binding = FragmentPaymentBinding.bind(view)
         val toolbar = view.findViewById<Toolbar>(R.id.custom_toolbar)
         toolbar.title = "Choose donation type"
+
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().popBackStack()
+        }
 
         binding.apply {
 

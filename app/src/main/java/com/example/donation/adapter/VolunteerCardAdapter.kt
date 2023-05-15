@@ -6,11 +6,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.R
-import com.example.donation.VolunteerViewModel
-import com.example.donation.data.VolunteerSource
+import com.example.donation.Campaign.Volunteer.VolunteerViewModel
 import com.example.donation.model.Volunteer
 
 

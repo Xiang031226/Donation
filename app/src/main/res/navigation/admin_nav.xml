@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/campaign_fragment"
-        android:name="com.example.donation.Campaign"
+        android:name="com.example.donation.Campaign.Campaign"
         android:label="fragment_campaign"
         tools:layout="@layout/fragment_campaign" />
 
     <fragment
         android:id="@+id/profile_fragment"
-        android:name="com.example.donation.Profile"
+        android:name="com.example.donation.Profile.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 

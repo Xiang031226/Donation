@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.ReusableResource
 
 import android.app.Dialog
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import com.example.donation.R
 import com.example.donation.databinding.FragmentOpenDialogBinding
 
 class OpenDialog : DialogFragment() {

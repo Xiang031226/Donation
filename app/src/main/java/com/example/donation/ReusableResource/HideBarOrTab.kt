@@ -1,8 +1,9 @@
-package com.example.donation
+package com.example.donation.ReusableResource
 
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.donation.R
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout

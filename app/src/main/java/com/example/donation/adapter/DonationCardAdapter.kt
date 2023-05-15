@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.donation.DonationViewModel
+import com.example.donation.Campaign.Donation.DonationViewModel
 import com.example.donation.R
 import com.example.donation.model.Donation
 
