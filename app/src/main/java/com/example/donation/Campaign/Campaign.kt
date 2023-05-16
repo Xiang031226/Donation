@@ -32,8 +32,6 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
-        toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24)
 
         val binding = FragmentCampaignBinding.bind(view)
         tabLayout = binding.tabLayout

@@ -7,12 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.donation.Payment.PaymentViewModel
 import com.example.donation.R
 import com.example.donation.databinding.FragmentOpenDialogBinding
 
 class OpenDialog : DialogFragment() {
 
     private lateinit var binding: FragmentOpenDialogBinding
+    private lateinit var viewModel: PaymentViewModel
+
+    data class DialogData(val cardNumber : String, val expiredDate : String, val cvv : Int)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +46,17 @@ class OpenDialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentOpenDialogBinding.bind(view)
+
+        viewModel = ViewModelProvider(requireActivity())[PaymentViewModel::class.java]
+
+
+
         binding.saveButton.setOnClickListener {
+            val cardNumber = binding.cardNumberInput.text.toString()
+            val expiredDate = binding.expiryDateInput.text.toString()
+            val cvv = binding.cvvInput.text.toString().toInt()
+            val data = DialogData(cardNumber, expiredDate, cvv)
+            viewModel.setDialogData(data)
             dialog?.dismiss()
         }
     }

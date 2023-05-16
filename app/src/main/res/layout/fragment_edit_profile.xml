@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProfileFragment">
+    tools:context=".Profile.EditProfileFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/edit_profile_toolbar"
@@ -46,13 +46,14 @@
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_user"
             android:layout_marginTop="48dp"
+            android:hint="Username"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
+                android:inputType="textPersonName"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -66,13 +67,14 @@
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_email"
             android:layout_marginTop="16dp"
+            android:hint="Email address"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email address"
+                android:inputType="textEmailAddress"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>

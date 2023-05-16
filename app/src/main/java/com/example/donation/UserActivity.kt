@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -20,17 +21,17 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.donation.databinding.ActivityUserBinding
-import java.util.prefs.Preferences
+import com.google.android.play.core.review.ReviewManager
+import com.google.android.play.core.review.ReviewManagerFactory
 
 class UserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserBinding
     private lateinit var navController: NavController
     private lateinit var viewModel: LoginViewModel
-    private var problem: Int = 0
     private lateinit var prefs: SharedPreferences
 
-    @SuppressLint("CommitPrefEdits")
+    @SuppressLint("CommitPrefEdits", "QueryPermissionsNeeded")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserBinding.inflate(layoutInflater)
@@ -74,16 +75,19 @@ class UserActivity : AppCompatActivity() {
                             .show()
                     }
                     R.id.contact_us -> {
-                        Toast.makeText(
-                            this@UserActivity,
-                            "second item selected",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
+                        val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+                            data = Uri.parse("mailto:support@wildcare.com") // Replace with your email address
+                            putExtra(Intent.EXTRA_SUBJECT, "Contact Us") // Replace with your email subject
+                        }
+
+                        if (emailIntent.resolveActivity(this@UserActivity.packageManager) != null) {
+                            startActivity(emailIntent)
+                        } else {
+                            Toast.makeText(this@UserActivity, "No email app found.", Toast.LENGTH_SHORT).show()
+                        }
                     }
                     R.id.about_us -> {
-                        Toast.makeText(this@UserActivity, "third item selected", Toast.LENGTH_SHORT)
-                            .show()
+                        findNavController(R.id.nav_host_fragment).navigate(R.id.aboutUsFragment)
                     }
                     R.id.setting -> {
                         findNavController(R.id.nav_host_fragment).navigate(R.id.settingFragment)
@@ -117,16 +121,5 @@ class UserActivity : AppCompatActivity() {
         prefs.edit().putInt("MODE", newThemeMode).apply()
         AppCompatDelegate.setDefaultNightMode(newThemeMode)
         recreate()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        problem = prefs.getInt("problem", 0)
-        problem += 1
-        if (problem > 2) {
-            problem = 0
-        }
-        prefs.edit().putInt("problem", problem).apply()
-        Log.e("Math : ", problem.toString())
     }
 }
