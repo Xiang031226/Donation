@@ -79,7 +79,6 @@ class CreateVolunteerFragment : HideBarOrTab() {
                 pickTime()
             }
             createVolLocationPicker.setOnClickListener {
-                pickLocation()
             }
 
             createVolAddRoleButton.setOnClickListener {
@@ -95,7 +94,7 @@ class CreateVolunteerFragment : HideBarOrTab() {
                 //Get all the added available roles into a arrayList of VolunteerRole
                 getNewRoleItems()
                 addNewVolunteer()
-                findNavController().navigate(R.id.admin_volunteer_fragment)
+                findNavController().popBackStack()
             }
 
             createVolCancelButton.setOnClickListener {
@@ -146,10 +145,6 @@ class CreateVolunteerFragment : HideBarOrTab() {
             binding.createVolTimePicker.text = timeText
         }
         TimePickerDialog(requireContext(), timeSetListener, hour, minute, false).show()
-    }
-
-    private fun pickLocation() {
-        TODO("Not yet implemented")
     }
 
     private fun setupRoleItem(roleItem: View) {

@@ -6,12 +6,18 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.donation.data.User
+import com.example.donation.database.UserDatabase
 import com.github.mikephil.charting.utils.Utils.init
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginViewModel(application: Application): AndroidViewModel(application) {
     private val sharedPrefs = application.getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
     private val isLoggedInKEY = "isLoggedIn"
     private val userTypeKey = "userType"
+
 
     private val _isLoggedIn = MutableLiveData(false)
     val isLoggedIn: LiveData<Boolean>

@@ -56,7 +56,11 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.itextpdf:itextg:5.5.10'
 
-    //Room
-    implementation "androidx.room:room-runtime:2.4.0"
-    kapt "androidx.room:room-compiler:2.4.0"
+
+    // Room
+    implementation "androidx.room:room-runtime:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
+    implementation("androidx.room:room-ktx:2.5.1")
+
+
 }

@@ -62,22 +62,23 @@ class DonationSource(context: Context) {
     fun loadAnimalDescriptionData() : List<Donation> {
         return listOf(
             Donation(
-                R.drawable.image1,
+                R.drawable.sad_tiger,
                 "Save Our Tigers",
                 "Wild Life",
                 animalDescription = animalDescription[0]
-                ),Donation(
-                R.drawable.image2,
+                ),
+            Donation(
+                R.drawable.Elephants,
                 "Save Our Elephants",
                 "Wild Life",
                 animalDescription = animalDescription[1]
             ),Donation(
-                R.drawable.image3,
+                R.drawable.orang_utans,
                 "Save Our Sea Turtles",
                 "Marine",
                 animalDescription = animalDescription[2]
             ),Donation(
-                R.drawable.image4,
+                R.drawable.sea_turtle,
                 "Save Our Orang Utans",
                 "Wild Life",
                 animalDescription = animalDescription[3]

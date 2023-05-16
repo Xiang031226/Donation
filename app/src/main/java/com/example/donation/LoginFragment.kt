@@ -15,10 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.example.donation.ReusableResource.HideBarOrTab
 import com.example.donation.databinding.FragmentLoginBinding
 import java.security.MessageDigest
 
-class LoginFragment : Fragment(R.layout.fragment_login) {
+class LoginFragment : Fragment() {
 
     private lateinit var viewModel: LoginViewModel
 

@@ -17,12 +17,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.donation.Campaign.Donation.DonationViewModel
+import com.example.donation.ReusableResource.HideBarOrTab
 import com.example.donation.databinding.FragmentAdminDonationDescBinding
 
 class AdminDonationDescFragment : HideBarOrTab() {
 
     private lateinit var binding: FragmentAdminDonationDescBinding
-    private lateinit var viewModel: AnimalViewModel
+    private lateinit var viewModel: DonationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,23 +43,24 @@ class AdminDonationDescFragment : HideBarOrTab() {
         val threatMsg = view.findViewById<TextView>(R.id.donation_threat_msg)
         val mustDoMsg = view.findViewById<TextView>(R.id.donation_mustDo_msg)
         val supportMsg = view.findViewById<TextView>(R.id.donation_support_msg)
-        val topBarTitle = view.findViewById<ConstraintLayout>(R.id.admin_donation_top_bar)
-            .findViewById<TextView>(R.id.admin_custom_top_bar_title)
 
-        viewModel = ViewModelProvider(requireActivity())[AnimalViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[DonationViewModel::class.java]
         viewModel.selectedAnimal.observe(viewLifecycleOwner) { selectedAnimal ->
-            titleImage.setImageResource(selectedAnimal.titleImage)
-            image2.setImageResource(selectedAnimal.image2)
-            image3.setImageResource(selectedAnimal.image3)
-            extTitle.text = selectedAnimal.extinctionTitle
-            threatTitle.text = selectedAnimal.threatTitle
-            mustDoTitle.text = selectedAnimal.mustDoTitle
-            awareness.text = selectedAnimal.awareness
-            threatMsg.text = selectedAnimal.threatMsg
-            mustDoMsg.text = selectedAnimal.mustDoMsg
-            supportMsg.text = selectedAnimal.supportMsg
-            topBarTitle.text = selectedAnimal.title
+
+            val animalDescription = selectedAnimal.animalDescription
+
+            titleImage.setImageResource(animalDescription.titleImage)
+            image2.setImageResource(animalDescription.image2)
+            image3.setImageResource(animalDescription.image3)
+            extTitle.text = animalDescription.extinctionTitle
+            threatTitle.text = animalDescription.threatTitle
+            mustDoTitle.text = animalDescription.mustDoTitle
+            awareness.text = animalDescription.awareness
+            threatMsg.text = animalDescription.threatMsg
+            mustDoMsg.text = animalDescription.mustDoMsg
+            supportMsg.text = animalDescription.supportMsg
         }
+
 
         return view
     }

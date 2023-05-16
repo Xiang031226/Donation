@@ -102,11 +102,11 @@ class EditVolunteerFragment : HideBarOrTab() {
                 //Get all the added available roles into a arrayList of VolunteerRole
                 getEditedRoleItems()
                 updateEditedRoleItem()
-                findNavController().navigate(R.id.admin_volunteer_desc_fragment)
+                findNavController().popBackStack()
             }
 
             editVolCancelButton.setOnClickListener {
-                findNavController().navigate(R.id.admin_volunteer_desc_fragment)
+                findNavController().popBackStack()
             }
         }
 
@@ -114,13 +114,6 @@ class EditVolunteerFragment : HideBarOrTab() {
         requireActivity().onBackPressedDispatcher.addCallback(this@EditVolunteerFragment) {
             findNavController().popBackStack()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        showAppBar()
-        showTab(R.id.campaign_tab_layout)
-        showBottomBar(R.id.admin_bottom_nav_bar)
     }
 
     private fun initView(view: View) {

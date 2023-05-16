@@ -7,27 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.donation.data.User
 import com.example.donation.databinding.FragmentRegisterBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.security.MessageDigest
 import java.util.regex.Pattern
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
-//    private lateinit var userDao: UserDao
+    private lateinit var viewModel: RegisterViewModel
     val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%/])(?=\\S+$).{4,}$"
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        val view = inflater.inflate(R.layout.fragment_register, container, false)
+
+        viewModel = ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,10 +39,22 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         binding.apply {
             registerButton.setOnClickListener {
                 if (registerValidation()) {
+                    insertDataToDatabase()
                 }
-                addToDb()
             }
         }
+    }
+
+    private fun insertDataToDatabase() {
+        val emailInput = binding.registerEmailInputText.text.toString()
+        val nameInput = binding.registerNameInputText.text.toString()
+        val usernameInput = binding.registerUsernameInputText.text.toString()
+        val passwordInput = binding.registerPasswordInputText.text.toString().trim()
+        val retypePasswordInput = binding.registerRetypePasswordInputText.text.toString().trim()
+
+        val user = User(name = nameInput, username = usernameInput, email = emailInput, password = passwordInput)
+        viewModel.adduser(user)
+        backToLoginFragment()
     }
 
     private fun registerValidation(): Boolean {
@@ -109,28 +123,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val md = MessageDigest.getInstance("SHA-256")
         val digest = md.digest(bytes)
         return digest.fold("") { str, it -> str + "%02x".format(it) }
-    }
-
-    private fun addToDb() {
-//        userDao = AppDatabase.getInstance(requireContext()).userDao()
-
-        val emailInput = binding.registerEmailInputText.text.toString().trim()
-        val nameInput = binding.registerNameInputText.text.toString().trim()
-        val usernameInput = binding.registerUsernameInputText.text.toString().trim()
-        val retypePasswordInput = binding.registerRetypePasswordInputText.text.toString().trim()
-
-//        val user = User(
-//            name = nameInput,
-//            username = usernameInput,
-//            email = emailInput,
-//            password = hashPassword(retypePasswordInput)
-//        )
-//
-//        lifecycleScope.launch(Dispatchers.IO) {
-//            userDao.insert(user)
-//
-//        }
-        backToLoginFragment()
     }
 
     private fun backToLoginFragment() {

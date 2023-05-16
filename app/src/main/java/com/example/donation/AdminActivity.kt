@@ -23,10 +23,12 @@ class AdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_admin) as NavHost
-        navController = navHostFragment.navController
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Get nav controller
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_admin)
+        navController = navHostFragment!!.findNavController()
 
         //Setup the bottom nav bar with the nav controller
         val bottomNavView = binding.adminBottomNavBar

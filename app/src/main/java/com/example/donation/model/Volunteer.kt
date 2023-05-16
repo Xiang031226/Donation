@@ -20,7 +20,7 @@ data class VolunteerRole(
     val role: String,
     val jobScopes: List<String>,
     val skills: List<String>,
-    val qtyNeeded : Int = 0
+    val qtyNeeded : Int = 1
 ) {
 
 }
