@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.donation.Home"
+        android:label="Home" />
+    <fragment
+        android:id="@+id/campaign"
+        android:name="com.example.donation.Campaign.Campaign"
+        android:label="@string/campaign"
+        tools:layout="@layout/fragment_campaign">
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.donation.Profile.Profile"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_historyFragment"
+            app:enterAnim="@animator/slide_in_bottom"
+            app:exitAnim="@animator/slide_out_bottom"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_profile_to_campaign"
+            app:destination="@id/campaign"
+            app:popUpTo="@id/profile"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profile_to_digitalCertificateFragment"
+            app:destination="@id/digitalCertificateFragment" />
+        <action
+            android:id="@+id/action_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+
+    <include app:graph="@navigation/campaign_nav_graph"/>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.donation.Profile.History.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/digitalCertificateFragment"
+        android:name="com.example.donation.Profile.MonthlyDonation.DigitalCertificateFragment"
+        android:label="fragment_digital_certificate"
+        tools:layout="@layout/fragment_digital_certificate" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.donation.Setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_FAQsFragment"
+            app:destination="@id/FAQsFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_privacyPolicyFragment"
+            app:destination="@id/privacyPolicyFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_changeCardPaymentFragment"
+            app:destination="@id/changeCardPaymentFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.donation.Profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/FAQsFragment"
+        android:name="com.example.donation.FAQs.FAQsFragment"
+        android:label="fragment_faqs"
+        tools:layout="@layout/fragment_faqs" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.donation.AboutUs.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.example.donation.PrivacyPolicy.PrivacyPolicyFragment"
+        android:label="fragment_privacy_policy"
+        tools:layout="@layout/fragment_privacy_policy" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.donation.Profile.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/changeCardPaymentFragment"
+        android:name="com.example.donation.Payment.ChangeCardPaymentFragment"
+        android:label="fragment_change_card_payment"
+        tools:layout="@layout/fragment_change_card_payment" />
+
+
+</navigation>

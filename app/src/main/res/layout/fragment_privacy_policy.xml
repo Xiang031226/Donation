@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PrivacyPolicy.PrivacyPolicyFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image4" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/privacy_policy_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Privacy Policy" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="0dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Security of Personal Information"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="30dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:justificationMode="inter_word"
+                    android:lineHeight="30dp"
+                    android:text="The security of personal data about you is our priority. We protect this data by maintaining physical, electronic, and procedural safeguards that meet or exceed applicable laws. We train our employees in the proper handling of personal data. When we use other parties to provide services to us, we require them to protect the confidentiality of personal data that is transmitted to them."
+                    android:textColor="#393939" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="2. Categories of personal data we collect and hold"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:justificationMode="inter_word"
+                    android:lineHeight="30dp"
+                    android:text="The nature of the personal data we collect, and where it comes from, may include:
+Personal data collected from applications or other forms such as name, address, e-mail address, personal phone number, occupation, designation, etc."
+                    android:textColor="#393939" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3. Your Rights"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="50dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:justificationMode="inter_word"
+                    android:lineHeight="30dp"
+                    android:text="a) Right to request access to personal data
+You are entitled to request access to your personal data that is processed by us with reasonable written notice and we will revert within 14 working days.
+
+\n\nb) Right to request correction of personal data
+You are entitled to request the correction of your personal data that is held by us with reasonable written notice. With respect to this, you may:
+
+\n\ni. request correction and/ or update of your personal data that is inaccurate, incomplete or out-of-date; and
+ii. request retention of your personal data only as long as necessary for the fulfillment of the Purpose stated above."
+                    android:textColor="#393939" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="4. Disclosure of your personal data:"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:justificationMode="inter_word"
+                    android:lineHeight="30dp"
+                    android:text="Your personal data will be kept confidential but such personal data may be provided to third parties who carry out functions on WWF-Malaysia’s behalf for the purposes set out below:-\n\n
+Donor acquisition\n\n
+to process Donor donations\n\n
+providing data to Customer Service providers\n\n
+providing data to Telemarketing agencies\n\n
+data used for the purposes of Letter shopping / bulk mailing / electronic mails agencies\n\n
+providing data to Database system providers\n\n
+providing data to e-Commerce providers\n\n
+providing data to Online payment gateway partners\n\n
+data processed for Crowd-funding platforms\n\n
+providing data to SMS service providers\n\n
+data provided to Direct marketing partners\n\n
+data used to process contributions through monthly payroll\n\n
+to any of our affiliates in and outside Malaysia who is/are connected to WWF Malaysia;\n\n
+to any agent, contractor, service provider, communications, clearing or payment system or\n\n
+intermediary bank we or our affiliates may use in connection with our or our affiliates’ business; to our affiliates and selected parties for the purpose of informing you of products or services which we believe will be of interest to you;\n\n
+to such parties as we or our affiliates may be required by law, court, regulator or legal process to disclose;\n\n
+to such parties as may be permitted under Malaysian law.\n\n"
+                    android:textColor="#393939" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

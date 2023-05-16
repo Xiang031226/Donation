@@ -60,8 +60,7 @@ class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSe
             )
         )
 
-        //Spinner adapter
-        val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_item, campaignList)
+        val spinnerAdapter = ArrayAdapter(view.context, android.R.layout.simple_spinner_item, campaignList)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.campaignSpinner.adapter = spinnerAdapter
 

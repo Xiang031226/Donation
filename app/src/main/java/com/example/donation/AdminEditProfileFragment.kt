@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.donation.dao.UserDao
 import com.example.donation.databinding.FragmentAdminEditProfileBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,7 +31,7 @@ import java.io.IOException
 class AdminEditProfileFragment : Fragment(R.layout.fragment_admin_edit_profile) {
 
     private lateinit var binding: FragmentAdminEditProfileBinding
-//    private lateinit var userDao: UserDao
+    private lateinit var userDao: UserDao
     private lateinit var profileImageView: ImageView
     private lateinit var selectPictureLauncher: ActivityResultLauncher<String>
     private var imageBitmap: Bitmap? = null

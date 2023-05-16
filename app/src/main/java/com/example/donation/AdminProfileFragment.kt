@@ -26,7 +26,7 @@ class AdminProfileFragment : Fragment(R.layout.fragment_admin_profile) {
 
         binding.apply{
             adminProfileTopBar.apply {
-                adminCustomTopBarTitle.text = "Your Profile"
+                adminCustomTopBarTitle.text = "View Profile"
                 adminBackButton.apply {
                     visibility = View.INVISIBLE
                     isClickable = false

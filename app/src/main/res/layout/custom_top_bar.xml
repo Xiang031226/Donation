@@ -28,5 +28,12 @@
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/appbar_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible" />
+
 </com.google.android.material.appbar.AppBarLayout>
 

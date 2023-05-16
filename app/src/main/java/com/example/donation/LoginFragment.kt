@@ -5,12 +5,14 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Patterns
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.donation.databinding.FragmentLoginBinding
@@ -18,29 +20,55 @@ import java.security.MessageDigest
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
+    private lateinit var viewModel: LoginViewModel
+
     companion object {
         private var userType = "user"
     }
+
     private lateinit var binding: FragmentLoginBinding
+
+    private fun navigateToCorrectScreen() {
+        val userType = viewModel.userType.value
+        val intent = if (userType == "admin") {
+            Intent(requireContext(), AdminActivity::class.java)
+        } else {
+            Intent(requireContext(), UserActivity::class.java)
+        }
+        startActivity(intent)
+        requireActivity().finish()      //end the mainActivity, so user pressed back button can directly exit the apps
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
+
+        viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
+        viewModel.isLoggedIn.observe(viewLifecycleOwner) { isLoggedIn ->
+            if (isLoggedIn) {
+                navigateToCorrectScreen()
+//                viewModel.logout()
+            }
+        }
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding = FragmentLoginBinding.bind(view)
+        binding.userTab.performClick()
         binding.apply {
 
             userTab.setOnClickListener {
                 registerNowButton.isClickable = true
                 registerNowButton.visibility = View.VISIBLE
                 userType = "user"
+                Toast.makeText(activity, "haiya", Toast.LENGTH_SHORT).show()
                 changeTab(userType)
             }
 
@@ -102,17 +130,23 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun loadMainActivity() {
+        viewModel.setUserType(userType)
+        Log.e("??: ", userType)
+        viewModel.apply {
+            setLoggedIn(true)
+            saveLoginState()
 
-        if(userType == "admin"){
-            val adminIntent = Intent(activity, AdminActivity::class.java)
-            startActivity(adminIntent)
-        }else {
-            val userIntent = Intent(activity, UserMainActivity::class.java)
-            startActivity(userIntent)
+//        if(userType == "admin"){
+//            val adminIntent = Intent(activity, AdminActivity::class.java)
+//            startActivity(adminIntent)
+//        }else {
+//            val userIntent = Intent(activity, UserMainActivity::class.java)
+//            startActivity(userIntent)
+//        }
         }
     }
 
-    private fun changeTab(userType : String) {
+    private fun changeTab(userType: String) {
         lateinit var selected: TextView
         lateinit var nonSelected: TextView
 
@@ -134,7 +168,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun startRegisterFragment(it: View) {
-        Navigation.findNavController(it).navigate(R.id.action_login_fragment_to_register_fragment)
+        Navigation.findNavController(it).navigate(R.id.register_fragment)
     }
 }
 

@@ -7,19 +7,16 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.donation.AnimalViewModel
+import com.example.donation.Campaign.Donation.DonationViewModel
 import com.example.donation.R
-import com.example.donation.data.DonationSource
-import com.example.donation.model.Description
+import com.example.donation.model.Donation
 
 class DonationCardAdapter(
-    private val viewModel: AnimalViewModel,                  //viewModel, to update the destination fragment, kinda
-    private val animalList: List<Description>,               //my animal description lists
-    private val listener: DonationItemClickListener,      //passing listener
+    private val viewModel: DonationViewModel,                  //viewModel, to update the destination fragment, kinda
+    private val donationList: List<Donation>,                  //my animal description lists
+    private val listener: DonationItemClickListener,
     private val buttonText: String = "Donate"
 ): RecyclerView.Adapter<DonationCardAdapter.DonationCardViewHolder>() {
-
-    private val donationList = DonationSource.donation
 
     class DonationCardViewHolder(view: View?): RecyclerView.ViewHolder(view!!) {
         val imageView: ImageView? = view!!.findViewById(R.id.item_image)
@@ -43,10 +40,9 @@ class DonationCardAdapter(
         holder.donationCategory?.text = donationData.category
         holder.donateButton?.text = buttonText
 
-        val currentAnimal = animalList[position]
         holder.donateButton?.setOnClickListener{
-            viewModel.selectedAnimal.value = currentAnimal  //assign the animal which the user has clicked to my viewModel mutable live data
-            listener.onItemClick()                          //and then navigate to the description fragment
+            viewModel.selectedAnimal.value = donationData  //assign the animal which the user has clicked to my viewModel mutable live data
+            listener.onItemClick()                         //and then navigate to the description fragment
         }
     }
 

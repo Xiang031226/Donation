@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUs.AboutUsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image4" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/about_us_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Who We Are" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:id="@+id/content1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#222222"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="ABOUT WWF-MALAYSIA"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Established in 1972, WWF-Malaysia is part of WWF, the international conservation organisation. Working to sustain the natural world for the benefit of people and wildlife, WWF-Malaysia’s efforts to conserve nature focus on six major goals - forests, oceans, wildlife, food, climate and energy, as well as freshwater – and three key drivers of environmental problems – markets, finance and governance."
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/content1"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MISSION STATEMENT"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:justificationMode="inter_word"
+                    android:lineHeight="30dp"
+                    android:text="Our mission is to stop the degradation of the earth’s natural environment and to build a future in which humans live in harmony with nature, by:
+
+Conserving the world’s biological diversity.
+Ensuring that the use of renewable natural resources is sustainable.
+Promoting the reduction of pollution and wasteful consumption."
+                    android:textColor="#393939" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="VALUES IN ACTION: WWF'S CORE STANDARDS OF PERFORMANCE"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:justificationMode="inter_word"
+                    android:lineHeight="30dp"
+                    android:text="We bear witness to the accelerating decline of nature and our climate, with serious consequences for life on Earth, including our own.\n\n
+
+Because people are part of nature and our fate is intertwined, WWF’s mission is to build a future in which people live in harmony with nature. As a science-based, nonpartisan, civil society organization, we work to conserve and restore biodiversity, the web that supports all life on Earth; to reduce humanity’s environmental footprint; and to ensure the sustainable use of natural resources to support current and future generations.\n\n
+
+We celebrate and respect diversity in nature and among the people, partners and communities with whom we work. Across the many cultures and individuals that represent WWF, we are unified by one mission, one brand, and one common set of values:\n\n
+
+Courage: We demonstrate courage through our actions, we work for change where it’s needed, and we inspire people and institutions to tackle the greatest threats to nature and the future of the planet, which is our home.\n\n
+Respect: We honour the voices and rights of nature and people, and we work to secure a sustainable future for both.\n\n
+Integrity: We live the principles we call on others to meet. We act with integrity, accountability and transparency, and we rely on local knowledge and science to guide us and to ensure we learn and evolve.\n\n
+Collaboration: We deliver impact at the scale of the challenges we face through the power of collective action and innovation.\n\n"
+                    android:textColor="#393939" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

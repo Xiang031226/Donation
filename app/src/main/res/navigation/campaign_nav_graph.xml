@@ -6,15 +6,18 @@
     app:startDestination="@id/donationListItem">
     <fragment
         android:id="@+id/donationDescriptionFragment"
-        android:name="com.example.donation.DonationDescriptionFragment"
+        android:name="com.example.donation.Campaign.Donation.DonationDescriptionFragment"
         android:label="DescriptionFragment">
         <action
             android:id="@+id/action_descriptionFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+            app:destination="@id/paymentFragment"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@animator/slide_out_left"
+            />
     </fragment>
     <fragment
         android:id="@+id/donationListItem"
-        android:name="com.example.donation.DonationListItem"
+        android:name="com.example.donation.Campaign.Donation.DonationListItem"
         android:label="DonationListItem"
         tools:layout="@layout/donation_list_item"
         >
@@ -24,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.example.donation.PaymentFragment"
+        android:name="com.example.donation.Payment.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" >
         <action
@@ -33,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkoutFragment"
-        android:name="com.example.donation.CheckoutFragment"
+        android:name="com.example.donation.Payment.CheckoutFragment"
         android:label="fragment_checkout"
         tools:layout="@layout/fragment_checkout" >
         <action
@@ -42,12 +45,12 @@
     </fragment>
     <fragment
         android:id="@+id/thankYouFragment"
-        android:name="com.example.donation.ThankYouFragment"
+        android:name="com.example.donation.Payment.ThankYouFragment"
         android:label="fragment_thank_you"
         tools:layout="@layout/fragment_thank_you" />
     <fragment
         android:id="@+id/volunteerListItem"
-        android:name="com.example.donation.VolunteerListItem"
+        android:name="com.example.donation.Campaign.Volunteer.VolunteerListItem"
         android:label="Volunteer"
         tools:layout="@layout/volunteer_list_item"
         >
@@ -57,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/volunteerDescription"
-        android:name="com.example.donation.VolunteerDescription"
+        android:name="com.example.donation.Campaign.Volunteer.VolunteerDescription"
         android:label="fragment_volunteer_description"
         tools:layout="@layout/fragment_volunteer_description" >
         <action

@@ -1,7 +1,9 @@
 package com.example.donation.model
 
+import androidx.annotation.DrawableRes
+
 data class Application(
-    val profilePicResId: Int,
+    @DrawableRes val profilePicResId: Int,
     val username: String,
     val jobRole: String
 )

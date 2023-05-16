@@ -163,8 +163,6 @@
     <string name="daily">Daily</string>
     <string name="monthly">Monthly</string>
     <string name="volunteer_application_list">Volunteer Application List</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_volunteer_title">Create Volunteer</string>
     <string name="title">Title</string>
     <string name="name">Name</string>

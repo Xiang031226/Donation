@@ -11,29 +11,31 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.donation.Campaign.Donation.DonationViewModel
 import com.example.donation.adapter.DonationCardAdapter
 import com.example.donation.adapter.DonationItemClickListener
-import com.example.donation.data.DescriptionSource
+import com.example.donation.data.DonationSource
+import com.example.donation.model.Donation
 
 class AdminDonationListItem : Fragment(R.layout.fragment_admin_donation_list_item),
     DonationItemClickListener {
 
-    private lateinit var viewModel: AnimalViewModel
+    private lateinit var viewModel: DonationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.donation_activity_list, container, false)
+        val view = inflater.inflate(R.layout.admin_donation_activity_list, container, false)
 
-        val animalDescriptionList = DescriptionSource().animalDescriptionList(requireContext())
+        val animalDescriptionList = DonationSource(requireContext()).loadAnimalDescriptionData()
 
-        viewModel = ViewModelProvider(requireActivity())[AnimalViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[DonationViewModel::class.java]
 
         //Last parameter used to change the button text
         val adapter = DonationCardAdapter(viewModel, animalDescriptionList, this, "View")
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.donation_recycler_view)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.admin_donation_recycler_view)
         recyclerView.adapter = adapter
         recyclerView.setHasFixedSize(true)
 
