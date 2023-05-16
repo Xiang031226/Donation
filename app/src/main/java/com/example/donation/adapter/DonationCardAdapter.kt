@@ -15,7 +15,8 @@ import com.example.donation.model.Description
 class DonationCardAdapter(
     private val viewModel: AnimalViewModel,                  //viewModel, to update the destination fragment, kinda
     private val animalList: List<Description>,               //my animal description lists
-    private val listener: DonationItemClickListener      //passing listener
+    private val listener: DonationItemClickListener,      //passing listener
+    private val buttonText: String = "Donate"
 ): RecyclerView.Adapter<DonationCardAdapter.DonationCardViewHolder>() {
 
     private val donationList = DonationSource.donation
@@ -40,6 +41,7 @@ class DonationCardAdapter(
         holder.donationTitle?.text = donationData.title
         holder.imageView?.setImageResource(donationData.imageResourceId)
         holder.donationCategory?.text = donationData.category
+        holder.donateButton?.text = buttonText
 
         val currentAnimal = animalList[position]
         holder.donateButton?.setOnClickListener{

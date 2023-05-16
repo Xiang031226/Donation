@@ -18,6 +18,7 @@ class VolunteerCardAdapter(
     private val viewModel : VolunteerViewModel,
     private val eventList : List<Volunteer>,
     private val listener : VolunteerItemClickListener,      //passing listener
+    private val buttonText: String = "Volunteer"
 ) : RecyclerView.Adapter<VolunteerCardAdapter.VolunteerCardViewHolder>() {
 
     class VolunteerCardViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
@@ -42,6 +43,7 @@ class VolunteerCardAdapter(
         holder.date?.text = volunteerData.eventDate
         holder.time?.text = volunteerData.eventTime
         holder.location?.text = volunteerData.eventLocation
+        holder.volunteerButton?.text = buttonText
 
         val currentEvent = eventList[position]
         holder.volunteerButton?.setOnClickListener {

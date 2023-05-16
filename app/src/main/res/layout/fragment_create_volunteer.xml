@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateVolunteerFragment">
+
+    <!--Admin Custom Top Bar-->
+    <include
+        android:id="@+id/create_vol_top_bar"
+        layout="@layout/admin_custom_top_bar" />
+
+    <View
+        android:id="@+id/create_vol_top_bar_hl"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/grey"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/create_vol_top_bar" />
+
+    <ScrollView
+        android:id="@+id/create_vol_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--Add image-->
+            <ImageView
+                android:id="@+id/create_vol_image"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:src="@drawable/image2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--Add title-->
+            <EditText
+                android:id="@+id/create_vol_title_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:hint="@string/title"
+                android:paddingStart="5dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_vol_image" />
+
+            <!--Add date-->
+            <LinearLayout
+                android:id="@+id/create_vol_date_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_vol_title_edit">
+
+                <TextView
+                    android:id="@+id/create_vol_date_text"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:text="Date"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/create_vol_date_picker"
+                    style="@style/picker"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/outline_edit_calendar_24"
+                    android:text="Add Date" />
+            </LinearLayout>
+
+            <!--Add time-->
+            <LinearLayout
+                android:id="@+id/create_vol_time_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_vol_date_container">
+
+                <TextView
+                    android:id="@+id/create_vol_time_text"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:text="Time"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/create_vol_time_picker"
+                    style="@style/picker"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_clock"
+                    android:text="Add Time" />
+            </LinearLayout>
+
+            <!--Add location-->
+            <LinearLayout
+                android:id="@+id/create_vol_location_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_vol_time_container">
+
+                <TextView
+                    android:id="@+id/create_vol_location_text"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:text="Location"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/create_vol_location_picker"
+                    style="@style/picker"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_location"
+                    android:text="Add Location" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/create_vol_available_roles_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:paddingStart="5dp"
+                android:text="Available volunteering roles:"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_vol_location_container" />
+
+            <ImageButton
+                android:id="@+id/create_vol_add_role_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="@color/transparent"
+                android:padding="5dp"
+                android:src="@drawable/outline_add_circle"
+                app:layout_constraintBottom_toBottomOf="@id/create_vol_available_roles_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/create_vol_available_roles_text" />
+
+            <LinearLayout
+                android:id="@+id/create_vol_add_role_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_vol_available_roles_text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_vol_add_role_container">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/create_vol_cancel_button"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:padding="10dp"
+                    android:text="Cancel"
+                    app:cornerRadius="20dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/create_vol_confirm_button"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:padding="10dp"
+                    android:text="Create"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>

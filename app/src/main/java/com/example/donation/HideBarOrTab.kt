@@ -12,34 +12,33 @@ abstract class HideBarOrTab: Fragment() {
     private var appBarLayoutView: AppBarLayout? = null
     private var tabLayout: TabLayout? = null
 
-    protected fun hideBottomBar() {
-        bottomNavigationView = activity?.findViewById(R.id.bottom_navigation_bar)
+    protected fun hideBottomBar(bottomBarId : Int = R.id.bottom_navigation_bar) {
+        bottomNavigationView = activity?.findViewById(bottomBarId)
         bottomNavigationView?.visibility = View.GONE
     }
 
-    protected fun showBottomBar() {
-        bottomNavigationView = activity?.findViewById(R.id.bottom_navigation_bar)
+    protected fun showBottomBar(bottomBarId : Int = R.id.bottom_navigation_bar) {
+        bottomNavigationView = activity?.findViewById(bottomBarId)
         bottomNavigationView?.visibility = View.VISIBLE
     }
 
-    protected fun showAppBar() {
-        appBarLayoutView  = activity?.findViewById(R.id.appBarLayout)
+    protected fun showAppBar(appBarId : Int = R.id.appBarLayout) {
+        appBarLayoutView  = activity?.findViewById(appBarId)
         appBarLayoutView?.visibility = View.VISIBLE
     }
 
-    protected fun hideAppBar() {
-        Toast.makeText(activity, "Damn", Toast.LENGTH_SHORT).show()
-        appBarLayoutView  = activity?.findViewById(R.id.appBarLayout)
+    protected fun hideAppBar(appBarId : Int = R.id.appBarLayout) {
+        appBarLayoutView  = activity?.findViewById(appBarId)
         appBarLayoutView?.visibility = View.GONE
     }
 
-    protected fun hideTab() {
-        tabLayout = activity?.findViewById(R.id.tab_layout)
+    protected fun hideTab(tabLayoutId : Int = R.id.tab_layout) {
+        tabLayout = activity?.findViewById(tabLayoutId)
         tabLayout?.visibility = View.GONE
     }
 
-    protected fun showTab() {
-        tabLayout = activity?.findViewById(R.id.tab_layout)
+    protected fun showTab(tabLayoutId : Int = R.id.tab_layout) {
+        tabLayout = activity?.findViewById(tabLayoutId)
         tabLayout?.visibility = View.VISIBLE
     }
 }

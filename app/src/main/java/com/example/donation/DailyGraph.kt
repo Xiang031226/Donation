@@ -11,6 +11,8 @@ import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
 
 class DailyGraph : Fragment(R.layout.fragment_daily_graph) {
+
+    private lateinit var binding : FragmentDailyGraphBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,8 +23,8 @@ class DailyGraph : Fragment(R.layout.fragment_daily_graph) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dailyGraphBinding = FragmentDailyGraphBinding.bind(view)
-        val dailyChart = dailyGraphBinding.dailyChart
+        binding = FragmentDailyGraphBinding.bind(view)
+        val dailyChart = binding.dailyChart
 
         //Entries used for daily graph
         val list: ArrayList<Entry> = ArrayList()

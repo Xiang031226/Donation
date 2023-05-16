@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminProfileFragment">
+
+    <include
+        android:id="@+id/admin_profile_top_bar"
+        layout="@layout/admin_custom_top_bar" />
+
+    <LinearLayout
+        android:id="@+id/admin_profile_pic_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginTop="10dp"
+        android:background="@color/grey"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/admin_profile_top_bar">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/admin_profile_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/image1"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="3dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/admin_profile_username_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:paddingStart="20dp"
+        android:padding="12dp"
+        android:drawableLeft="@drawable/outline_person"
+        android:drawablePadding="12dp"
+        android:background="@drawable/tab_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/admin_profile_pic_container"/>
+
+
+    <TextView
+        android:id="@+id/admin_profile_name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:paddingStart="20dp"
+        android:padding="12dp"
+        android:drawableLeft="@drawable/outline_person"
+        android:drawablePadding="12dp"
+        android:background="@drawable/tab_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/admin_profile_username_text"/>
+
+
+    <TextView
+        android:id="@+id/admin_profile_email_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:paddingStart="20dp"
+        android:padding="12dp"
+        android:drawableLeft="@drawable/outline_email"
+        android:drawablePadding="12dp"
+        android:background="@drawable/tab_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/admin_profile_name_text"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/admin_profile_edit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        app:cornerRadius="20dp"
+        android:text="Edit Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

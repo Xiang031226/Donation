@@ -9,13 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.activity.addCallback
+import androidx.navigation.fragment.findNavController
 import com.example.donation.R.layout.fragment_application
 import com.example.donation.adapter.ApplicationItemAdapter
 import com.example.donation.databinding.FragmentApplicationBinding
 import com.example.donation.model.Application
 
 class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSelectedListener {
-    private lateinit var applicationBinding: FragmentApplicationBinding
+    private lateinit var binding: FragmentApplicationBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,14 +28,15 @@ class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentApplicationBinding.bind(view)
 
-        applicationBinding = FragmentApplicationBinding.bind(view)
-
+        // TODO: Data for campaign spinner
         val campaignList = ArrayList<String>()
         campaignList.add("Save Our Tiger")
         campaignList.add("Enhance anti-poaching and trafficking")
         campaignList.add("Save Our Elephant")
 
+        // TODO: Data for volunteer application recycler view
         var applicationList = arrayListOf(
             Application(
                 R.drawable.image1,
@@ -57,13 +60,20 @@ class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSe
             )
         )
 
+        //Spinner adapter
         val spinnerAdapter = ArrayAdapter<String>(view.context, android.R.layout.simple_spinner_item, campaignList)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        applicationBinding.campaignSpinner.adapter = spinnerAdapter
+        binding.campaignSpinner.adapter = spinnerAdapter
 
-        applicationBinding.applicationRecyclerView.apply {
+        //Recycler view adapter
+        binding.applicationRecyclerView.apply {
             adapter = ApplicationItemAdapter(context, applicationList)
             setHasFixedSize(true)
+        }
+
+        //Back pressed it will navigate back to the Volunteer main fragment
+        requireActivity().onBackPressedDispatcher.addCallback(this@ApplicationFragment) {
+            findNavController().popBackStack()
         }
     }
 

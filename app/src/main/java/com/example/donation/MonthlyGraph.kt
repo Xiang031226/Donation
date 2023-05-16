@@ -14,6 +14,8 @@ import com.github.mikephil.charting.utils.ColorTemplate
 
 class MonthlyGraph : Fragment(R.layout.fragment_monthly_graph) {
 
+    private lateinit var binding : FragmentMonthlyGraphBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,8 +26,8 @@ class MonthlyGraph : Fragment(R.layout.fragment_monthly_graph) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val monthlyGraphBinding = FragmentMonthlyGraphBinding.bind(view)
-        val monthlyChart = monthlyGraphBinding.monthlyChart
+        binding = FragmentMonthlyGraphBinding.bind(view)
+        val monthlyChart = binding.monthlyChart
 
         //Entries used for monthly graph
         val list: ArrayList<Entry> = ArrayList()
@@ -55,5 +57,4 @@ class MonthlyGraph : Fragment(R.layout.fragment_monthly_graph) {
             animateY(1000)
         }
     }
-
 }

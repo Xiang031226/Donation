@@ -21,4 +21,9 @@
             android:id="@+id/action_register_fragment_to_login_fragment"
             app:destination="@id/login_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/forget_password_fragment"
+        android:name="com.example.donation.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" />
 </navigation>
