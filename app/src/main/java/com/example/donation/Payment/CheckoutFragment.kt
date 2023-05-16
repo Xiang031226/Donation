@@ -1,5 +1,6 @@
 package com.example.donation.Payment
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -7,13 +8,17 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.donation.Campaign.Donation.DonationViewModel
 import com.example.donation.ReusableResource.OpenDialog
 import com.example.donation.R
 import com.example.donation.databinding.FragmentCheckoutBinding
@@ -22,13 +27,35 @@ import com.example.donation.databinding.FragmentCheckoutBinding
 class CheckoutFragment : Fragment() {
 
     private lateinit var binding: FragmentCheckoutBinding
+    private lateinit var viewModel: DonationViewModel
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_checkout, container, false)
+        val view = inflater.inflate(R.layout.fragment_checkout, container, false)
+
+        val image = view.findViewById<ImageView>(R.id.title_image)
+        val title = view.findViewById<TextView>(R.id.title)
+        val paymentOption = view.findViewById<TextView>(R.id.payment_option)
+        val totalAmount = view.findViewById<TextView>(R.id.total_amount)
+        val donationType = view.findViewById<TextView>(R.id.donation_type)
+
+        viewModel = ViewModelProvider(requireActivity())[DonationViewModel::class.java]
+        viewModel.selectedAnimal.observe(viewLifecycleOwner) { selectedAnimal ->
+            image.setImageResource(selectedAnimal.imageResourceId)
+            title.text = selectedAnimal.title
+        }
+
+        viewModel.payment.observe(viewLifecycleOwner) { payment ->
+            paymentOption.text = payment.paymentMethod
+            totalAmount.text = "RM " + payment.amount.toString()
+            donationType.text = payment.donationType
+        }
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

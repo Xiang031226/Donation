@@ -5,22 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.donation.Campaign.Donation.DonationViewModel
 import com.example.donation.ReusableResource.HideBarOrTab
 import com.example.donation.R
 import com.example.donation.databinding.FragmentPaymentBinding
+import com.example.donation.model.Payment
 import java.text.NumberFormat
 
 class PaymentFragment : HideBarOrTab() {
+
+    private lateinit var viewModel : DonationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
+        viewModel = ViewModelProvider(requireActivity())[DonationViewModel::class.java]
+                // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_payment, container, false)
     }
 
@@ -67,6 +75,12 @@ class PaymentFragment : HideBarOrTab() {
             }
         }
 
+        var donationType: String = ""
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            val checkedButton = view.findViewById<RadioButton>(checkedId)
+            donationType = checkedButton.text.toString()
+        }
+
 
         val backButton = view.findViewById<ImageButton>(R.id.back_button)
         backButton.setOnClickListener {
@@ -75,6 +89,8 @@ class PaymentFragment : HideBarOrTab() {
 
         binding.nextButton.setOnClickListener {
             binding.amountInput.clearFocus()
+            viewModel.payment.value = Payment(amount = binding.amountInput.text.toString().toDouble(), donationType = donationType)
+
             findNavController().navigate(R.id.action_paymentFragment_to_checkoutFragment)
         }
     }

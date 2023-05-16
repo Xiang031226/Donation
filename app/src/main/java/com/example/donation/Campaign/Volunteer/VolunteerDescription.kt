@@ -90,7 +90,6 @@ class VolunteerDescription : HideBarOrTab() {
             binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
                 val checkedButtonIndex =
                     group.indexOfChild(group.findViewById<RadioButton>(checkedId))
-                Log.d("Msg: ", "checkedButtonIndex = $checkedButtonIndex")
 
                 for (i in skillList.indices) {
                     if (i == checkedButtonIndex) {

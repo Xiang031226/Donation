@@ -9,9 +9,9 @@ class DonationSource(context: Context) {
 
     private val animalDescription = listOf(
         AnimalDescription("Save Our Tiger",
-            R.drawable.image1,
-            R.drawable.image1,
-            R.drawable.image1,
+            R.drawable.tiger3,
+            R.drawable.tiger2,
+            R.drawable.tiger1,
             context.getString(R.string.tiger_extinctionTitle),
             context.getString(R.string.tiger_threatTitle),
             context.getString(R.string.tiger_MustDoTitle),
@@ -21,9 +21,9 @@ class DonationSource(context: Context) {
             context.getString(R.string.tiger_supportMsg)),
         AnimalDescription(
             "Save Our Borneon Elephants",
-            R.drawable.image2,
-            R.drawable.image2,
-            R.drawable.image2,
+            R.drawable.lose_habitat,
+            R.drawable.elephant2,
+            R.drawable.elephant1,
             context.getString(R.string.elephant_extinctionTitle),
             context.getString(R.string.elephant_threatTitle),
             context.getString(R.string.elephant_MustDoTitle),
@@ -34,9 +34,9 @@ class DonationSource(context: Context) {
         ),
         AnimalDescription(
             "Save Our Sea Turtles",
-            R.drawable.image3,
-            R.drawable.image3,
-            R.drawable.image3,
+            R.drawable.orang_utans1,
+            R.drawable.lose_habitat2,
+            R.drawable.orang_utans2,
             context.getString(R.string.sea_turtle_extinctionTitle),
             context.getString(R.string.sea_turtle_threatTitle),
             context.getString(R.string.sea_turtle_MustDoTitle),
@@ -47,9 +47,9 @@ class DonationSource(context: Context) {
         ),
         AnimalDescription(
             "Save Our Orang Utans",
-            R.drawable.image4,
-            R.drawable.image4,
-            R.drawable.image4,
+            R.drawable.turtle1,
+            R.drawable.turtle2,
+            R.drawable.turtle3,
             context.getString(R.string.orang_utan_extinctionTitle),
             context.getString(R.string.orang_utan_threatTitle),
             context.getString(R.string.orang_utan_MustDoTitle),
@@ -68,7 +68,7 @@ class DonationSource(context: Context) {
                 animalDescription = animalDescription[0]
                 ),
             Donation(
-                R.drawable.Elephants,
+                R.drawable.elephants,
                 "Save Our Elephants",
                 "Wild Life",
                 animalDescription = animalDescription[1]
