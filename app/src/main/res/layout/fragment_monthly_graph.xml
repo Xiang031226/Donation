@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:padding="20dp"
-    tools:context=".MonthlyGraph">
+    tools:context=".Dashboard.MonthlyGraph">
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/monthly_chart"

@@ -1,11 +1,10 @@
-package com.example.donation
+package com.example.donation.AdminCampaign
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import android.widget.*
 import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
+import com.example.donation.R
 import com.example.donation.ReusableResource.HideBarOrTab
 import com.example.donation.databinding.FragmentCreateVolunteerBinding
 import com.example.donation.model.Volunteer
@@ -21,7 +21,6 @@ import com.google.android.material.card.MaterialCardView
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class CreateVolunteerFragment : HideBarOrTab() {
 

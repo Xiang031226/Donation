@@ -1,7 +1,6 @@
-package com.example.donation
+package com.example.donation.AdminCampaign
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +11,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.Campaign.Donation.DonationViewModel
+import com.example.donation.R
 import com.example.donation.adapter.DonationCardAdapter
 import com.example.donation.adapter.DonationItemClickListener
 import com.example.donation.data.DonationSource
-import com.example.donation.model.Donation
 
 class AdminDonationListItem : Fragment(R.layout.fragment_admin_donation_list_item),
     DonationItemClickListener {

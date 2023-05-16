@@ -1,17 +1,13 @@
-package com.example.donation
+package com.example.donation.AdminProfile
 
-import android.app.Activity
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,13 +15,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.donation.R
 import com.example.donation.dao.UserDao
 import com.example.donation.databinding.FragmentAdminEditProfileBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileInputStream
 import java.io.IOException
 
 class AdminEditProfileFragment : Fragment(R.layout.fragment_admin_edit_profile) {

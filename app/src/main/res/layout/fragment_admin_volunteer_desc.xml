@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminVolunteerDescFragment">
+    tools:context=".AdminCampaign.AdminVolunteerDescFragment">
 
     <ImageButton
         android:id="@+id/admin_vol_desc_back_button"

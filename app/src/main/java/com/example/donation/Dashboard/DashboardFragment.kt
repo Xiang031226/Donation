@@ -1,6 +1,5 @@
-package com.example.donation
+package com.example.donation.Dashboard
 
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface.BOLD
 import android.os.Bundle
@@ -9,12 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.addCallback
-import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.example.donation.R
 import com.example.donation.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {

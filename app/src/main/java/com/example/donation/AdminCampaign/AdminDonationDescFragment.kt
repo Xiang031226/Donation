@@ -1,23 +1,19 @@
-package com.example.donation
+package com.example.donation.AdminCampaign
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
-import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.donation.Campaign.Donation.DonationViewModel
+import com.example.donation.R
 import com.example.donation.ReusableResource.HideBarOrTab
 import com.example.donation.databinding.FragmentAdminDonationDescBinding
 
