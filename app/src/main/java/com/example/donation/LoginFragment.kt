@@ -14,7 +14,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.donation.databinding.FragmentLoginBinding
+import java.security.MessageDigest
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -24,7 +26,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         private var userType = "user"
     }
 
-    private lateinit var loginFragmentBinding: FragmentLoginBinding
+    private lateinit var binding: FragmentLoginBinding
 
     private fun navigateToCorrectScreen() {
         val userType = viewModel.userType.value
@@ -58,13 +60,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        loginFragmentBinding = FragmentLoginBinding.bind(view)
-        loginFragmentBinding.userTab.performClick()
-        loginFragmentBinding.apply {
+        binding = FragmentLoginBinding.bind(view)
+        binding.userTab.performClick()
+        binding.apply {
 
             userTab.setOnClickListener {
                 registerNowButton.isClickable = true
-                registerNowButton.setTextColor(Color.parseColor("#000000"))
+                registerNowButton.visibility = View.VISIBLE
                 userType = "user"
                 Toast.makeText(activity, "haiya", Toast.LENGTH_SHORT).show()
                 changeTab(userType)
@@ -72,7 +74,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             adminTab.setOnClickListener {
                 registerNowButton.isClickable = false
-                registerNowButton.setTextColor(Color.parseColor("#FFFFFF"))
+                registerNowButton.visibility = View.INVISIBLE
                 userType = "admin"
                 changeTab(userType)
             }
@@ -82,6 +84,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 //                loginValidation()
             }
 
+            forgetPwButton.setOnClickListener {
+                findNavController().navigate(R.id.forget_password_fragment)
+            }
+
             registerNowButton.setOnClickListener {
                 startRegisterFragment(it)
             }
@@ -89,20 +95,26 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun loginValidation() {
-        val emailInput = loginFragmentBinding.loginEmailInputText.text.toString()
-        val passwordInput = loginFragmentBinding.loginPasswordInputText.text.toString()
+        val emailInput = binding.loginEmailInputText.text.toString().trim()
+        val passwordInput = binding.loginPasswordInputText.text.toString().trim()
 
         if (emailInput.isBlank()) {
-            Toast.makeText(activity, "Please enter your username or email", Toast.LENGTH_SHORT)
-                .show()
+            binding.loginEmailInputText.error = "Please enter your username or email"
             return
         }
         if (passwordInput.isBlank()) {
-            Toast.makeText(activity, "Please enter your password", Toast.LENGTH_SHORT)
-                .show()
+            binding.loginPasswordInputText.error = "Please enter your password"
+            return
         } else {
-//            loadMainActivity()
         }
+        loadMainActivity()
+    }
+
+    private fun hashPassword(password: String): String {
+        val bytes = password.toByteArray()
+        val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        return digest.fold("") { str, it -> str + "%02x".format(it) }
     }
 
     private fun loadMainActivity() {
@@ -111,6 +123,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         viewModel.apply {
             setLoggedIn(true)
             saveLoginState()
+
+//        if(userType == "admin"){
+//            val adminIntent = Intent(activity, AdminActivity::class.java)
+//            startActivity(adminIntent)
+//        }else {
+//            val userIntent = Intent(activity, UserMainActivity::class.java)
+//            startActivity(userIntent)
+//        }
         }
     }
 
@@ -119,14 +139,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         lateinit var nonSelected: TextView
 
         if (userType == "user") {
-            selected = loginFragmentBinding.userTab
-            nonSelected = loginFragmentBinding.adminTab
+            selected = binding.userTab
+            nonSelected = binding.adminTab
         } else {
-            selected = loginFragmentBinding.adminTab
-            nonSelected = loginFragmentBinding.userTab
+            selected = binding.adminTab
+            nonSelected = binding.userTab
         }
 
-        //changing background and text color of the tabs
+        //Changing background and text color of the tabs
         selected.setBackgroundResource(R.drawable.tab_active_shape)
         selected.setTypeface(null, Typeface.BOLD)
 

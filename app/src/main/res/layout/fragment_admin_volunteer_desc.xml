@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminVolunteerDescFragment">
+
+    <ImageButton
+        android:id="@+id/admin_vol_desc_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:elevation="10dp"
+        android:src="@drawable/outline_arrow_back_ios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/admin_volunteer_desc_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/match_constraint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/vol_desc_event_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/vol_desc_event_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Join us on the incoming earth event"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_event_image" />
+
+            <ImageView
+                android:id="@+id/vol_desc_time_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_clock"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_event_title" />
+
+            <TextView
+                android:id="@+id/vol_desc_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/vol_desc_time_icon"
+                app:layout_constraintStart_toEndOf="@id/vol_desc_time_icon"
+                app:layout_constraintTop_toTopOf="@id/vol_desc_time_icon" />
+
+            <ImageView
+                android:id="@+id/vol_desc_date_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:src="@drawable/ic_date"
+                app:layout_constraintBottom_toBottomOf="@id/vol_desc_time_text"
+                app:layout_constraintStart_toEndOf="@id/vol_desc_time_text"
+                app:layout_constraintTop_toTopOf="@id/vol_desc_time_text" />
+
+            <TextView
+                android:id="@+id/vol_desc_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/vol_desc_date_icon"
+                app:layout_constraintStart_toEndOf="@id/vol_desc_date_icon"
+                app:layout_constraintTop_toTopOf="@id/vol_desc_date_icon" />
+
+            <ImageView
+                android:id="@+id/vol_desc_location_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="@id/vol_desc_time_icon"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_time_icon" />
+
+            <TextClock
+                android:id="@+id/vol_desc_location_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/vol_desc_location_icon"
+                app:layout_constraintStart_toStartOf="@id/vol_desc_time_text"
+                app:layout_constraintTop_toTopOf="@id/vol_desc_location_icon" />
+
+            <TextView
+                android:id="@+id/vol_desc_available_role_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Available volunteering roles :"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_location_icon" />
+
+            <RadioGroup
+                android:id="@+id/vol_desc_radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="30dp"
+                app:layout_constraintStart_toStartOf="@id/vol_desc_available_role_title"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_available_role_title">
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/vol_desc_job_scopes_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:text="Job Scopes"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/vol_desc_available_role_title"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_radio_group" />
+
+            <LinearLayout
+                android:id="@+id/vol_desc_job_scopes_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="30dp"
+                app:layout_constraintStart_toStartOf="@id/vol_desc_job_scopes_text"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_job_scopes_text" />
+
+            <TextView
+                android:id="@+id/vol_desc_skill_will_learn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="Skill you will learn :"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/vol_desc_job_scopes_text"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_job_scopes_container" />
+
+            <LinearLayout
+                android:id="@+id/vol_desc_skills_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="30dp"
+                android:paddingBottom="20dp"
+                app:layout_constraintStart_toStartOf="@id/vol_desc_skill_will_learn_text"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_skill_will_learn_text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/vol_desc_application_list_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:paddingEnd="70dp"
+                android:layout_marginBottom="100dp"
+                android:background="@color/transparent"
+                android:drawableRight="@drawable/outline_right"
+                android:gravity="left|center_vertical"
+                android:text="Volunteer Application List"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/vol_desc_skills_container"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/teal_200"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

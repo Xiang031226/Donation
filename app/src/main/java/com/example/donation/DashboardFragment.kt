@@ -18,7 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.donation.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
-    private lateinit var dashboardBinding: FragmentDashboardBinding
+    private lateinit var binding: FragmentDashboardBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,30 +26,28 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
     ): View? {
         // Inflate the layout for this fragment
-        dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false)
-        return dashboardBinding.root
+        binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //initialize parent (AdminActivity) navController
+        //Get admin activity's nav controller
         val navHost = requireActivity().supportFragmentManager.findFragmentById(R.id.fcv_admin)
         val navController = navHost?.findNavController()
 
-        //daily graph is shown by default
+        //Daily graph is shown by default
         changeGraph(DailyGraph())
 
-        dashboardBinding.apply {
+        binding.apply {
 
             volunteerApplicationContainer.setOnClickListener {
                 navController?.navigate(R.id.application_fragment)
             }
-
             daily.setOnClickListener {
                 changeGraph(DailyGraph())
             }
-
             monthly.setOnClickListener {
                 changeGraph(MonthlyGraph())
             }
@@ -68,15 +66,16 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         lateinit var selected: TextView
         lateinit var nonSelected: TextView
 
+        //Check if the current graph is an instance of DailyGraph
         if (graph is DailyGraph) {
-            selected = dashboardBinding.daily
-            nonSelected = dashboardBinding.monthly
+            selected = binding.daily
+            nonSelected = binding.monthly
         } else {
-            selected = dashboardBinding.monthly
-            nonSelected = dashboardBinding.daily
+            selected = binding.monthly
+            nonSelected = binding.daily
         }
 
-        //changing background and text color of the tabs
+        //Changing background and text color of the tabs
         selected.setBackgroundResource(R.drawable.tab_active_shape)
         selected.setTypeface(null, BOLD)
 

@@ -18,8 +18,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 class ApplicationItemAdapter(
     private val context: Context?,
     private val applicationList: ArrayList<Application>
-) :
-    RecyclerView.Adapter<ApplicationItemAdapter.ApplicationItemViewHolder>() {
+) : RecyclerView.Adapter<ApplicationItemAdapter.ApplicationItemViewHolder>() {
 
     class ApplicationItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminDonationDescFragment">
+
+    <!--Admin Custom Top Bar-->
+    <include
+        android:id="@+id/admin_donation_top_bar"
+        layout="@layout/admin_custom_top_bar" />
+
+    <View
+        android:id="@+id/admin_donation_top_bar_hl"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/grey"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/admin_donation_top_bar" />
+
+
+    <ScrollView
+        android:id="@+id/admin_donation_desc_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/match_constraint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/admin_donation_top_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/donation_title_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/donation_extinction_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="10dp"
+                android:justificationMode="inter_word"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/donation_awareness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:justificationMode="inter_word"
+                android:padding="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="#393939" />
+
+            <TextView
+                android:id="@+id/donation_threat_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:justificationMode="inter_word"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/donation_threat_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:justificationMode="inter_word"
+                android:padding="18dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="#393939" />
+
+            <ImageView
+                android:id="@+id/donation_image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/donation_image3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/donation_mustDo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:justificationMode="inter_word"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/donation_mustDo_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:paddingStart="18dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="18dp"
+                android:textAlignment="textStart"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="#393939" />
+
+            <TextView
+                android:id="@+id/donation_support_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:justificationMode="inter_word"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="20dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="#393939" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

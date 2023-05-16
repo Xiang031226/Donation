@@ -5,6 +5,8 @@
     android:id="@+id/admin_nav"
     app:startDestination="@id/dashboard_fragment">
 
+
+    <!--Fragments for bottom navigation bar-->
     <fragment
         android:id="@+id/dashboard_fragment"
         android:name="com.example.donation.DashboardFragment"
@@ -12,20 +14,80 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/campaign_fragment"
-        android:name="com.example.donation.Campaign.Campaign"
-        android:label="fragment_campaign"
-        tools:layout="@layout/fragment_campaign" />
+        android:id="@+id/admin_campaign_fragment"
+        android:name="com.example.donation.AdminCampaignFragment"
+        android:label="fragment_admin_campaign"
+        tools:layout="@layout/fragment_admin_campaign" />
 
     <fragment
-        android:id="@+id/profile_fragment"
-        android:name="com.example.donation.Profile.Profile"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/admin_profile_fragment"
+        android:name="com.example.donation.AdminProfileFragment"
+        android:label="fragment_admin_profile"
+        tools:layout="@layout/fragment_admin_profile" >
+        <action
+            android:id="@+id/action_admin_profile_fragment_to_admin_edit_profile_fragment"
+            app:destination="@id/admin_edit_profile_fragment" />
+    </fragment>
 
+    <!--Fragments for Dashboard-->
     <fragment
         android:id="@+id/application_fragment"
         android:name="com.example.donation.ApplicationFragment"
         android:label="fragment_application"
         tools:layout="@layout/fragment_application" />
+
+    <!--Fragments for Campaign-->
+    <fragment
+        android:id="@+id/admin_donation_fragment"
+        android:name="com.example.donation.AdminDonationListItem"
+        android:label="AdminDonationListItem">
+        <action
+            android:id="@+id/action_admin_donation_fragment_to_admin_donation_desc_fragment"
+            app:destination="@id/admin_donation_desc_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/admin_donation_desc_fragment"
+        android:name="com.example.donation.AdminDonationDescFragment"
+        android:label="AdminDonationDescFragment" />
+
+    <fragment
+        android:id="@+id/admin_volunteer_fragment"
+        android:name="com.example.donation.AdminVolunteerListItem"
+        android:label="AdminVolunteerListItem">
+        <action
+            android:id="@+id/action_admin_volunteer_fragment_to_create_volunteer_fragment"
+            app:destination="@id/create_volunteer_fragment" />
+        <action
+            android:id="@+id/action_admin_volunteer_fragment_to_admin_volunteer_desc_fragment"
+            app:destination="@id/admin_volunteer_desc_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/create_volunteer_fragment"
+        android:name="com.example.donation.CreateVolunteerFragment"
+        android:label="fragment_create_volunteer"
+        tools:layout="@layout/fragment_create_volunteer" />
+    <fragment
+        android:id="@+id/edit_volunteer_fragment"
+        android:name="com.example.donation.EditVolunteerFragment"
+        android:label="fragment_edit_volunteer"
+        tools:layout="@layout/fragment_edit_volunteer" />
+    <fragment
+        android:id="@+id/admin_volunteer_desc_fragment"
+        android:name="com.example.donation.AdminVolunteerDescFragment"
+        android:label="fragment_admin_volunteer_desc"
+        tools:layout="@layout/fragment_admin_volunteer_desc" >
+        <action
+            android:id="@+id/action_admin_volunteer_desc_fragment_to_edit_volunteer_fragment"
+            app:destination="@id/edit_volunteer_fragment" />
+        <action
+            android:id="@+id/action_admin_volunteer_desc_fragment_to_application_fragment"
+            app:destination="@id/application_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/admin_edit_profile_fragment"
+        android:name="com.example.donation.AdminEditProfileFragment"
+        android:label="fragment_admin_edit_profile" />
+
+    <!--Fragments for Profile-->
 </navigation>

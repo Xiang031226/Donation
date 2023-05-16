@@ -7,12 +7,12 @@
         android:icon="@drawable/home_icon"
         android:title="@string/dashboard" />
     <item
-        android:id="@+id/campaign_fragment"
+        android:id="@+id/admin_campaign_fragment"
         android:enabled="true"
         android:icon="@drawable/campaign_icon"
         android:title="@string/campaign" />
     <item
-        android:id="@+id/profile_fragment"
+        android:id="@+id/admin_profile_fragment"
         android:enabled="true"
         android:icon="@drawable/account_icon"
         android:title="@string/profile" />

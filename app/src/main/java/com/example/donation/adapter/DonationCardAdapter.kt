@@ -14,7 +14,8 @@ import com.example.donation.model.Donation
 class DonationCardAdapter(
     private val viewModel: DonationViewModel,                  //viewModel, to update the destination fragment, kinda
     private val donationList: List<Donation>,                  //my animal description lists
-    private val listener: DonationItemClickListener            //passing listener
+    private val listener: DonationItemClickListener,
+    private val buttonText: String = "Donate"
 ): RecyclerView.Adapter<DonationCardAdapter.DonationCardViewHolder>() {
 
     class DonationCardViewHolder(view: View?): RecyclerView.ViewHolder(view!!) {
@@ -37,6 +38,7 @@ class DonationCardAdapter(
         holder.donationTitle?.text = donationData.title
         holder.imageView?.setImageResource(donationData.imageResourceId)
         holder.donationCategory?.text = donationData.category
+        holder.donateButton?.text = buttonText
 
         holder.donateButton?.setOnClickListener{
             viewModel.selectedAnimal.value = donationData  //assign the animal which the user has clicked to my viewModel mutable live data

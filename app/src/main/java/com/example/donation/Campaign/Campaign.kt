@@ -16,7 +16,7 @@ import com.example.donation.R
 import com.example.donation.databinding.FragmentCampaignBinding
 import com.google.android.material.tabs.TabLayout
 
-class Campaign : Fragment(R.layout.fragment_campaign) {
+class Campaign() : Fragment(R.layout.fragment_campaign) {
 
     private lateinit var tabLayout: TabLayout
     private var lastSelectedTabPosition = 0
@@ -25,7 +25,6 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
         return inflater.inflate(R.layout.fragment_campaign, container, false)
     }
 
@@ -52,21 +51,17 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
                         donationContainer.findNavController().navigate(R.id.volunteerListItem)
                     }
                 }
-
                 lastSelectedTabPosition = tab.position
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
-                Log.d("Msg : ", "fuck")
                 requireActivity().onBackPressedDispatcher.addCallback(this@Campaign) {
                     if (lastSelectedTabPosition == 0) {
                         findNavController().popBackStack(R.id.home, false)
-                        Log.d("Msg : ", "hmm")
                     } else {
                         tabLayout.getTabAt(0)?.select()
                         donationContainer.findNavController()
                             .popBackStack(R.id.volunteerListItem, true)
-                        Log.d("Msg : ", "hmm2")
                     }
                 }
             }
@@ -84,8 +79,6 @@ class Campaign : Fragment(R.layout.fragment_campaign) {
                 recyclerView?.smoothScrollToPosition(0)
             }
         })
-
-
         requireActivity().onBackPressedDispatcher.addCallback(this@Campaign) {
             findNavController().popBackStack(R.id.home, false)
         }

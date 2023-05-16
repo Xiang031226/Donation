@@ -1,23 +1,26 @@
 package com.example.donation
 
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.donation.databinding.FragmentRegisterBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.security.MessageDigest
 import java.util.regex.Pattern
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-    companion object {
-        const val PASSWORD_PATTERN =
-            "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%/])(?=\\S+$).{4,}$"
-    }
+    private lateinit var binding: FragmentRegisterBinding
+//    private lateinit var userDao: UserDao
+    val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%/])(?=\\S+$).{4,}$"
 
-    private lateinit var registerFragmentBinding: FragmentRegisterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,60 +32,68 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registerFragmentBinding = FragmentRegisterBinding.bind(view)
+        binding = FragmentRegisterBinding.bind(view)
 
-        registerFragmentBinding.apply {
+        binding.apply {
             registerButton.setOnClickListener {
-                registerValidation()
+                if (registerValidation()) {
+                }
+                addToDb()
             }
         }
     }
 
-    private fun registerValidation() {
-        val emailInput = registerFragmentBinding.registerEmailInputText.text.toString()
-        val usernameInput = registerFragmentBinding.registerUsernameInputText.text.toString()
-        val passwordInput = registerFragmentBinding.registerPasswordInputText.text.toString().trim()
-        val retypePasswordInput =
-            registerFragmentBinding.registerRetypePasswordInputText.text.toString().trim()
+    private fun registerValidation(): Boolean {
+        val emailInput = binding.registerEmailInputText.text.toString()
+        val nameInput = binding.registerNameInputText.text.toString()
+        val usernameInput = binding.registerUsernameInputText.text.toString()
+        val passwordInput = binding.registerPasswordInputText.text.toString().trim()
+        val retypePasswordInput = binding.registerRetypePasswordInputText.text.toString().trim()
 
         //email
         if (emailInput.isBlank()) {
-            Toast.makeText(activity, "Please enter your email", Toast.LENGTH_SHORT)
-                .show()
-            return
+            binding.registerEmailInputText.error = "Please enter your email"
+            return false
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+                binding.registerEmailInputText.error = "Please enter a valid email"
+                return false
+            }
+        }
+
+        //name
+        if (nameInput.isBlank()) {
+            binding.registerNameInputText.error = "Please enter your name"
+            return false
         }
 
         //username
         if (usernameInput.isBlank()) {
-            Toast.makeText(activity, "Please enter your username", Toast.LENGTH_SHORT)
-                .show()
-            return
+            binding.registerUsernameInputText.error = "Please enter your username"
+            return false
         }
 
         //password: length and pattern
         if (passwordInput.isBlank()) {
-            Toast.makeText(activity, "Please enter your password", Toast.LENGTH_SHORT)
-                .show()
-            return
+            binding.registerPasswordInputText.error = "Please enter your password"
+            return false
+
         } else if (passwordInput.length < 8) {
-            Toast.makeText(activity, "Password should be more than 8 characters", Toast.LENGTH_SHORT)
-                .show()
-            return
+            binding.registerPasswordInputText.error = "Password should be more than 8 characters"
+            return false
         } else {
             if (!passwordPattern(passwordInput)) {
-                Toast.makeText(activity, "Please follow the pattern", Toast.LENGTH_SHORT)
-                    .show()
-                return
+                binding.registerPasswordInputText.error = "Please follow the pattern"
+                return false
             }
         }
 
         //retype password
         if (retypePasswordInput != passwordInput) {
-            Toast.makeText(activity, "Please retype the same password", Toast.LENGTH_SHORT)
-                .show()
-        } else {
-            view?.let { backToLoginFragment(it) }
+            binding.registerRetypePasswordInputText.error = "Please retype the same password"
+            return false
         }
+        return true
     }
 
     private fun passwordPattern(password: String): Boolean {
@@ -93,8 +104,37 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         return matcher.matches();
     }
 
-    private fun backToLoginFragment(it: View) {
+    private fun hashPassword(password: String): String {
+        val bytes = password.toByteArray()
+        val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        return digest.fold("") { str, it -> str + "%02x".format(it) }
+    }
+
+    private fun addToDb() {
+//        userDao = AppDatabase.getInstance(requireContext()).userDao()
+
+        val emailInput = binding.registerEmailInputText.text.toString().trim()
+        val nameInput = binding.registerNameInputText.text.toString().trim()
+        val usernameInput = binding.registerUsernameInputText.text.toString().trim()
+        val retypePasswordInput = binding.registerRetypePasswordInputText.text.toString().trim()
+
+//        val user = User(
+//            name = nameInput,
+//            username = usernameInput,
+//            email = emailInput,
+//            password = hashPassword(retypePasswordInput)
+//        )
+//
+//        lifecycleScope.launch(Dispatchers.IO) {
+//            userDao.insert(user)
+//
+//        }
+        backToLoginFragment()
+    }
+
+    private fun backToLoginFragment() {
         Toast.makeText(activity, "You are registered. Login again", Toast.LENGTH_SHORT).show()
-        Navigation.findNavController(it).popBackStack()
+        findNavController().navigate(R.id.action_register_fragment_to_login_fragment)
     }
 }
