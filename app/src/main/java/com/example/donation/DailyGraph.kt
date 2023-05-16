@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.donation.databinding.FragmentDailyGraphBinding
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
 
@@ -25,6 +26,9 @@ class DailyGraph : Fragment(R.layout.fragment_daily_graph) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDailyGraphBinding.bind(view)
         val dailyChart = binding.dailyChart
+
+        val xAxis: XAxis = dailyChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
 
         //Entries used for daily graph
         val list: ArrayList<Entry> = ArrayList()

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,8 +52,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
 
             loginButton.setOnClickListener {
-                loadMainActivity() //temporary
-//                loginValidation()
+                loginValidation()
             }
 
             forgetPwButton.setOnClickListener {
@@ -68,19 +68,28 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun loginValidation() {
         val emailInput = binding.loginEmailInputText.text.toString().trim()
         val passwordInput = binding.loginPasswordInputText.text.toString().trim()
+//        val user = userDao.getUserById(userId) ?: return false
 
         if (emailInput.isBlank()) {
             binding.loginEmailInputText.error = "Please enter your username or email"
             return
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+                binding.loginEmailInputText.error = "Please enter a valid email"
+                return
+            }
         }
         if (passwordInput.isBlank()) {
             binding.loginPasswordInputText.error = "Please enter your password"
             return
         } else {
-//            val user = userDao.getUserById(userId) ?: return false
 //            val storedPassword = user.password
-//            val enteredPasswordHash = hashPassword(enteredPassword)
-//            return enteredPasswordHash == storedPassword
+//            val enteredPasswordHash = hashPassword(passwordInput)
+//            if (enteredPasswordHash == storedPassword) {
+//                loadMainActivity()
+//            } else {
+//                return
+//            }
         }
         loadMainActivity()
     }

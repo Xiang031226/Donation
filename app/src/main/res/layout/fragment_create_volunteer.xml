@@ -138,7 +138,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="16sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/create_vol_location_picker"
                     style="@style/picker"
                     android:layout_width="200dp"

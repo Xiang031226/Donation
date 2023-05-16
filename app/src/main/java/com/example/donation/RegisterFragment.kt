@@ -9,6 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.donation.dao.UserDao
+import com.example.donation.data.User
+import com.example.donation.database.AppDatabase
 import com.example.donation.databinding.FragmentRegisterBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,7 +21,7 @@ import java.util.regex.Pattern
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
-//    private lateinit var userDao: UserDao
+    private lateinit var userDao: UserDao
     val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%/])(?=\\S+$).{4,}$"
 
 
@@ -37,8 +40,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         binding.apply {
             registerButton.setOnClickListener {
                 if (registerValidation()) {
+                    addToDb()
                 }
-                addToDb()
             }
         }
     }
@@ -112,24 +115,24 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     }
 
     private fun addToDb() {
-//        userDao = AppDatabase.getInstance(requireContext()).userDao()
+        userDao = AppDatabase.getInstance(requireContext()).userDao()
 
         val emailInput = binding.registerEmailInputText.text.toString().trim()
         val nameInput = binding.registerNameInputText.text.toString().trim()
         val usernameInput = binding.registerUsernameInputText.text.toString().trim()
         val retypePasswordInput = binding.registerRetypePasswordInputText.text.toString().trim()
 
-//        val user = User(
-//            name = nameInput,
-//            username = usernameInput,
-//            email = emailInput,
-//            password = hashPassword(retypePasswordInput)
-//        )
-//
-//        lifecycleScope.launch(Dispatchers.IO) {
-//            userDao.insert(user)
-//
-//        }
+        val user = User(
+            name = nameInput,
+            username = usernameInput,
+            email = emailInput,
+            password = hashPassword(retypePasswordInput)
+        )
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            userDao.insert(user)
+
+        }
         backToLoginFragment()
     }
 

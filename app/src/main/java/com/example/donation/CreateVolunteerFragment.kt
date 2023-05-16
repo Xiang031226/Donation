@@ -27,7 +27,15 @@ class CreateVolunteerFragment : HideBarOrTab() {
     private lateinit var binding: FragmentCreateVolunteerBinding
 
     //Predefined job roles (get from database)
-    private var roleList = arrayListOf<String>("AAAAA", "BBBBB", "EEEEE", "CCCCC", "DDDDD")
+    private var roleList = arrayListOf<String>(
+        "Conservation Volunteer",
+        "Community Outreach Volunteer",
+        "Fundraising Volunteer",
+        "Environmental Education Volunteer",
+        "Wildlife Rescue Volunteer",
+        "Research Volunteer",
+        "Sustainable Development Volunteer"
+    )
 
     //ArrayList to store added available roles
     private var newRoleList = arrayListOf<VolunteerRole>()
@@ -76,9 +84,6 @@ class CreateVolunteerFragment : HideBarOrTab() {
             }
             createVolTimePicker.setOnClickListener {
                 pickTime()
-            }
-            createVolLocationPicker.setOnClickListener {
-                pickLocation()
             }
 
             createVolAddRoleButton.setOnClickListener {
@@ -147,10 +152,6 @@ class CreateVolunteerFragment : HideBarOrTab() {
         TimePickerDialog(requireContext(), timeSetListener, hour, minute, false).show()
     }
 
-    private fun pickLocation() {
-        TODO("Not yet implemented")
-    }
-
     private fun setupRoleItem(roleItem: View) {
         //Spinner adapter
         val spinner = roleItem.findViewById<Spinner>(R.id.role_item_spinner)
@@ -178,6 +179,14 @@ class CreateVolunteerFragment : HideBarOrTab() {
             if (qtyIntValue < 10) {
                 qtyText.text = (qtyIntValue + 1).toString()
             }
+        }
+
+        //Delete
+        val deleteBtn = roleItem.findViewById<ImageButton>(R.id.role_item_delete_button)
+        val container = binding.createVolAddRoleContainer
+        deleteBtn.setOnClickListener {
+            deleteBtn.setImageResource(R.drawable.filled_delete)
+            container.removeView(roleItem)
         }
     }
 
