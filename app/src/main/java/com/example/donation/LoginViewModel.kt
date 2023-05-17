@@ -2,14 +2,7 @@ package com.example.donation
 
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.donation.data.User
-import com.example.donation.database.UserDatabase
-import com.github.mikephil.charting.utils.Utils.init
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class LoginViewModel(application: Application): AndroidViewModel(application) {
     private var sharedPrefs = application.getSharedPreferences("myPrefs", Context.MODE_PRIVATE)

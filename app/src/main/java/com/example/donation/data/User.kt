@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val userType: String = "user",
     val profilePic: ByteArray = ByteArray(0),
     val name: String,
     val username: String,

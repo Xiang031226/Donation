@@ -7,27 +7,55 @@ import androidx.room.RoomDatabase
 import com.example.donation.dao.UserDao
 import com.example.donation.data.User
 
-@Database(entities = [User::class], version = 1)
+//@Database(entities = [User::class], version = 1)
 
-abstract class AppDatabase : RoomDatabase() {
+//abstract class AppDatabase : RoomDatabase() {
+//    abstract fun userDao(): UserDao
+//
+//    companion object {
+//        private const val DATABASE_NAME = "WildcareDb"
+//
+//        @Volatile
+//        private var instance: AppDatabase? = null
+//
+//        fun getInstance(context: Context): AppDatabase {
+//            return instance ?: synchronized(this) {
+//                instance ?: buildDatabase(context).also { instance = it }
+//            }
+//        }
+//
+//        private fun buildDatabase(context: Context): AppDatabase {
+//            return Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DATABASE_NAME)
+//                .fallbackToDestructiveMigration()
+//                .build()
+//        }
+//    }
+//}
+
+@Database(entities = [User::class], version = 2, exportSchema = false)
+internal abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
-        private const val DATABASE_NAME = "WildcareDb"
-
         @Volatile
-        private var instance: AppDatabase? = null
+        private var INSTANCE: AppDatabase? = null
 
-        fun getInstance(context: Context): AppDatabase {
-            return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+        fun getDatabase(context: Context): AppDatabase {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
             }
-        }
-
-        private fun buildDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DATABASE_NAME)
-                .fallbackToDestructiveMigration()
-                .build()
+            synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    "WildcareDB"
+                )
+                    .fallbackToDestructiveMigration() // Enable destructive migration
+                    .build()
+                INSTANCE = instance
+                return instance
+            }
         }
     }
 }

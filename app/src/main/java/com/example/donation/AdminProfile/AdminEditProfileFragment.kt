@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.donation.R
 import com.example.donation.dao.UserDao
+import com.example.donation.database.AppDatabase
 import com.example.donation.databinding.FragmentAdminEditProfileBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -117,19 +118,23 @@ class AdminEditProfileFragment : Fragment(R.layout.fragment_admin_edit_profile) 
         var editedUsername = binding.adminEditProfUsernameText.text.toString().trim()
         val editedEmail = binding.adminEditProfEmailText.text.toString().trim()
 
+        userDao = AppDatabase.getDatabase(requireContext()).userDao()
         lifecycleScope.launch(Dispatchers.IO) {
-            //get the user from db
-//            val user = userDao.getById(1)
-//            user?.let {
-//                val updatedUser =
-//                    user.copy(
-//                        profilePic = editedImageByteArray,
-//                        name = editedName,
-//                        username = editedUsername,
-//                        email = editedEmail
-//                    )
-//                userDao.update(updatedUser) // Update the user record in the database
-//            }
+            val user = userDao.getUserById(1)
+            user?.let {
+                val updatedUser =
+                    editedImageByteArray?.let { it1 ->
+                        user.copy(
+                            profilePic = it1,
+                            name = editedName,
+                            username = editedUsername,
+                            email = editedEmail
+                        )
+                    }
+                if (updatedUser != null) {
+                    userDao.update(updatedUser)
+                }
+            }
         }
     }
 }
