@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminProfileFragment">
+    tools:context=".AdminProfile.AdminProfileFragment">
 
     <include
         android:id="@+id/admin_edit_prof_top_bar"

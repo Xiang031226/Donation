@@ -22,7 +22,6 @@ class AdminActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -35,16 +34,19 @@ class AdminActivity : AppCompatActivity() {
         setupWithNavController(bottomNavView, navController)
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-        binding.settings.setOnClickListener{
+        binding.adminLogout.setOnClickListener {
             viewModel.logout()
             finish()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-             //finish the current activity, which is adminActivity
+            //finish the current activity, which is adminActivity
         }
 
         prefs = getSharedPreferences("Theme_Mode", Context.MODE_PRIVATE)
-        val isNightModeOn = prefs.getInt("MODE", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM) == AppCompatDelegate.MODE_NIGHT_YES
+        val isNightModeOn = prefs.getInt(
+            "MODE",
+            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        ) == AppCompatDelegate.MODE_NIGHT_YES
 
         binding.changeThemeToggle.isChecked = isNightModeOn
         binding.changeThemeToggle.setOnCheckedChangeListener { _, isChecked ->

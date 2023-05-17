@@ -1,7 +1,5 @@
-package com.example.donation
+package com.example.donation.AdminCampaign
 
-import android.app.Activity
-import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
+import com.example.donation.R
 import com.example.donation.R.layout.fragment_application
 import com.example.donation.adapter.ApplicationItemAdapter
 import com.example.donation.databinding.FragmentApplicationBinding

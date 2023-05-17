@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.AdminProfile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.donation.R
 import com.example.donation.databinding.FragmentAdminProfileBinding
 
 class AdminProfileFragment : Fragment(R.layout.fragment_admin_profile) {
@@ -26,7 +27,7 @@ class AdminProfileFragment : Fragment(R.layout.fragment_admin_profile) {
 
         binding.apply{
             adminProfileTopBar.apply {
-                adminCustomTopBarTitle.text = "Your Profile"
+                adminCustomTopBarTitle.text = "View Profile"
                 adminBackButton.apply {
                     visibility = View.INVISIBLE
                     isClickable = false

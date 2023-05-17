@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardFragment">
+    tools:context=".Dashboard.DashboardFragment">
 
     <RelativeLayout
         android:id="@+id/donation_container"
@@ -154,7 +154,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_graph"
-        android:name="com.example.donation.DailyGraph"
+        android:name="com.example.donation.Dashboard.DailyGraph"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"
         app:layout_constraintStart_toStartOf="parent"

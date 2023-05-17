@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.Dashboard
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.donation.R
 import com.example.donation.databinding.FragmentMonthlyGraphBinding
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -28,6 +30,10 @@ class MonthlyGraph : Fragment(R.layout.fragment_monthly_graph) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMonthlyGraphBinding.bind(view)
         val monthlyChart = binding.monthlyChart
+
+
+        val xAxis: XAxis = monthlyChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
 
         //Entries used for monthly graph
         val list: ArrayList<Entry> = ArrayList()

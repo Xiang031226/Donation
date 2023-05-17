@@ -51,7 +51,10 @@ class CheckoutFragment : Fragment() {
 
         viewModel.payment.observe(viewLifecycleOwner) { payment ->
             paymentOption.text = payment.paymentMethod
-            totalAmount.text = "RM " + payment.amount.toString()
+            val amount = payment.amount.toString()
+            totalAmount.text = "RM " + if(amount.endsWith(".0")) {"${amount}0"} else {
+                amount
+            }
             donationType.text = payment.donationType
         }
 

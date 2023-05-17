@@ -1,6 +1,7 @@
 package com.example.donation.Payment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -89,7 +90,9 @@ class PaymentFragment : HideBarOrTab() {
 
         binding.nextButton.setOnClickListener {
             binding.amountInput.clearFocus()
-            viewModel.payment.value = Payment(amount = binding.amountInput.text.toString().toDouble(), donationType = donationType)
+            val totalAmount = binding.amountInput.text.toString().toDouble()
+
+            viewModel.payment.value = Payment(amount = totalAmount, donationType = donationType)
 
             findNavController().navigate(R.id.action_paymentFragment_to_checkoutFragment)
         }

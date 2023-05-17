@@ -9,12 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat.recreate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -36,6 +42,16 @@ class UserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val navView = binding.navView
+        val headerView = navView.getHeaderView(0)
+        val profileImage = headerView.findViewById<ImageView>(R.id.rounded_profile_image)
+        val userName = headerView.findViewById<TextView>(R.id.username)
+        val userEmail = headerView.findViewById<TextView>(R.id.user_email)
+
+        userName.text = intent.getStringExtra("username")
+        userEmail.text = intent.getStringExtra("email")
+
 
         prefs = getSharedPreferences("Theme_Mode", Context.MODE_PRIVATE)
         val savedThemeMode =
@@ -61,8 +77,6 @@ class UserActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-
-
 
         binding.apply {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)

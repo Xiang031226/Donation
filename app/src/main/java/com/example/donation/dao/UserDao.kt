@@ -10,7 +10,7 @@ interface UserDao {
     fun readAllData(): LiveData<List<User>>
 
     @Query("SELECT * FROM users WHERE id = :id")
-    fun getById(id: Int): User
+    fun getUserById(id: Int): User
 
     @Query("SELECT * FROM users WHERE name = :name")
     fun getByName(name: String): User

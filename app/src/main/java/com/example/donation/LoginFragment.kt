@@ -1,16 +1,17 @@
 package com.example.donation
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Patterns
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -21,20 +22,28 @@ import java.security.MessageDigest
 
 class LoginFragment : Fragment() {
 
-    private lateinit var viewModel: LoginViewModel
-
     companion object {
         private var userType = "user"
     }
+    private lateinit var viewModel: LoginViewModel
+    private lateinit var username: String
+    private lateinit var email: String
 
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var accountViewModel: AccountViewModel
 
     private fun navigateToCorrectScreen() {
+        val prefs = requireActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        username = prefs.getString("userName", "").toString()
+        email = prefs.getString("userEmail", "").toString()
         val userType = viewModel.userType.value
-        val intent = if(userType == "admin") {
+        val intent = if (userType == "admin") {
             Intent(requireContext(), AdminActivity::class.java)
         } else {
-            Intent(requireContext(), UserActivity::class.java)
+            Intent(requireContext(), UserActivity::class.java).apply {
+                putExtra("username", username)
+                putExtra("email", email)
+            }
         }
         startActivity(intent)
         requireActivity().finish()      //end the mainActivity, so user pressed back button can directly exit the apps
@@ -42,15 +51,14 @@ class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
         viewModel.isLoggedIn.observe(viewLifecycleOwner) { isLoggedIn ->
             if (isLoggedIn) {
-               navigateToCorrectScreen()
-//                viewModel.logout()
+                navigateToCorrectScreen()
             }
         }
 
@@ -81,8 +89,7 @@ class LoginFragment : Fragment() {
             }
 
             loginButton.setOnClickListener {
-                loadMainActivity() //temporary
-//                loginValidation()
+                loginValidation()
             }
 
             forgetPwButton.setOnClickListener {
@@ -98,17 +105,53 @@ class LoginFragment : Fragment() {
     private fun loginValidation() {
         val emailInput = binding.loginEmailInputText.text.toString().trim()
         val passwordInput = binding.loginPasswordInputText.text.toString().trim()
+//        val user = userDao.getUserById(userId) ?: return false
 
         if (emailInput.isBlank()) {
             binding.loginEmailInputText.error = "Please enter your username or email"
             return
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+                binding.loginEmailInputText.error = "Please enter a valid email"
+                return
+            }
         }
         if (passwordInput.isBlank()) {
             binding.loginPasswordInputText.error = "Please enter your password"
             return
         } else {
+//            val storedPassword = user.password
+//            val enteredPasswordHash = hashPassword(passwordInput)
+//            if (enteredPasswordHash == storedPassword) {
+//                loadMainActivity()
+//            } else {
+//                return
+//            }
         }
-        loadMainActivity()
+
+        accountViewModel = ViewModelProvider(requireActivity())[AccountViewModel::class.java]
+        accountViewModel.readAllData.observe(viewLifecycleOwner) { users ->
+            var isUser = false
+            for (user in users) {
+                if (user.email != emailInput) {
+                    continue
+                }
+                if (user.password != passwordInput) {
+                    continue
+                }
+                isUser = true
+                viewModel.setUserEmail(user.email)
+                this.email = user.email
+                viewModel.setUserName(user.name)
+                this.username = user.username
+            }
+            if (isUser) {
+                loadMainActivity()
+            } else  {
+                Toast.makeText(activity, "Wrong email or password.", Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
 
     private fun hashPassword(password: String): String {
@@ -120,10 +163,10 @@ class LoginFragment : Fragment() {
 
     private fun loadMainActivity() {
         viewModel.setUserType(userType)
-        Log.e("??: ", userType)
         viewModel.apply {
             setLoggedIn(true)
             saveLoginState()
+
 
 //        if(userType == "admin"){
 //            val adminIntent = Intent(activity, AdminActivity::class.java)
@@ -135,7 +178,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun changeTab(userType : String) {
+    private fun changeTab(userType: String) {
         lateinit var selected: TextView
         lateinit var nonSelected: TextView
 

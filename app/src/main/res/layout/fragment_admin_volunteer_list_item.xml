@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminVolunteerListItem">
+    tools:context=".AdminProfile.AdminVolunteerListItem">
 
     <include
         android:id="@+id/admin_volunteer_list_item"

@@ -166,4 +166,6 @@
     <string name="create_volunteer_title">Create Volunteer</string>
     <string name="title">Title</string>
     <string name="name">Name</string>
+    <string name="org_intro">A dynamic organization dedicated to global conservation and the protection of biodiversity. Through innovative initiatives, community engagement, and scientific research, Wildcare strives to safeguard endangered species, restore habitats, and inspire a sustainable future for our planet. Join us in preserving the wonders of the natural world.</string>
+    <string name="org_goal">At Wildcare, our goals are clear and ambitious. We aim to preserve and restore critical ecosystems, safeguard endangered species from extinction, promote sustainable practices, raise awareness about environmental issues, and empower communities to actively participate in conservation efforts. Together, we can create a thriving planet where wildlife and humans coexist harmoniously, ensuring a sustainable future for generations to come.</string>
 </resources>

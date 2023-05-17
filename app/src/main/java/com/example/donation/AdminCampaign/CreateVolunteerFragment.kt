@@ -1,11 +1,10 @@
-package com.example.donation
+package com.example.donation.AdminCampaign
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import android.widget.*
 import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
+import com.example.donation.R
 import com.example.donation.ReusableResource.HideBarOrTab
 import com.example.donation.databinding.FragmentCreateVolunteerBinding
 import com.example.donation.model.Volunteer
@@ -21,14 +21,21 @@ import com.google.android.material.card.MaterialCardView
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class CreateVolunteerFragment : HideBarOrTab() {
 
     private lateinit var binding: FragmentCreateVolunteerBinding
 
     //Predefined job roles (get from database)
-    private var roleList = arrayListOf<String>("AAAAA", "BBBBB", "EEEEE", "CCCCC", "DDDDD")
+    private var roleList = arrayListOf<String>(
+        "Conservation Volunteer",
+        "Community Outreach Volunteer",
+        "Fundraising Volunteer",
+        "Environmental Education Volunteer",
+        "Wildlife Rescue Volunteer",
+        "Research Volunteer",
+        "Sustainable Development Volunteer"
+    )
 
     //ArrayList to store added available roles
     private var newRoleList = arrayListOf<VolunteerRole>()
@@ -77,8 +84,6 @@ class CreateVolunteerFragment : HideBarOrTab() {
             }
             createVolTimePicker.setOnClickListener {
                 pickTime()
-            }
-            createVolLocationPicker.setOnClickListener {
             }
 
             createVolAddRoleButton.setOnClickListener {
@@ -174,6 +179,14 @@ class CreateVolunteerFragment : HideBarOrTab() {
             if (qtyIntValue < 10) {
                 qtyText.text = (qtyIntValue + 1).toString()
             }
+        }
+
+        //Delete
+        val deleteBtn = roleItem.findViewById<ImageButton>(R.id.role_item_delete_button)
+        val container = binding.createVolAddRoleContainer
+        deleteBtn.setOnClickListener {
+            deleteBtn.setImageResource(R.drawable.filled_delete)
+            container.removeView(roleItem)
         }
     }
 

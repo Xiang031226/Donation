@@ -17,7 +17,7 @@ import java.util.regex.Pattern
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
-    private lateinit var viewModel: RegisterViewModel
+    private lateinit var viewModel: AccountViewModel
     val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%/])(?=\\S+$).{4,}$"
 
     override fun onCreateView(
@@ -27,7 +27,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_register, container, false)
 
-        viewModel = ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[AccountViewModel::class.java]
 
         return view
     }

@@ -1,18 +1,17 @@
 package com.example.donation
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.donation.dao.UserDao
 import com.example.donation.data.User
 import com.example.donation.database.UserDatabase
+import com.github.mikephil.charting.utils.Utils.init
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegisterViewModel(application: Application) : AndroidViewModel(application) {
-    private val readAllData: LiveData<List<User>>
+class AccountViewModel(application: Application) : AndroidViewModel(application) {
+    val readAllData: LiveData<List<User>>
     private val repository: UserRepository
 
     init {
@@ -26,4 +25,5 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
             repository.addUser(user)
         }
     }
+
 }

@@ -1,24 +1,17 @@
-package com.example.donation
+package com.example.donation.AdminCampaign
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.donation.R
 import com.example.donation.databinding.FragmentAdminCampaignBinding
-import com.example.donation.databinding.FragmentCampaignBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 
 open class AdminCampaignFragment : Fragment(R.layout.fragment_admin_campaign) {
 

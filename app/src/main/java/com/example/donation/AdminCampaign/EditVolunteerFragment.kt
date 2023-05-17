@@ -1,4 +1,4 @@
-package com.example.donation
+package com.example.donation.AdminCampaign
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.donation.Campaign.Volunteer.VolunteerViewModel
+import com.example.donation.R
 import com.example.donation.ReusableResource.HideBarOrTab
 import com.example.donation.databinding.FragmentEditVolunteerBinding
 import com.example.donation.model.Volunteer
@@ -31,14 +32,21 @@ class EditVolunteerFragment : HideBarOrTab() {
     private lateinit var availableRoleList: List<VolunteerRole>
 
     //Predefined job roles (get from database)
-    private var roleList = arrayListOf<String>("AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEEE")
+    private var roleList = arrayListOf<String>(
+        "Conservation Volunteer",
+        "Community Outreach Volunteer",
+        "Fundraising Volunteer",
+        "Environmental Education Volunteer",
+        "Wildlife Rescue Volunteer",
+        "Research Volunteer",
+        "Sustainable Development Volunteer"
+    )
 
     //ArrayList to store edited available roles
     private var editedRoleList = arrayListOf<VolunteerRole>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_edit_volunteer, container, false)
@@ -84,9 +92,6 @@ class EditVolunteerFragment : HideBarOrTab() {
             editVolTimePicker.setOnClickListener {
                 pickTime()
             }
-            editVolLocationPicker.setOnClickListener {
-                pickLocation()
-            }
 
             editVolAddRoleButton.setOnClickListener {
                 //Add layout for new available role
@@ -130,7 +135,12 @@ class EditVolunteerFragment : HideBarOrTab() {
             eventTitle.setText(selectedEvent.eventTitle)
             eventDate.text = selectedEvent.eventDate
             eventTime.text = selectedEvent.eventTime
-            eventLocation.text = selectedEvent.eventLocation
+            eventLocation.text =
+                if (selectedEvent.eventLocation.isBlank() == true) {
+                    selectedEvent.eventLocation
+                } else {
+                    "Kuala Lumpur, Malaysia"
+                }
             availableRoleList = selectedEvent.availableVolunteerRole
 
             //Add existing available roles of the selected volunteer event
@@ -178,8 +188,7 @@ class EditVolunteerFragment : HideBarOrTab() {
         calendar.time = timeFormat.parse(timeString)!!
 
         val timePickerDialog = TimePickerDialog(
-            requireContext(),
-            { _, hourOfDay, minute ->
+            requireContext(), { _, hourOfDay, minute ->
                 // Update the Calendar object with the new time
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                 calendar.set(Calendar.MINUTE, minute)
@@ -187,16 +196,9 @@ class EditVolunteerFragment : HideBarOrTab() {
                 // Format the time and set it as the text of the TextView
                 val selectedTime = timeFormat.format(calendar.time)
                 binding.editVolTimePicker.text = selectedTime
-            },
-            calendar.get(Calendar.HOUR_OF_DAY),
-            calendar.get(Calendar.MINUTE),
-            false
+            }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false
         )
         timePickerDialog.show()
-    }
-
-    private fun pickLocation() {
-        TODO("Not yet implemented")
     }
 
     private fun setupRoleItem(roleItem: View, roleTitle: String? = null, qtyNeeded: String = "1") {
@@ -204,9 +206,7 @@ class EditVolunteerFragment : HideBarOrTab() {
         val spinner = roleItem.findViewById<Spinner>(R.id.role_item_spinner)
         roleList.sort()
         val adapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_dropdown_item,
-            roleList
+            requireContext(), android.R.layout.simple_spinner_dropdown_item, roleList
         )
         spinner.adapter = adapter
         //Initial role title
@@ -278,12 +278,7 @@ class EditVolunteerFragment : HideBarOrTab() {
 
             //Update viewmodel
             val updatedVolunteer = Volunteer(
-                eventImage,
-                eventTitle,
-                eventDate,
-                eventTime,
-                eventLocation,
-                editedRoleList
+                eventImage, eventTitle, eventDate, eventTime, eventLocation, editedRoleList
             )
             viewModel.selectedEvent.value = updatedVolunteer
             Log.i("eventImage", updatedVolunteer.eventImage.toString())
