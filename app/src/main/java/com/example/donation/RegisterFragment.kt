@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.donation.dao.UserDao
-import com.example.donation.data.User
+import com.example.donation.model.User
 import com.example.donation.databinding.FragmentRegisterBinding
 import java.security.MessageDigest
 import java.util.regex.Pattern
@@ -19,7 +18,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var viewModel: AccountViewModel
-    private lateinit var userDao: UserDao
     val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%/])(?=\\S+$).{4,}$"
 
     override fun onCreateView(
@@ -52,10 +50,9 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val nameInput = binding.registerNameInputText.text.toString()
         val usernameInput = binding.registerUsernameInputText.text.toString()
         val passwordInput = binding.registerPasswordInputText.text.toString().trim()
-        val retypePasswordInput = binding.registerRetypePasswordInputText.text.toString().trim()
 
-        val user = User(name = nameInput, username = usernameInput, email = emailInput, password = passwordInput)
-        viewModel.adduser(user)
+        val user = User(name = nameInput, username = usernameInput, email = emailInput, password = hashPassword(passwordInput))
+        viewModel.addUser(user)
         backToLoginFragment()
     }
 

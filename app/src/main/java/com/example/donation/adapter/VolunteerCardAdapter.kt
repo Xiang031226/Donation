@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.R
 import com.example.donation.Campaign.Volunteer.VolunteerViewModel
 import com.example.donation.model.Volunteer
+import com.example.donation.model.VolunteerDb
 
 
 class VolunteerCardAdapter(
-    private val viewModel : VolunteerViewModel,
-    private val eventList : List<Volunteer>,
-    private val listener : VolunteerItemClickListener,      //passing listener
+    private val viewModel: VolunteerViewModel,
+    private val eventList: List<Volunteer>,
+    private val listener: VolunteerItemClickListener,      //passing listener
     private val buttonText: String = "Volunteer"
 ) : RecyclerView.Adapter<VolunteerCardAdapter.VolunteerCardViewHolder>() {
 

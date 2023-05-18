@@ -1,11 +1,12 @@
 package com.example.donation.data
 
+import com.example.donation.Campaign.Volunteer.VolunteerViewModel
 import com.example.donation.R
 import com.example.donation.model.Volunteer
 import com.example.donation.model.VolunteerRole
 
 class VolunteerSource {
-    private val volunteerRoles = listOf(
+    val volunteerRoles = listOf(
         VolunteerRole(
             "Social Media Coordinator",
             jobScopes = listOf(
@@ -64,34 +65,34 @@ class VolunteerSource {
         return listOf(
             Volunteer(
                 R.drawable.image4,
-                "Join us on the incoming earth hour event",
-                "31 March 2023",
+                "Join us on the upcoming earth hour event",
+                "31 September 2023",
                 "8:00 am",
-                "Puchong",
+                "Kuala Lumpur",
                 listOf(volunteerRoles[0], volunteerRoles[3])
             ),
             Volunteer(
                 R.drawable.image3,
-                "Join us on the incoming earth hour event",
-                "31 March 2023",
-                "8:00 am",
-                "Puchong",
+                "Let's Save the Planet Together!",
+                "15 October 2023",
+                "10:00 am",
+                "Selangor",
                 listOf(volunteerRoles[1], volunteerRoles[3])
             ),
             Volunteer(
                 R.drawable.image2,
-                "Join us on the incoming earth hour event",
-                "31 March 2023",
-                "8:00 am",
-                "Puchong",
+                "Creating a Cleaner Environment Together",
+                "17 October 2023",
+                "9:00 am",
+                "Redang Island",
                 listOf(volunteerRoles[2], volunteerRoles[1])
             ),
             Volunteer(
                 R.drawable.image1,
-                "Join us on the incoming earth hour event",
-                "31 March 2023",
+                "Clean the Zoo",
+                "31 November 2023",
                 "8:00 am",
-                "Puchong",
+                "Kuala Lumpur",
                 listOf(volunteerRoles[3], volunteerRoles[2])
             )
         )

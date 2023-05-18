@@ -2,7 +2,7 @@ package com.example.donation.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.donation.data.User
+import com.example.donation.model.User
 
 @Dao
 interface UserDao {
@@ -14,6 +14,9 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE name = :name")
     fun getByName(name: String): User
+
+    @Query("SELECT * FROM users WHERE username = :username OR email = :email")
+    fun getByUserameOrEmail(username: String, email: String): LiveData<User>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addUser(user: User)

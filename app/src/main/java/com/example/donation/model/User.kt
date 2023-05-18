@@ -1,4 +1,4 @@
-package com.example.donation.data
+package com.example.donation.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "users")
 data class User(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val userType: String = "user",
     val profilePic: ByteArray = ByteArray(0),
-    val name: String,
-    val username: String,
-    val email: String,
+    var name: String,
+    var username: String,
+    var email: String,
     val password: String,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0
 ) {
 }

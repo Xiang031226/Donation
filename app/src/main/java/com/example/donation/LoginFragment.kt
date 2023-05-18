@@ -36,9 +36,13 @@ class LoginFragment : Fragment() {
         val prefs = requireActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
         username = prefs.getString("userName", "").toString()
         email = prefs.getString("userEmail", "").toString()
+
         val userType = viewModel.userType.value
         val intent = if (userType == "admin") {
-            Intent(requireContext(), AdminActivity::class.java)
+            Intent(requireContext(), AdminActivity::class.java).apply {
+                putExtra("username", username)
+                putExtra("email", email)
+            }
         } else {
             Intent(requireContext(), UserActivity::class.java).apply {
                 putExtra("username", username)
@@ -104,7 +108,6 @@ class LoginFragment : Fragment() {
     private fun loginValidation() {
         val emailInput = binding.loginEmailInputText.text.toString().trim()
         val passwordInput = binding.loginPasswordInputText.text.toString().trim()
-//        val user = userDao.getUserById(userId) ?: return false
 
         if (emailInput.isBlank()) {
             binding.loginEmailInputText.error = "Please enter your username or email"
@@ -118,14 +121,6 @@ class LoginFragment : Fragment() {
         if (passwordInput.isBlank()) {
             binding.loginPasswordInputText.error = "Please enter your password"
             return
-        } else {
-//            val storedPassword = user.password
-//            val enteredPasswordHash = hashPassword(passwordInput)
-//            if (enteredPasswordHash == storedPassword) {
-//                loadMainActivity()
-//            } else {
-//                return
-//            }
         }
 
         accountViewModel = ViewModelProvider(requireActivity())[AccountViewModel::class.java]
@@ -135,7 +130,7 @@ class LoginFragment : Fragment() {
                 if (user.email != emailInput) {
                     continue
                 }
-                if (user.password != passwordInput) {
+                if (user.password != hashPassword(passwordInput)) {
                     continue
                 }
                 isUser = true
@@ -165,15 +160,6 @@ class LoginFragment : Fragment() {
         viewModel.apply {
             setLoggedIn(true)
             saveLoginState()
-
-
-//        if(userType == "admin"){
-//            val adminIntent = Intent(activity, AdminActivity::class.java)
-//            startActivity(adminIntent)
-//        }else {
-//            val userIntent = Intent(activity, UserMainActivity::class.java)
-//            startActivity(userIntent)
-//        }
         }
     }
 

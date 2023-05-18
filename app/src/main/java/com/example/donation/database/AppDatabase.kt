@@ -4,37 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.donation.converter.Converters
 import com.example.donation.dao.UserDao
-import com.example.donation.data.User
+import com.example.donation.dao.VolunteerDbDao
+import com.example.donation.model.User
+import com.example.donation.model.VolunteerDb
 
-//@Database(entities = [User::class], version = 1)
-
-//abstract class AppDatabase : RoomDatabase() {
-//    abstract fun userDao(): UserDao
-//
-//    companion object {
-//        private const val DATABASE_NAME = "WildcareDb"
-//
-//        @Volatile
-//        private var instance: AppDatabase? = null
-//
-//        fun getInstance(context: Context): AppDatabase {
-//            return instance ?: synchronized(this) {
-//                instance ?: buildDatabase(context).also { instance = it }
-//            }
-//        }
-//
-//        private fun buildDatabase(context: Context): AppDatabase {
-//            return Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DATABASE_NAME)
-//                .fallbackToDestructiveMigration()
-//                .build()
-//        }
-//    }
-//}
-
-@Database(entities = [User::class], version = 2, exportSchema = false)
+@Database(entities = [User::class, VolunteerDb::class], version = 1)
+@TypeConverters(Converters::class)
 internal abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun volunteerDbDao(): VolunteerDbDao
 
     companion object {
         @Volatile

@@ -27,6 +27,7 @@ class VolunteerListItem : Fragment(R.layout.volunteer_activity_list), VolunteerI
         val eventDescriptionList = VolunteerSource().eventDescriptionList()
 
         viewModel = ViewModelProvider(requireActivity())[VolunteerViewModel::class.java]
+//        val eventDescriptionLiveList = viewModel.readAllData
 
         val adapter = VolunteerCardAdapter(viewModel, eventDescriptionList, this)
 
