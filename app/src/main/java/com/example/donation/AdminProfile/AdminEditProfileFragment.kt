@@ -148,14 +148,11 @@ class AdminEditProfileFragment : Fragment(R.layout.fragment_admin_edit_profile) 
         val editedEmail = binding.adminEditProfEmailText.text.toString().trim()
 
         val prefs = requireActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        val username = prefs.getString("userName", "").toString()
+        val email = prefs.getString("userEmail", "").toString()
+        lifecycleScope.launch(Dispatchers.IO) {
 
-        viewModel.currentUser.observe(viewLifecycleOwner) { user ->
-            viewModel.currentUser.value?.name = editedName
-            viewModel.currentUser.value?.username = editedUsername
-            viewModel.currentUser.value?.email = editedEmail
-            Log.i("Euser.name", user.name)
-            Log.i("Euser.username", user.username)
-            Log.i("Euser.email", user.email)
+            viewModel.updateProfile(editedName, editedUsername, editedEmail, username, email)
         }
 
         val editor = prefs.edit()

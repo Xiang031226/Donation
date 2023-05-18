@@ -42,7 +42,20 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun delete(user: User){
+    suspend fun updateProfile(
+        name: String,
+        username: String,
+        email: String,
+        oldname: String,
+        oldemail: String
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
+
+            repository.updateProfile(name, username, email, oldname, oldemail)
+        }
+    }
+
+    fun delete(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.delete(user)
         }
