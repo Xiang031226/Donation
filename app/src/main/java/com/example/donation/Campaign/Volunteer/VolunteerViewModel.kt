@@ -8,9 +8,5 @@ import com.example.donation.model.Volunteer
 class VolunteerViewModel() : ViewModel() {
 
     val selectedEvent = MutableLiveData<Volunteer>()
-//    val volunteerData: LiveData<Volunteer> = _volunteerData
-//
-//    fun loadVolunteerData(volunteerEvent: String) {
-//    }
 
 }

@@ -60,6 +60,7 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
     fun logout() {
         setLoggedIn(false)
         setUserType("user")
+
         saveLoginState()
     }
 }

@@ -1,46 +1,36 @@
 package com.example.donation.Payment
 
 import android.annotation.SuppressLint
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.donation.CardViewModel
 import com.example.donation.R
 import com.example.donation.ReusableResource.OpenDialog
 import com.example.donation.adapter.CreditCardAdapter
-import com.example.donation.data.CreditCardSource
 import com.example.donation.databinding.FragmentChangeCardPaymentBinding
 import com.example.donation.model.CreditCard
 
 class ChangeCardPaymentFragment : Fragment() {
 
     private lateinit var binding : FragmentChangeCardPaymentBinding
-    private lateinit var viewModel: PaymentViewModel
+    private lateinit var viewModel: CardViewModel
     private lateinit var adapter: CreditCardAdapter
-    private var cardLists: MutableList<CreditCard> = mutableListOf()
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
-        viewModel = ViewModelProvider(requireActivity())[PaymentViewModel::class.java]
-        viewModel.dialogData.observe(viewLifecycleOwner){ data ->
-            val cardNumber = data.cardNumber
-            val expiredDate = data.expiredDate
-            val cvv = data.cvv
-            cardLists.add(CreditCard(R.drawable.ic_card, cardNumber, expiredDate, cvv, R.drawable.ic_delete))
-            adapter.notifyDataSetChanged()
-        }
-        // Inflate the layout for this fragment
+        viewModel = ViewModelProvider(requireActivity())[CardViewModel::class.java]
+        adapter = CreditCardAdapter(viewModel)
         return inflater.inflate(R.layout.fragment_change_card_payment, container, false)
     }
 
@@ -49,10 +39,13 @@ class ChangeCardPaymentFragment : Fragment() {
 
         binding = FragmentChangeCardPaymentBinding.bind(view)
 
-        adapter = CreditCardAdapter(requireContext(), cardLists)
         val recyclerView = view.findViewById<RecyclerView>(R.id.card_payment_recycler_view)
-        recyclerView.adapter = adapter
-        recyclerView.setHasFixedSize(true)
+            recyclerView.adapter = adapter
+        recyclerView?.setHasFixedSize(true)
+
+        viewModel.readAllData.observe(viewLifecycleOwner) { card ->
+            adapter.setData(card)
+        }
 
         binding.apply {
             changePaymentToolbar.setNavigationIcon(R.drawable.ic_back_arrow)
@@ -61,6 +54,8 @@ class ChangeCardPaymentFragment : Fragment() {
                 showDialog()
             }
         }
+
+
     }
 
     private fun showDialog() {

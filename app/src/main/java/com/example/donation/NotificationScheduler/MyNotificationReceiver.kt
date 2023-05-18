@@ -29,8 +29,8 @@ class MyNotificationReceiver : BroadcastReceiver() {
                 val CHANNEL_NAME = "My App Notifications"
                 val CHANNEL_DESCRIPTION = "Notifications for My App"
                 val notificationBuilder = NotificationCompat.Builder(context, CHANNEL_ID)
-                    .setContentTitle("title")
-                    .setContentText("message")
+                    .setContentTitle("Save Our Elephant")
+                    .setContentText("A monthly donation of RM 300 has been made")
                     .setSmallIcon(R.drawable.ic_notifications)
                     .setAutoCancel(true)
 

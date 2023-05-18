@@ -91,7 +91,6 @@ class SettingFragment : HideBarOrTab() {
     }
 
     private fun handleToggleChecked(isChecked : Boolean) {
-        Toast.makeText(activity, "??", Toast.LENGTH_SHORT).show()
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         val intent = Intent(activity, MyNotificationReceiver::class.java)
@@ -134,6 +133,12 @@ class SettingFragment : HideBarOrTab() {
         super.onDestroy()
         showBottomBar()
         showAppBar()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideAppBar()
+        hideBottomBar()
     }
 
 }

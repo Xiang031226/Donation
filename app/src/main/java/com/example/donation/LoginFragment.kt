@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
             }
         }
         startActivity(intent)
-        requireActivity().finish()      //end the mainActivity, so user pressed back button can directly exit the apps
+       requireActivity().finish()      //end the mainActivity, so user pressed back button can directly exit the apps
     }
 
     override fun onCreateView(
@@ -76,7 +76,6 @@ class LoginFragment : Fragment() {
                 registerNowButton.isClickable = true
                 registerNowButton.visibility = View.VISIBLE
                 userType = "user"
-                Toast.makeText(activity, "haiya", Toast.LENGTH_SHORT).show()
                 changeTab(userType)
             }
 
@@ -131,6 +130,7 @@ class LoginFragment : Fragment() {
         accountViewModel = ViewModelProvider(requireActivity())[AccountViewModel::class.java]
         accountViewModel.readAllData.observe(viewLifecycleOwner) { users ->
             var isUser = false
+            var userId = 0
             for (user in users) {
                 if (user.email != emailInput) {
                     continue
@@ -143,6 +143,9 @@ class LoginFragment : Fragment() {
                 this.email = user.email
                 viewModel.setUserName(user.name)
                 this.username = user.username
+                userId = user.userId
+                val prefs = requireActivity().getSharedPreferences("my_app_prefs", Context.MODE_PRIVATE)
+                prefs.edit().putInt("userId", userId).apply()
             }
             if (isUser) {
                 loadMainActivity()

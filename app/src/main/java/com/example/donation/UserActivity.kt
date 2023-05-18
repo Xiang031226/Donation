@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.example.donation.Profile.Profile
 import com.example.donation.databinding.ActivityUserBinding
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -35,6 +36,7 @@ class UserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserBinding
     private lateinit var navController: NavController
     private lateinit var viewModel: LoginViewModel
+    private lateinit var accViewModel: AccountViewModel
     private lateinit var prefs: SharedPreferences
 
     @SuppressLint("CommitPrefEdits", "QueryPermissionsNeeded")
@@ -49,8 +51,27 @@ class UserActivity : AppCompatActivity() {
         val userName = headerView.findViewById<TextView>(R.id.username)
         val userEmail = headerView.findViewById<TextView>(R.id.user_email)
 
-        userName.text = intent.getStringExtra("username")
-        userEmail.text = intent.getStringExtra("email")
+        viewModel = ViewModelProvider(this@UserActivity)[LoginViewModel::class.java]
+        accViewModel = ViewModelProvider(this)[AccountViewModel::class.java]
+        val preferences = getSharedPreferences("my_app_prefs", Context.MODE_PRIVATE)
+        val userId = preferences.getInt("userId", -1)
+        accViewModel.getUserById(userId).observe(this){ user ->
+            if (user != null) {
+                userName.text = user.username
+                userEmail.text = user.email
+            } else {
+                viewModel.logout()
+                val intent = Intent(this@UserActivity, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        val profile = Profile()
+        val bundle = Bundle()
+        bundle.putString("username", userName.text.toString())
+        bundle.putString("email", userEmail.text.toString())
+        profile.arguments = bundle
 
 
         prefs = getSharedPreferences("Theme_Mode", Context.MODE_PRIVATE)
@@ -107,7 +128,6 @@ class UserActivity : AppCompatActivity() {
                         findNavController(R.id.nav_host_fragment).navigate(R.id.settingFragment)
                     }
                     R.id.nav_logout -> {
-                        viewModel = ViewModelProvider(this@UserActivity)[LoginViewModel::class.java]
                         viewModel.logout()
                         val intent = Intent(this@UserActivity, MainActivity::class.java)
                         startActivity(intent)

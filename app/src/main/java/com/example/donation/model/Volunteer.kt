@@ -3,7 +3,7 @@ package com.example.donation.model
 import androidx.annotation.DrawableRes
 
 // volunteer class
-class Volunteer(
+data class Volunteer(
     @DrawableRes val eventImage: Int,
     val eventTitle: String,
     val eventDate: String,

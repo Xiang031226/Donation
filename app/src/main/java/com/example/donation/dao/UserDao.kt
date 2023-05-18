@@ -9,11 +9,11 @@ interface UserDao {
     @Query("SELECT * FROM users")
     fun readAllData(): LiveData<List<User>>
 
-    @Query("SELECT * FROM users WHERE id = :id")
-    fun getUserById(id: Int): User
+    @Query("SELECT * FROM users WHERE userId = :userId")
+    fun getUserById(userId: Int): LiveData<User>
 
     @Query("SELECT * FROM users WHERE name = :name")
-    fun getByName(name: String): User
+    fun getByName(name: String): LiveData<User>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addUser(user: User)

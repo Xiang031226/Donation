@@ -27,7 +27,6 @@ import java.io.IOException
 class AdminEditProfileFragment : Fragment(R.layout.fragment_admin_edit_profile) {
 
     private lateinit var binding: FragmentAdminEditProfileBinding
-    private lateinit var userDao: UserDao
     private lateinit var profileImageView: ImageView
     private lateinit var selectPictureLauncher: ActivityResultLauncher<String>
     private var imageBitmap: Bitmap? = null
@@ -118,23 +117,23 @@ class AdminEditProfileFragment : Fragment(R.layout.fragment_admin_edit_profile) 
         var editedUsername = binding.adminEditProfUsernameText.text.toString().trim()
         val editedEmail = binding.adminEditProfEmailText.text.toString().trim()
 
-        userDao = AppDatabase.getDatabase(requireContext()).userDao()
-        lifecycleScope.launch(Dispatchers.IO) {
-            val user = userDao.getUserById(1)
-            user?.let {
-                val updatedUser =
-                    editedImageByteArray?.let { it1 ->
-                        user.copy(
-                            profilePic = it1,
-                            name = editedName,
-                            username = editedUsername,
-                            email = editedEmail
-                        )
-                    }
-                if (updatedUser != null) {
-                    userDao.update(updatedUser)
-                }
-            }
-        }
+//        userDao = AppDatabase.getDatabase(requireContext()).userDao()
+//        lifecycleScope.launch(Dispatchers.IO) {
+//            val user = userDao.getUserById(1)
+//            user?.let {
+//                val updatedUser =
+//                    editedImageByteArray?.let { it1 ->
+//                        user.copy(
+//                            profilePic = it1,
+//                            name = editedName,
+//                            username = editedUsername,
+//                            email = editedEmail
+//                        )
+//                    }
+//                if (updatedUser != null) {
+//                    userDao.update(updatedUser)
+//                }
+//            }
+//        }
     }
 }

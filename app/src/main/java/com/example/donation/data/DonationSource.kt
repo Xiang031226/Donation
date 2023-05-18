@@ -33,7 +33,7 @@ class DonationSource(context: Context) {
             context.getString(R.string.elephant_supportMsg)
         ),
         AnimalDescription(
-            "Save Our Sea Turtles",
+            "Save Our Orang Utans",
             R.drawable.orang_utans1,
             R.drawable.lose_habitat2,
             R.drawable.orang_utans2,
@@ -46,7 +46,7 @@ class DonationSource(context: Context) {
             context.getString(R.string.sea_turtle_supportMsg)
         ),
         AnimalDescription(
-            "Save Our Orang Utans",
+            "Save Our Sea Turtles",
             R.drawable.turtle1,
             R.drawable.turtle2,
             R.drawable.turtle3,

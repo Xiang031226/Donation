@@ -9,11 +9,11 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donation.R
-import com.example.donation.model.History
+import com.example.donation.data.DonationTransaction
 import java.util.*
 
 class HistoryCardAdapter(
-    private var historyList: List<History>,
+    private var transactionList: List<DonationTransaction> = emptyList()
 ) : RecyclerView.Adapter<HistoryCardAdapter.HistoryCardViewHolder>() {
 
     private var showAllItems = false
@@ -32,14 +32,14 @@ class HistoryCardAdapter(
         val historyContainer: ConstraintLayout = view.findViewById(R.id.history_container)
         val expandableLayout: RelativeLayout = view.findViewById(R.id.expandable_layout)
 
-        fun bind(item: History, listener: HistoryItemClickListener?) {
-            historyTitle.text = item.donation_title
-            historyDate.text = item.donation_date
-            historyTime.text = item.donation_time
-            amountDonated.text = item.amount_donated.toString()
-            donationType.text = item.description.donation_type
-            paymentMethod.text = item.description.payment_method
-            category.text = item.description.category
+        fun bind(item: DonationTransaction, listener: HistoryItemClickListener?) {
+            historyTitle.text = item.donationTitle
+            historyDate.text = item.date
+            historyTime.text = item.time
+            amountDonated.text = "RM " + item.amount.toString()
+            donationType.text = item.donationType
+            paymentMethod.text = item.paymentMethod
+            category.text = item.category
 
             // Call the click listener on item click
             itemView.setOnClickListener {
@@ -56,15 +56,15 @@ class HistoryCardAdapter(
 
     override fun onBindViewHolder(holder: HistoryCardViewHolder, @SuppressLint("RecyclerView") position: Int) {
         if (showAllItems) {
-            holder.bind(historyList[position], onItemClickListener)
+            holder.bind(transactionList[position], onItemClickListener)
 
-            var isExpandable = historyList[position].isExpandable
+            var isExpandable = transactionList[position].isExpandable
             holder.expandableLayout.visibility = if (isExpandable) View.VISIBLE else View.GONE
 
             holder.historyContainer.setOnClickListener{
-                val currentHistory = historyList[position]
+                val currentHistory = transactionList[position]
                 if (prevExpandedPos != RecyclerView.NO_POSITION && prevExpandedPos != position) {
-                    historyList[prevExpandedPos].isExpandable = false
+                    transactionList[prevExpandedPos].isExpandable = false
                     notifyItemChanged(prevExpandedPos)
                 }
 
@@ -74,7 +74,7 @@ class HistoryCardAdapter(
             }
 
         } else {
-            val lastTwoItems = historyList.takeLast(2)
+            val lastTwoItems = transactionList.takeLast(2)
             val currentItem = lastTwoItems.getOrNull(position)
             if (currentItem != null) {
                 holder.bind(currentItem, onItemClickListener)
@@ -84,9 +84,9 @@ class HistoryCardAdapter(
 
     override fun getItemCount(): Int {
         return if (showAllItems) {
-            historyList.size
+            transactionList.size
         } else {
-            if (historyList.size > 2) 2 else historyList.size
+            if (transactionList.size > 2) 2 else transactionList.size
         }
     }
 
@@ -99,8 +99,8 @@ class HistoryCardAdapter(
         notifyDataSetChanged()
     }
 
-    fun updateList(newList: List<History>) {
-        historyList = newList
+    fun updateList(newList: List<DonationTransaction>) {
+        transactionList = newList
         notifyDataSetChanged()
     }
 }

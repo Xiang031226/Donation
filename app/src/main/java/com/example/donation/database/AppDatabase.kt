@@ -4,37 +4,24 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.donation.dao.CardPaymentDao
+import com.example.donation.dao.SubscriptionDao
+import com.example.donation.dao.TransactionDao
 import com.example.donation.dao.UserDao
+import com.example.donation.data.CardPayment
+import com.example.donation.data.DonationTransaction
+import com.example.donation.data.Subscription
 import com.example.donation.data.User
 
-//@Database(entities = [User::class], version = 1)
-
-//abstract class AppDatabase : RoomDatabase() {
-//    abstract fun userDao(): UserDao
-//
-//    companion object {
-//        private const val DATABASE_NAME = "WildcareDb"
-//
-//        @Volatile
-//        private var instance: AppDatabase? = null
-//
-//        fun getInstance(context: Context): AppDatabase {
-//            return instance ?: synchronized(this) {
-//                instance ?: buildDatabase(context).also { instance = it }
-//            }
-//        }
-//
-//        private fun buildDatabase(context: Context): AppDatabase {
-//            return Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, DATABASE_NAME)
-//                .fallbackToDestructiveMigration()
-//                .build()
-//        }
-//    }
-//}
-
-@Database(entities = [User::class], version = 2, exportSchema = false)
+@Database(entities = [User::class,
+                     CardPayment::class,
+                     DonationTransaction::class,
+                     Subscription::class], version = 1)
 internal abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun cardPaymentDao(): CardPaymentDao
+    abstract fun TransactionDao() : TransactionDao
+    abstract fun SubscriptionDao() : SubscriptionDao
 
     companion object {
         @Volatile

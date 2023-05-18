@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.donation.CardViewModel
 import com.example.donation.Payment.PaymentViewModel
 import com.example.donation.R
+import com.example.donation.data.CardPayment
 import com.example.donation.databinding.FragmentOpenDialogBinding
 
 class OpenDialog : DialogFragment() {
 
     private lateinit var binding: FragmentOpenDialogBinding
-    private lateinit var viewModel: PaymentViewModel
+    private lateinit var viewModel: CardViewModel
 
     data class DialogData(val cardNumber : String, val expiredDate : String, val cvv : Int)
 
@@ -47,18 +50,33 @@ class OpenDialog : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentOpenDialogBinding.bind(view)
 
-        viewModel = ViewModelProvider(requireActivity())[PaymentViewModel::class.java]
-
-
+        viewModel = ViewModelProvider(requireActivity())[CardViewModel::class.java]
 
         binding.saveButton.setOnClickListener {
-            val cardNumber = binding.cardNumberInput.text.toString()
-            val expiredDate = binding.expiryDateInput.text.toString()
-            val cvv = binding.cvvInput.text.toString().toInt()
-            val data = DialogData(cardNumber, expiredDate, cvv)
-            viewModel.setDialogData(data)
+
+            insertCardIntoDatabase()
             dialog?.dismiss()
+//            val formattedCardNumber = "*" + cardNumber.substring(cardNumber.length - 4)
+//            val data = DialogData(formattedCardNumber, expiredDate, cvv)
+//            viewModel.setDialogData(data)
+//            dialog?.dismiss()
         }
+    }
+
+    private fun insertCardIntoDatabase() {
+        val cardNumber = binding.cardNumberInput.text.toString()
+        val expiredDate = binding.expiryDateInput.text.toString()
+        val cvv = binding.cvvInput.text.toString().toInt()
+
+        if (inputCheck(cardNumber, expiredDate, cvv)) {
+            val card = CardPayment(cardNumber = cardNumber, expiredDate = expiredDate, cvv = cvv)
+            viewModel.addCard(card)
+            Toast.makeText(activity, "card added", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun inputCheck(cardNumber: String, expiredDate: String, cvv: Int): Boolean {
+        return cardNumber.isNotEmpty() && expiredDate.isNotEmpty() && cvv > 100
     }
 
 

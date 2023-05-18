@@ -3,23 +3,26 @@ package com.example.donation.adapter
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.donation.CardViewModel
 import com.example.donation.R
+import com.example.donation.data.CardPayment
 import com.example.donation.model.CreditCard
 import kotlin.coroutines.coroutineContext
 
 class CreditCardAdapter(
-    private val context : Context,
-    private val cardList: MutableList<CreditCard>
+    private val viewModel: CardViewModel,
+    private var cardList: List<CardPayment> = emptyList(),
 ) : RecyclerView.Adapter<CreditCardAdapter.CreditCardViewHolder>() {
 
     inner class CreditCardViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val cardImage: ImageView = view.findViewById(R.id.card_icon)
         val cardNumber : TextView = view.findViewById(R.id.card_number)
         val deleteImage : ImageView = view.findViewById(R.id.delete_button)
     }
@@ -33,31 +36,21 @@ class CreditCardAdapter(
     override fun onBindViewHolder(holder: CreditCardViewHolder, position: Int) {
         val currentItem = cardList[position]
 
-        holder.cardImage.setImageResource(currentItem.cardImage)
         holder.cardNumber.text = currentItem.cardNumber
-        holder.deleteImage.setImageResource(currentItem.deleteButton)
 
-        holder.deleteImage.setOnClickListener{
-            AlertDialog.Builder(context)
-                .setTitle("Delete")
-                .setMessage("Are you sure want to delete this card")
-                .setPositiveButton("Yes") {
-                    dialog,_->
-                    cardList.removeAt(position)
-                    notifyDataSetChanged()
-                    dialog.dismiss()
-                }
-                .setNegativeButton("No") {
-                    dialog, _->
-                    dialog.dismiss()
-                }
-                .create()
-                .show()
+        holder.deleteImage.setOnClickListener {
+            viewModel.deleteCard(currentItem)
         }
+
     }
 
     override fun getItemCount(): Int {
         return cardList.size
     }
 
+    fun setData(card : List<CardPayment>) {
+        this.cardList = card
+        notifyDataSetChanged()
+    }
 }
+

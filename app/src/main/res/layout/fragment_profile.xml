@@ -26,7 +26,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/image4"
+                android:src="@drawable/sea_turtle"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 />
@@ -59,7 +59,7 @@
                     android:orientation="vertical"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
+                        <TextView
                         android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -158,9 +158,10 @@
                         android:text="Total Donation" />
 
                     <TextView
+                        android:id="@+id/total_donation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="MYR 0.00"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

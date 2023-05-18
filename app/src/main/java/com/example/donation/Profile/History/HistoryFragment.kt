@@ -19,6 +19,7 @@ import com.example.donation.databinding.FragmentHistoryBinding
 class HistoryFragment : HideBarOrTab() {
 
     private lateinit var binding: FragmentHistoryBinding
+    private lateinit var viewModel: HistoryViewModel
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -28,14 +29,13 @@ class HistoryFragment : HideBarOrTab() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_history, container, false)
 
-        val viewModel = ViewModelProvider(requireActivity())[HistoryViewModel::class.java]
         val recyclerView = view.findViewById<RecyclerView>(R.id.history_container)
         val linearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager.reverseLayout = true
         linearLayoutManager.stackFromEnd = true
         recyclerView.layoutManager = linearLayoutManager
 
-        val adapter = HistoryCardAdapter(emptyList())
+        val adapter = HistoryCardAdapter()
         adapter.setOnItemClickListener(object : HistoryItemClickListener {
             override fun onItemClick(position: Int) {
                 Toast.makeText(activity, "Okay", Toast.LENGTH_SHORT).show()
@@ -45,6 +45,7 @@ class HistoryFragment : HideBarOrTab() {
         recyclerView.setHasFixedSize(true)
         adapter.setShowAllItems(true)
 
+        viewModel = ViewModelProvider(requireActivity())[HistoryViewModel::class.java]
         viewModel.historyLiveData.observe(viewLifecycleOwner) {historyList ->
             adapter.updateList(historyList)
         }

@@ -11,4 +11,8 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun addUser(user: User) {
         userDao.addUser(user)
     }
+
+    fun getUserById(id : Int) : LiveData<User> {
+        return userDao.getUserById(id)
+    }
 }
