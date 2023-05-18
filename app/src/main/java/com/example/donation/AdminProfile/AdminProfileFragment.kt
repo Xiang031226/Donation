@@ -40,9 +40,6 @@ class AdminProfileFragment : Fragment(R.layout.fragment_admin_profile) {
 
         val currentUser = viewModel.getByNameAndEmail(username, email)
         currentUser.observe(viewLifecycleOwner) { user ->
-            Log.i("Vuser.name", user.name)
-            Log.i("Vuser.username", user.username)
-            Log.i("Vuser.email", user.email)
             binding.adminProfileNameText.text = user.name
             binding.adminProfileUsernameText.text = user.username
             binding.adminProfileEmailText.text = user.email
@@ -62,17 +59,4 @@ class AdminProfileFragment : Fragment(R.layout.fragment_admin_profile) {
             }
         }
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        viewModel.currentUser.observe(viewLifecycleOwner) { user ->
-//            Log.i("Ruser.name", user.name)
-//            Log.i("Ruser.username", user.username)
-//            Log.i("Ruser.email", user.email)
-//            binding.adminProfileNameText.text = user.name
-//            binding.adminProfileUsernameText.text = user.username
-//            binding.adminProfileEmailText.text = user.email
-//            viewModel.currentUser.value = user
-//        }
-//    }
 }
