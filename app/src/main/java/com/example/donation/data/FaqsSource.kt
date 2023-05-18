@@ -7,19 +7,19 @@ class FaqsSource {
     fun loadFaqsData() : List<Faqs> {
         return listOf(
             Faqs(
-                "Why does WWF-Malaysia use fundraising agencies to fundraise?",
-                "As much as we would like to use only our own staffs, we are unable to bear the extensive cost of setting up a team large enough to accommodate and run this programme. By partnering with fundraising agencies,  WWF-Malaysia does not only save costs but also allow us to channel more of your valuable donations directly to our conservation programmes."
+                "Why does Wildcare use fundraising agencies to fundraise?",
+                "As much as we would like to use only our own staffs, we are unable to bear the extensive cost of setting up a team large enough to accommodate and run this programme. By partnering with fundraising agencies,  Wildcare-Malaysia does not only save costs but also allow us to channel more of your valuable donations directly to our conservation programmes."
             ),
             Faqs(
                 "What happens to the funds raised?",
-                "The funds raised are used by WWF to carry out scientific fieldwork, environmental education, and policy work with the government and community programmes that aid nature conservation."
+                "The funds raised are used by Wildcare to carry out scientific fieldwork, environmental education, and policy work with the government and community programmes that aid nature conservation."
             ),Faqs(
-                "Why doesn’t WWF use volunteers?",
-                "Face-to-face fundraising is a regular, professional job that requires long-term commitment, hard work and specific skills. All WWF representatives undergo intensive training by WWF and the fundraising agencies, before they begin work. While we sincerely acknowledge our volunteers for playing a valuable role in certain fundraising activities, their commitments outside WWF is beyond our control thus making them not ideal for this particular type of programme."
+                "Why doesn’t Wildcare use volunteers?",
+                "Face-to-face fundraising is a regular, professional job that requires long-term commitment, hard work and specific skills. All Wildcare representatives undergo intensive training by Wildcare and the fundraising agencies, before they begin work. While we sincerely acknowledge our volunteers for playing a valuable role in certain fundraising activities, their commitments outside Wildcare is beyond our control thus making them not ideal for this particular type of programme."
             ),
             Faqs(
                 "Is my donation tax exempted?",
-                "Yes, WWF-Malaysia is an NGO under sub-section 44 (6) of Income Tax Act 1967, and all cash donations to WWF-Malaysia are tax deductible (applicable only to donations made within Malaysia)."
+                "Yes, Wildcare-Malaysia is an NGO under sub-section 44 (6) of Income Tax Act 1967, and all cash donations to Wildcare-Malaysia are tax deductible (applicable only to donations made within Malaysia)."
             ),
             Faqs(
                 "Is there a minimum amount of donation required for me to be eligible for tax-exemption?",

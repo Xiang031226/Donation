@@ -91,7 +91,7 @@ class DigitalCertificateFragment : HideBarOrTab() {
         }
 
         binding.shareButton.setOnClickListener {
-            if (certificateFile != null && certificateFile!!.exists()) {
+            if (certificateFile != null) {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "application/pdf"
                 shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(requireContext(), "com.example.donation.fileprovider", certificateFile!!))
@@ -120,6 +120,7 @@ class DigitalCertificateFragment : HideBarOrTab() {
 
     }
 
+    @SuppressLint("DiscouragedApi")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val document = Document()
         if (requestCode == SAVE_PDF_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
@@ -254,14 +255,14 @@ class DigitalCertificateFragment : HideBarOrTab() {
     }
 
     fun checkPermissions(): Boolean {
-        var writeSotragePermission = context?.let {
+        val writeSotragePermission = context?.let {
             ContextCompat.checkSelfPermission(
                 it.applicationContext,
                 WRITE_EXTERNAL_STORAGE
             )
         }
 
-        var readStoragePermission = context?.let {
+        val readStoragePermission = context?.let {
             ContextCompat.checkSelfPermission(
                 it.applicationContext,
                 READ_EXTERNAL_STORAGE
@@ -279,6 +280,7 @@ class DigitalCertificateFragment : HideBarOrTab() {
         )
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

@@ -36,7 +36,7 @@
             <ImageView
                 android:id="@+id/edit_vol_image"
                 android:layout_width="@dimen/match_constraint"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_margin="20dp"
                 android:src="@drawable/image2"
                 app:layout_constraintEnd_toEndOf="parent"

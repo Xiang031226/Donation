@@ -2,7 +2,7 @@ package com.example.donation
 
 import androidx.lifecycle.LiveData
 import com.example.donation.dao.UserDao
-import com.example.donation.data.User
+import com.example.donation.model.User
 
 class UserRepository(private val userDao: UserDao) {
 

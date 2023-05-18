@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.addCallback
@@ -12,8 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.donation.R
 import com.example.donation.R.layout.fragment_application
 import com.example.donation.adapter.ApplicationItemAdapter
+import com.example.donation.data.VolunteerSource
 import com.example.donation.databinding.FragmentApplicationBinding
 import com.example.donation.model.Application
+import com.example.donation.model.VolunteerRole
 
 class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSelectedListener {
     private lateinit var binding: FragmentApplicationBinding
@@ -29,37 +32,24 @@ class ApplicationFragment : Fragment(fragment_application), AdapterView.OnItemSe
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentApplicationBinding.bind(view)
 
-        // TODO: Data for campaign spinner
-        val campaignList = ArrayList<String>()
-        campaignList.add("Save Our Tiger")
-        campaignList.add("Enhance anti-poaching and trafficking")
-        campaignList.add("Save Our Elephant")
+        val campaignTitle = ArrayList<String>()
+        val applicationList = ArrayList<Application>()
+        val volunteerList = VolunteerSource().eventDescriptionList()
+        val nameList = listOf("John Doe", "Lim Zhen Xiang", "Lee Vese", "Lim Ah Meng")
 
-        // TODO: Data for volunteer application recycler view
-        var applicationList = arrayListOf(
-            Application(
-                R.drawable.image1,
-                "Lim Zhen Xiang",
-                "Tiger Caretaker"
-            ),
-            Application(
-                R.drawable.image1,
-                "Lee Vese",
-                "Elephant Caretaker"
-            ),
-            Application(
-                R.drawable.image1,
-                "Lim Zhen Xiang",
-                "Tiger Caretaker"
-            ),
-            Application(
-                R.drawable.image1,
-                "Lee Vese",
-                "Elephant Caretaker"
+        for ((index, volunteer) in volunteerList.withIndex()) {
+            campaignTitle.add(volunteer.eventTitle)
+            applicationList.add(
+                Application(
+                    R.drawable.image3,
+                    nameList[index],
+                    VolunteerSource().volunteerRoles[index].role
+                )
             )
-        )
+        }
 
-        val spinnerAdapter = ArrayAdapter(view.context, android.R.layout.simple_spinner_item, campaignList)
+        val spinnerAdapter =
+            ArrayAdapter(view.context, android.R.layout.simple_spinner_item, campaignTitle)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.campaignSpinner.adapter = spinnerAdapter
 
